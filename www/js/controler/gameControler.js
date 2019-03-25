@@ -721,87 +721,36 @@ var GameControler = function() {
           }, {
           key: "aiGetBestWord",
           value: function aiGetBestWord() {
-            var bestWord;
             this.buildAIBoard();
+
+			var bestWord;
+			var model = this.model;
             var more = Math.ceil(Math.random()*5);
-            var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
+            var maxwpoints = model.g_maxwpoints[model.g_playlevel] + more; //max points AI can do
             //if first move do not scan board
-            if(this.model.g_board[7][7] == "") {
-              bestWord = this.aiBuildAltPossibleMove(this.getAIRack().opponent_rack, null, null, null, null, null);
+            if(model.round === 1) {
+              bestWord = this.aiBuildAltPossibleMove(this.getAIRack().opponent_rack);
             } else {
-              // bestWord = this.aiComplexMove();
-              // if(typeof bestWord == "undefined") {
-
-
-              var moveType = this.model.getNextPlayer().lang == this.model.getPlayer().lang ? "" : "common";
-              var tempBestWord = {};
-              //   //console.log(this.model.getNextPlayer().lang);
-              //   //console.log("MOVE TYPE:", moveType);
-                try {
-                  ////console.log("NORMAL MOVE Y");
-                  bestWord = this.aiAltPossibleMoveY(moveType);
-                  // //console.log(bestword);
-                } catch(e) {
-                  //console.log(e);
-                }
-                // if(typeof bestWord == "undefined") {
-                // if((typeof bestWord == "undefined") || (typeof bestWord != "undefined" && bestWord.score < maxwpoints)) {
-                //   try {
-                //     bestWord = this.aiAltPossibleMoveY();
-                //   } catch(e) {
-                //     //console.log(e);
-                //   }
-                // }
-                if((typeof bestWord == "undefined") && bestWord.word.length > 2) {
-                  try {
-                    tempBestWord = this.aiAltPossibleMove(moveType);
-                    //console.log("NORMAL MOVE X");
-                    // //console.log(bestword);
-                    if(typeof tempBestWord != "undefined" &&
-                      (typeof bestWord == "undefined" || tempBestWord.score > bestWord.score)) {
-                      bestWord = tempBestWord;
-                    }
-                  } catch(e) {
-                    //console.log(e);
-                  }
-                }
-                if((typeof bestWord == "undefined" || this.model.g_playlevel > 1 ) && bestWord.word.length > 2) {
-                  //console.log("REG ALT");
-                  tempBestWord = this.aiAltPossibleMoveY("");
-                  if(typeof tempBestWord != "undefined" &&
-                    (typeof bestWord == "undefined" || tempBestWord.score > bestWord.score)) {
-                    bestWord = tempBestWord;
-                  }
-                }
-                if((typeof bestWord == "undefined" || this.model.g_playlevel > 2) && bestWord.word.length > 2) {
-                  //console.log("REG ALT");
-                  tempBestWord = this.aiAltPossibleMove("");
-                  if(typeof tempBestWord != "undefined" &&
-                    (typeof bestWord == "undefined" || tempBestWord.score > bestWord.score)) {
-                    bestWord = tempBestWord;
-                  }
-                }
-                if((typeof bestWord == "undefined" || this.model.g_playlevel > 2) && bestWord.word.length > 2) {
-                  //console.log("Complex");
-                  tempBestWord = this.aiComplexMove("");
-                  if(typeof tempBestWord != "undefined" &&
-                    (typeof bestWord == "undefined" || tempBestWord.score > bestWord.score)) {
-                    bestWord = tempBestWord;
-                  }
-                }
-                if((typeof bestWord == "undefined" && this.model.g_playlevel > 1) && bestWord.word.length > 2) {
-                  try {
-                    //console.log("EXTEND X");
-                    tempBestWord = this.aiMoveWordExtendX();
-                    if(typeof tempBestWord != "undefined" &&
-                      (typeof bestWord == "undefined" || tempBestWord.score > bestWord.score)) {
-                      bestWord = tempBestWord;
-                    }
-                  } catch(e) {
-                    //console.log(e);
-                  }
-                }
-                  // }
+				//if players use same language use moveType as 'common' to disregard translation checks
+              	var moveType = model.getNextPlayer().lang == model.getPlayer().lang ? "" : "common";
+              	var tempBestWord = this.aiAltPossibleMoveY(moveType);
+			  	bestWord = tempBestWord && tempBestWord.word.length > 2 ? tempBestWord : this.aiAltPossibleMove(moveType);
+	          	if(!bestWord || model.g_playlevel > 1) {
+	              	tempBestWord = this.aiAltPossibleMoveY("");
+				  	bestWord = !bestWord || (!!tempBestWord && tempBestWord.score > bestWord.score) ? tempBestWord : bestWord;
+			  	}
+	          	if(!bestWord || model.g_playlevel > 2) {
+	              	tempBestWord = this.aiAltPossibleMove("");
+				  	bestWord = !bestWord || (!!tempBestWord && tempBestWord.score > bestWord.score) ? tempBestWord : bestWord;
+	          	}
+	          	if(!bestWord || model.g_playlevel > 1) {
+					tempBestWord = this.aiMoveWordExtendX();
+	              	bestWord = !bestWord || (!!tempBestWord && tempBestWord.score > bestWord.score) ? tempBestWord : bestWord
+	          	}
+	          	if(!bestWord && model.g_playlevel > 2) {
+					tempBestWord = this.aiComplexMove("");
+	              	bestWord = !bestWord || (!!tempBestWord && tempBestWord.score > bestWord.score) ? tempBestWord : bestWord;
+	          	}
             }
             return bestWord;
           }
@@ -903,296 +852,300 @@ var GameControler = function() {
         }, {
           key: "aiAltPossibleMove",
           value: function aiAltPossibleMove(type) {
-            // //console.log("get alternative possible move. ", ax, ay, letters);
-            // //console.log("Reference tile: ", this.g_board[ax][ay].letter);
-            var rack = this.getAIRack();
-            var model = this.model;
-            var moves = [];
-            var letters = "";
-            var opponent_rack = [];
-            var wordinfo;
-            var wordMove ={word: ""};
-            var match; //remove
-            var ay = 0;
-            var ax = 0;
-            var bestscore = 0;
+            try {
+				var rack = this.getAIRack();
+	            var model = this.model;
+	            var moves = [];
+	            var letters = "";
+	            var opponent_rack = [];
+	            var wordinfo;
+	            var wordMove ={word: ""};
+	            var match; //remove
+	            var ay = 0;
+	            var ax = 0;
+	            var bestscore = 0;
 
-            var aiRack = this.getAIRack();
-            var letters = aiRack.letters;
-            var opponent_rack = aiRack.opponent_rack;
+	            var aiRack = this.getAIRack();
+	            var letters = aiRack.letters;
+	            var opponent_rack = aiRack.opponent_rack;
 
-            for(ay = 0; ay < 15; ay++) {
-              for(ax = 0; ax < 15; ax++) {
-                if (model.g_board[ay][ax] !== "" && ay > 0 && ay < 14)
-                  //if not blank check if we can add
-                  if(model.g_board[ay + 1][ax] == "" &&
-                     model.g_board[ay - 1][ax] == "") {
-                    //can be used for x orientation
-                    //check negative and positive spaces available
-                    var ayN = ay-1;
-                    var ayP = ay+1;
-                    while(model.g_board[ayN][ax] == "" && ayN > 0) {
-                      // //console.log(ayN);
-                      // //console.log(model.g_board[ayN][ax]);
-                      if((
-                          (0 < ax < 15) && ((model.g_board[ayN][ax - 1] == "" && model.g_board[ayN][ax + 1] == "") && model.g_board[ayN - 1][ax] == "")
-                          ) ||
-                          (ax == 0 && model.g_board[ayN][ax - 1] == "") ||
-                          (ax == 14 && model.g_board[ayN][ax + 1] == "")) {
-                            ayN--;
-                         }
-                      else {
-                        break;
-                      }
-                      //check if space does not have neighbors
-                    }
-                    while(model.g_board[ayP][ax] == "" && ayP < 14) {
-                      //check if space does not have neighbors
-                      if((
-                          (0 < ax < 15) && ((model.g_board[ayP][ax - 1] == "" && model.g_board[ayP][ax + 1] == "") && model.g_board[ayP + 1][ax] == "")
-                          ) ||
-                          (ax == 0 && model.g_board[ayP][ax - 1] == "") ||
-                          (ax == 14 && model.g_board[ayP][ax + 1] == "")) {
-                            ayP++;
-                         }
-                      else {
-                        break;
-                      }
-                    }
-                    //console.log("prepare move");
-                    var move = {};
-                    move.tile = {letter: model.g_board[ay][ax], y: ay, x: ax};
-                    move.yN = ay - ayN;
-                    move.yP = ayP - ay;
-                    move.orientation = "x";
-                    // moves.push(move);
-                    var moveLetter = model.g_board[ay][ax].toLowerCase()
-                    var regex = new RegExp("_(["+opponent_rack+","+moveLetter+"]{0,7})_", "g");
-                    // var regex1 = new RegExp("_"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
-                    // var regex2 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
-                    // var regex3 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"_", "g");
-                    while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
-                      // //console.log(match[1]);
-                      var isValid = match[1].indexOf(moveLetter) > -1;
-                       var matchCheck = match[1].split("");
-                      //  //console.log(match[1].indexOf(moveLetter),"<",move.yN);
-                      //  //console.log(match[1].length - match[1].indexOf(moveLetter),"<",move.yP);
-                      if (isValid &&
-                          match[1].indexOf(moveLetter) < move.yN &&
-                          (match[1].length - match[1].indexOf(moveLetter)) < move.yP &&
-                          !matchCheck.some(function(v,i,a){return a.lastIndexOf(v)!=i;}))
-                      {
-                        var word = match[1];
+	            for(ay = 0; ay < 15; ay++) {
+	              for(ax = 0; ax < 15; ax++) {
+	                if (model.g_board[ay][ax] !== "" && ay > 0 && ay < 14)
+	                  //if not blank check if we can add
+	                  if(model.g_board[ay + 1][ax] == "" &&
+	                     model.g_board[ay - 1][ax] == "") {
+	                    //can be used for x orientation
+	                    //check negative and positive spaces available
+	                    var ayN = ay-1;
+	                    var ayP = ay+1;
+	                    while(model.g_board[ayN][ax] == "" && ayN > 0) {
+	                      // //console.log(ayN);
+	                      // //console.log(model.g_board[ayN][ax]);
+	                      if((
+	                          (0 < ax < 15) && ((model.g_board[ayN][ax - 1] == "" && model.g_board[ayN][ax + 1] == "") && model.g_board[ayN - 1][ax] == "")
+	                          ) ||
+	                          (ax == 0 && model.g_board[ayN][ax - 1] == "") ||
+	                          (ax == 14 && model.g_board[ayN][ax + 1] == "")) {
+	                            ayN--;
+	                         }
+	                      else {
+	                        break;
+	                      }
+	                      //check if space does not have neighbors
+	                    }
+	                    while(model.g_board[ayP][ax] == "" && ayP < 14) {
+	                      //check if space does not have neighbors
+	                      if((
+	                          (0 < ax < 15) && ((model.g_board[ayP][ax - 1] == "" && model.g_board[ayP][ax + 1] == "") && model.g_board[ayP + 1][ax] == "")
+	                          ) ||
+	                          (ax == 0 && model.g_board[ayP][ax - 1] == "") ||
+	                          (ax == 14 && model.g_board[ayP][ax + 1] == "")) {
+	                            ayP++;
+	                         }
+	                      else {
+	                        break;
+	                      }
+	                    }
+	                    //console.log("prepare move");
+	                    var move = {};
+	                    move.tile = {letter: model.g_board[ay][ax], y: ay, x: ax};
+	                    move.yN = ay - ayN;
+	                    move.yP = ayP - ay;
+	                    move.orientation = "x";
+	                    // moves.push(move);
+	                    var moveLetter = model.g_board[ay][ax].toLowerCase()
+	                    var regex = new RegExp("_(["+opponent_rack+","+moveLetter+"]{0,7})_", "g");
+	                    // var regex1 = new RegExp("_"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
+	                    // var regex2 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
+	                    // var regex3 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"_", "g");
+	                    while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
+	                      // //console.log(match[1]);
+	                      var isValid = match[1].indexOf(moveLetter) > -1;
+	                       var matchCheck = match[1].split("");
+	                      //  //console.log(match[1].indexOf(moveLetter),"<",move.yN);
+	                      //  //console.log(match[1].length - match[1].indexOf(moveLetter),"<",move.yP);
+	                      if (isValid &&
+	                          match[1].indexOf(moveLetter) < move.yN &&
+	                          (match[1].length - match[1].indexOf(moveLetter)) < move.yP &&
+	                          !matchCheck.some(function(v,i,a){return a.lastIndexOf(v)!=i;}))
+	                      {
+	                        var word = match[1];
 
-                        //replace reference tile with _ so computer wont try to place it in the board
-                        word = word.split('');
-                        word[match[1].indexOf(moveLetter)] = '_';
-                        word = word.join('');
+	                        //replace reference tile with _ so computer wont try to place it in the board
+	                        word = word.split('');
+	                        word[match[1].indexOf(moveLetter)] = '_';
+	                        word = word.join('');
 
-                        regex.px = {ax:ax, ay:ay - match[1].indexOf(moveLetter)};
-                        var word = match[1];
-                        word = word.split('');
-                        word[match[1].indexOf(moveLetter)] = '_';
-                        word = word.join('');
-                        wordinfo   = { word:word, ay:ax, ax:ay - match[1].indexOf(moveLetter) };
-                        wordinfo.seq   = word;     // sequence to put on board
-                        // wordinfo.lscrs = seq_lscrs;   // sequence letter scores
-                        wordinfo.ps    = regex.ps;    // index of word start
-                        wordinfo.xy    = "x";    // direction of scan
-                        wordinfo.prec  = ay - match[1].indexOf(moveLetter);  // letters before anchor // letters before anchor
-                        wordinfo.exlude = true; //exclude from placing reference tile
-                        wordinfo.score = 0;
-                        var score = 0;
+	                        regex.px = {ax:ax, ay:ay - match[1].indexOf(moveLetter)};
+	                        var word = match[1];
+	                        word = word.split('');
+	                        word[match[1].indexOf(moveLetter)] = '_';
+	                        word = word.join('');
+	                        wordinfo   = { word:word, ay:ax, ax:ay - match[1].indexOf(moveLetter) };
+	                        wordinfo.seq   = word;     // sequence to put on board
+	                        // wordinfo.lscrs = seq_lscrs;   // sequence letter scores
+	                        wordinfo.ps    = regex.ps;    // index of word start
+	                        wordinfo.xy    = "x";    // direction of scan
+	                        wordinfo.prec  = ay - match[1].indexOf(moveLetter);  // letters before anchor // letters before anchor
+	                        wordinfo.exlude = true; //exclude from placing reference tile
+	                        wordinfo.score = 0;
+	                        var score = 0;
 
-                        for(var si = 0; si < match[1].length; si++) {
-                          score += window.letterValues[this.model.getPlayer().lang][this.model.gameMode][match[1][si]]["v"];
-                        }
-                        wordinfo.score = score;
-                        // //console.log(wordinfo);
-                        var more = Math.ceil(Math.random()*5);
-                        var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
-                        //console.log(match[1],"SCORE:",score,"<",maxwpoints);
-                        var trans = "";
-                        var transPackValid = false;
-                        try {
-                          var transPack = window.marbbleDic[this.model.getPlayer().lang][this.model.getNextPlayer().lang];
-                          transPackValid = true;
-                          trans = transPack[match[1]];
-                        } catch(e) {
-                          if(!transPackValid) {
-                            console.log("NO TRANS PACK - AI MOVE");
-                            trans = "BYPASS";
-                          } else {
-                              trans = "";
-                          }
-                        }
-                        if (score < maxwpoints && (type != "common" || (trans != match[1] && typeof trans != "undefined" && trans != ""))) {
-                            wordMove = wordinfo;
-                        }
-                      }
-                    }
-                  }
-              }
-            }
-            // //console.log(moves);
-            if(wordMove.word.length > 0) {
-              return wordMove;
-            } else {
-              return undefined;
-            }
+	                        for(var si = 0; si < match[1].length; si++) {
+	                          score += window.letterValues[this.model.getPlayer().lang][this.model.gameMode][match[1][si]]["v"];
+	                        }
+	                        wordinfo.score = score;
+	                        // //console.log(wordinfo);
+	                        var more = Math.ceil(Math.random()*5);
+	                        var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
+	                        //console.log(match[1],"SCORE:",score,"<",maxwpoints);
+	                        var trans = "";
+	                        var transPackValid = false;
+	                        try {
+	                          var transPack = window.marbbleDic[this.model.getPlayer().lang][this.model.getNextPlayer().lang];
+	                          transPackValid = true;
+	                          trans = transPack[match[1]];
+	                        } catch(e) {
+	                          if(!transPackValid) {
+	                            console.log("NO TRANS PACK - AI MOVE");
+	                            trans = "BYPASS";
+	                          } else {
+	                              trans = "";
+	                          }
+	                        }
+	                        if (score < maxwpoints && (type != "common" || (trans != match[1] && typeof trans != "undefined" && trans != ""))) {
+	                            wordMove = wordinfo;
+	                        }
+	                      }
+	                    }
+	                  }
+	              }
+	            }
+	            // //console.log(moves);
+	            if(wordMove.word.length > 0) {
+	              return wordMove;
+	            } else {
+	              return undefined;
+	            }
+			} catch(e) {
+				return false;
+			}
           }
         }, {
           key: "aiAltPossibleMoveY",
           value: function aiAltPossibleMoveY(type) {
-            // //console.log("get alternative possible move. ", ax, ay, letters);
-            // //console.log("Reference tile: ", this.g_board[ax][ay].letter);
-            var rack = this.getAIRack();
-            var model = this.model;
-            var moves = [];
-            var letters = "";
-            var opponent_rack = [];
-            var wordinfo;
-            var wordMove ={word: ""};
-            var match; //remove
-            var ay = 0;
-            var ax = 0;
-            var bestscore = 0;
+			  try {
+				  var rack = this.getAIRack();
+				  var model = this.model;
+				  var moves = [];
+				  var letters = "";
+				  var opponent_rack = [];
+				  var wordinfo;
+				  var wordMove ={word: ""};
+				  var match; //remove
+				  var ay = 0;
+				  var ax = 0;
+				  var bestscore = 0;
 
-            var aiRack = this.getAIRack();
-            var letters = aiRack.letters;
-            var opponent_rack = aiRack.opponent_rack;
+				  var aiRack = this.getAIRack();
+				  var letters = aiRack.letters;
+				  var opponent_rack = aiRack.opponent_rack;
 
-            for(ay = 0; ay < 15; ay++) {
-              for(ax = 0; ax < 15; ax++) {
-                if (model.g_board[ay][ax] !== "" && ax > 0 && ax < 14)
-                  //if not blank check if we can add
-                  if(model.g_board[ay][ax + 1] == "" &&
-                     model.g_board[ay][ax - 1] == "") {
-                    //can be used for x orientation
-                    //check negative and positive spaces available
-                    var axN = ax-1;
-                    var axP = ax+1;
-                    while(model.g_board[ay][axN] == "" && axN > 0) {
-                      // //console.log(axN);
-                      // //console.log(model.g_board[ay][axN]);
-                      try {
-                        if((
-                            (0 < ay < 15) && (   model.g_board[ay - 1][axN] == "" &&
-                                                 model.g_board[ay + 1][axN] == "" &&
-                                                 model.g_board[ay][axN - 1] == ""
-                                            )
-                            ) ||
-                            (ay == 0 && model.g_board[ay - 1][axN] == "") ||
-                            (ay == 14 && model.g_board[ay + 1][axN] == "")) {
-                              axN--;
-                           }
-                        else {
-                          break;
-                        }
-                      }
-                      catch(e) {
-                        break;
-                      }
-                      //check if space does not have neighbors
-                    }
-                    while(model.g_board[ay][axP] == "" && axP < 14) {
-                      //check if space does not have neighbors
-                      try {
-                        if((
-                            (0 < ay < 15) && (
-                                              model.g_board[ay - 1][axP] == "" &&
-                                              model.g_board[ay + 1][axP] == "" &&
-                                              model.g_board[ay][axP + 1] == ""
-                                            )
-                            ) ||
-                            (ax == 0 && model.g_board[ay - 1][axP] == "") ||
-                            (ax == 14 && model.g_board[ay + 1][axP] == "")) {
-                              axP++;
-                           }
-                        else {
-                          break;
-                        }
-                      } catch(e) {
-                        break;
-                      }
-                    }
-                    // //console.log("prepare move");
-                    var move = {};
-                    move.tile = {letter: model.g_board[ay][ax], y: ay, x: ax};
-                    move.xN = ax - axN;
-                    move.xP = axP - ax;
-                    move.orientation = "y";
-                    // moves.push(move);
-                    var moveLetter = model.g_board[ay][ax].toLowerCase()
-                    var regex = new RegExp("_(["+opponent_rack+","+moveLetter+"]{0,7})_", "g");
-                    // var regex1 = new RegExp("_"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
-                    // var regex2 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
-                    // var regex3 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"_", "g");
-                    while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
-                      // //console.log(match[1]);
-                      var isValid = match[1].indexOf(moveLetter) > -1;
-                       var matchCheck = match[1].split("");
-                      //  //console.log(match[1].indexOf(moveLetter),"<",move.xN);
-                      //  //console.log(match[1].length - match[1].indexOf(moveLetter),"<",move.xP);
-                      if (isValid &&
-                          match[1].indexOf(moveLetter) < move.xN &&
-                          (match[1].length - match[1].indexOf(moveLetter)) < move.xP &&
-                          !matchCheck.some(function(v,i,a){return a.lastIndexOf(v)!=i;}))
-                      {
-                        regex.px = {ax:ax, ay:ay - match[1].indexOf(moveLetter)};
-                        var word = match[1];
-                        word = word.split('');
-                        word[match[1].indexOf(moveLetter)] = '_';
-                        word = word.join('');
-                        wordinfo   = { word:word, ay:ax - match[1].indexOf(moveLetter), ax:ay };
-                        // var score = this.model.getWordScore( wordinfo );
-                        wordinfo.seq   = word;     // sequence to put on board
-                        // wordinfo.lscrs = seq_lsxncrs;   // sequence letter scores
-                        wordinfo.ps    = regex.ps;    // index of word start
-                        wordinfo.xy    = "y";    // direction of scan
-                        wordinfo.prec  = ax - match[1].indexOf(moveLetter);  // letters before anchor
-                        wordinfo.exlude = true; //exclude from placing reference tile
-                        //console.log(wordinfo);
-                        wordinfo.score = 0;
-                        var score = 0;
-                        for(var si = 0; si < match[1].length; si++) {
-                          score += window.letterValues[this.model.getPlayer().lang][this.model.gameMode][match[1][si]]["v"];
-                        }
-                        wordinfo.score = score;
-                        // //console.log(wordinfo);
-                        var more = Math.ceil(Math.random()*5);
-                        var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
-                        //console.log(match[1],"SCORE:",score,"<",maxwpoints);
-                        var trans = "";
-                        var transPackValid = false;
-                        try {
-                          var transPack = window.marbbleDic[this.model.getPlayer().lang][this.model.getNextPlayer().lang];
-                          transPackValid = true;
-                          trans = transPack[match[1]];
-                        } catch(e) {
-                          if(!transPackValid) {
-                            console.log("NO TRANS PACK - AI MOVE");
-                            trans = "BYPASS";
-                          } else {
-                              trans = "";
-                          }
-                        }
-                        if (score < maxwpoints  && (type != "common" || (trans != match[1] && typeof trans != "undefined"))) {
-                            wordMove = wordinfo;
-                        }
-                      }
-                    }
-                  }
-                  // document.getElementById("board_tileBg_"+ay+"_"+ax).style.border = "solid black 1px";
-              }
-            }
-            // //console.log(moves);
-            if(wordMove.word.length > 0) {
-              return wordMove;
-            } else {
-              return undefined;
-            }
-          }
+				  for(ay = 0; ay < 15; ay++) {
+					for(ax = 0; ax < 15; ax++) {
+					  if (model.g_board[ay][ax] !== "" && ax > 0 && ax < 14)
+						//if not blank check if we can add
+						if(model.g_board[ay][ax + 1] == "" &&
+						   model.g_board[ay][ax - 1] == "") {
+						  //can be used for x orientation
+						  //check negative and positive spaces available
+						  var axN = ax-1;
+						  var axP = ax+1;
+						  while(model.g_board[ay][axN] == "" && axN > 0) {
+							// //console.log(axN);
+							// //console.log(model.g_board[ay][axN]);
+							try {
+							  if((
+								  (0 < ay < 15) && (   model.g_board[ay - 1][axN] == "" &&
+													   model.g_board[ay + 1][axN] == "" &&
+													   model.g_board[ay][axN - 1] == ""
+												  )
+								  ) ||
+								  (ay == 0 && model.g_board[ay - 1][axN] == "") ||
+								  (ay == 14 && model.g_board[ay + 1][axN] == "")) {
+									axN--;
+								 }
+							  else {
+								break;
+							  }
+							}
+							catch(e) {
+							  break;
+							}
+							//check if space does not have neighbors
+						  }
+						  while(model.g_board[ay][axP] == "" && axP < 14) {
+							//check if space does not have neighbors
+							try {
+							  if((
+								  (0 < ay < 15) && (
+													model.g_board[ay - 1][axP] == "" &&
+													model.g_board[ay + 1][axP] == "" &&
+													model.g_board[ay][axP + 1] == ""
+												  )
+								  ) ||
+								  (ax == 0 && model.g_board[ay - 1][axP] == "") ||
+								  (ax == 14 && model.g_board[ay + 1][axP] == "")) {
+									axP++;
+								 }
+							  else {
+								break;
+							  }
+							} catch(e) {
+							  break;
+							}
+						  }
+						  // //console.log("prepare move");
+						  var move = {};
+						  move.tile = {letter: model.g_board[ay][ax], y: ay, x: ax};
+						  move.xN = ax - axN;
+						  move.xP = axP - ax;
+						  move.orientation = "y";
+						  // moves.push(move);
+						  var moveLetter = model.g_board[ay][ax].toLowerCase()
+						  var regex = new RegExp("_(["+opponent_rack+","+moveLetter+"]{0,7})_", "g");
+						  // var regex1 = new RegExp("_"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
+						  // var regex2 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
+						  // var regex3 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"_", "g");
+						  while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
+							// //console.log(match[1]);
+							var isValid = match[1].indexOf(moveLetter) > -1;
+							 var matchCheck = match[1].split("");
+							//  //console.log(match[1].indexOf(moveLetter),"<",move.xN);
+							//  //console.log(match[1].length - match[1].indexOf(moveLetter),"<",move.xP);
+							if (isValid &&
+								match[1].indexOf(moveLetter) < move.xN &&
+								(match[1].length - match[1].indexOf(moveLetter)) < move.xP &&
+								!matchCheck.some(function(v,i,a){return a.lastIndexOf(v)!=i;}))
+							{
+							  regex.px = {ax:ax, ay:ay - match[1].indexOf(moveLetter)};
+							  var word = match[1];
+							  word = word.split('');
+							  word[match[1].indexOf(moveLetter)] = '_';
+							  word = word.join('');
+							  wordinfo   = { word:word, ay:ax - match[1].indexOf(moveLetter), ax:ay };
+							  // var score = this.model.getWordScore( wordinfo );
+							  wordinfo.seq   = word;     // sequence to put on board
+							  // wordinfo.lscrs = seq_lsxncrs;   // sequence letter scores
+							  wordinfo.ps    = regex.ps;    // index of word start
+							  wordinfo.xy    = "y";    // direction of scan
+							  wordinfo.prec  = ax - match[1].indexOf(moveLetter);  // letters before anchor
+							  wordinfo.exlude = true; //exclude from placing reference tile
+							  //console.log(wordinfo);
+							  wordinfo.score = 0;
+							  var score = 0;
+							  for(var si = 0; si < match[1].length; si++) {
+								score += window.letterValues[this.model.getPlayer().lang][this.model.gameMode][match[1][si]]["v"];
+							  }
+							  wordinfo.score = score;
+							  // //console.log(wordinfo);
+							  var more = Math.ceil(Math.random()*5);
+							  var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
+							  //console.log(match[1],"SCORE:",score,"<",maxwpoints);
+							  var trans = "";
+							  var transPackValid = false;
+							  try {
+								var transPack = window.marbbleDic[this.model.getPlayer().lang][this.model.getNextPlayer().lang];
+								transPackValid = true;
+								trans = transPack[match[1]];
+							  } catch(e) {
+								if(!transPackValid) {
+								  console.log("NO TRANS PACK - AI MOVE");
+								  trans = "BYPASS";
+								} else {
+									trans = "";
+								}
+							  }
+							  if (score < maxwpoints  && (type != "common" || (trans != match[1] && typeof trans != "undefined"))) {
+								  wordMove = wordinfo;
+							  }
+							}
+						  }
+						}
+						// document.getElementById("board_tileBg_"+ay+"_"+ax).style.border = "solid black 1px";
+					}
+				  }
+				  // //console.log(moves);
+				  if(wordMove.word.length > 0) {
+					return wordMove;
+				  } else {
+					return undefined;
+				  }
+			  } catch(e) {
+				  return false;
+			  }
+		  }
         }, {
           key: "aiBuildAltPossibleMove",
           value: function aiBuildAltPossibleMove(opponent_rack, moveLetter, ax, ay, ayN, ayP) {
@@ -1287,180 +1240,181 @@ var GameControler = function() {
         }, {
           key: "aiMoveWordExtendX",
           value: function aiMoveWordExtendX(type) {
-            // checks if played words can still be extended
+	            // checks if played words can still be extended
+	            try {
+					var rack = this.getAIRack();
+		            var model = this.model;
+		            var moves = [];
+		            var letters = "";
+		            var opponent_rack = [];
+		            var wordinfo;
+		            var wordMove ={word: ""};
+		            var match; //remove
+		            var ay = 0;
+		            var ax = 0;
+		            var bestscore = 0;
 
-            // //console.log("get alternative possible move. ", ax, ay, letters);
-            // //console.log("Reference tile: ", this.g_board[ax][ay].letter);
-            var rack = this.getAIRack();
-            var model = this.model;
-            var moves = [];
-            var letters = "";
-            var opponent_rack = [];
-            var wordinfo;
-            var wordMove ={word: ""};
-            var match; //remove
-            var ay = 0;
-            var ax = 0;
-            var bestscore = 0;
+		            var aiRack = this.getAIRack();
+		            var letters = aiRack.letters;
+		            var opponent_rack = aiRack.opponent_rack;
 
-            var aiRack = this.getAIRack();
-            var letters = aiRack.letters;
-            var opponent_rack = aiRack.opponent_rack;
+		            for(ay = 0; ay < 15; ay++) {
+		              for(ax = 0; ax < 15; ax++) {
+		                if (model.g_board[ay][ax] !== "" && ay > 0 && ay < 14) {
+		                    //if not blank check if we can extend
+		                    //scan to the left of x
+		                    var axSN = ax;
+		                    var axSNBlank = ax;
+		                    var hasNEncounteredBlank = false;
+		                    var axSNTemp = ax;
+		                    for(0; axSNBlank > 0 && axSNBlank < 14; axSNBlank--) {
+		                      if(model.g_board[ay][axSNTemp - 1] == "") {
+		                        hasNEncounteredBlank = true;
+		                        if(model.g_board[ay - 1][axSNTemp - 1] != "" ||
+		                           model.g_board[ay + 1][axSNTemp - 1] != "") {
+		                             axSNBlank++;
+		                             break;
+		                           }
+		                      } else if(!hasNEncounteredBlank){
+		                        axSN--;
+		                      } else {
+		                        break;
+		                      }
+		                      axSNTemp--;
+		                    }
 
-            for(ay = 0; ay < 15; ay++) {
-              for(ax = 0; ax < 15; ax++) {
-                if (model.g_board[ay][ax] !== "" && ay > 0 && ay < 14) {
-                    //if not blank check if we can extend
-                    //scan to the left of x
-                    var axSN = ax;
-                    var axSNBlank = ax;
-                    var hasNEncounteredBlank = false;
-                    var axSNTemp = ax;
-                    for(0; axSNBlank > 0 && axSNBlank < 14; axSNBlank--) {
-                      if(model.g_board[ay][axSNTemp - 1] == "") {
-                        hasNEncounteredBlank = true;
-                        if(model.g_board[ay - 1][axSNTemp - 1] != "" ||
-                           model.g_board[ay + 1][axSNTemp - 1] != "") {
-                             axSNBlank++;
-                             break;
-                           }
-                      } else if(!hasNEncounteredBlank){
-                        axSN--;
-                      } else {
-                        break;
-                      }
-                      axSNTemp--;
-                    }
+		                    //scan to the right of x
+		                    var axSP = ax;
+		                    var axSPBlank = ax;
+		                    var hasPEncounteredBlank = false;
+		                    var axSPTemp = ax;
+		                    for(0; axSPBlank > 0 && axSPBlank < 14; axSPBlank++) {
+		                      if(model.g_board[ay][axSPTemp + 1] == "") {
+		                        hasPEncounteredBlank = true;
+		                        if(model.g_board[ay - 1][axSPTemp + 1] != "" ||
+		                           model.g_board[ay + 1][axSPTemp + 1] != "") {
+		                             axSPBlank--;
+		                             break;
+		                           }
+		                      } else if(!hasPEncounteredBlank) {
+		                        axSP++;
+		                      } else {
+		                        break;
+		                      }
+		                      axSPTemp++;
+		                    }
 
-                    //scan to the right of x
-                    var axSP = ax;
-                    var axSPBlank = ax;
-                    var hasPEncounteredBlank = false;
-                    var axSPTemp = ax;
-                    for(0; axSPBlank > 0 && axSPBlank < 14; axSPBlank++) {
-                      if(model.g_board[ay][axSPTemp + 1] == "") {
-                        hasPEncounteredBlank = true;
-                        if(model.g_board[ay - 1][axSPTemp + 1] != "" ||
-                           model.g_board[ay + 1][axSPTemp + 1] != "") {
-                             axSPBlank--;
-                             break;
-                           }
-                      } else if(!hasPEncounteredBlank) {
-                        axSP++;
-                      } else {
-                        break;
-                      }
-                      axSPTemp++;
-                    }
+		                    //build word
+		                    var wordArray = [];
+		                    var word = "";
+		                    for(var i = axSN; i <= axSP; i++) {
+		                      wordArray.push(model.g_board[ay][i].toLowerCase());
+		                      word += model.g_board[ay][i].toLowerCase();
+		                    }
 
-                    //build word
-                    var wordArray = [];
-                    var word = "";
-                    for(var i = axSN; i <= axSP; i++) {
-                      wordArray.push(model.g_board[ay][i].toLowerCase());
-                      word += model.g_board[ay][i].toLowerCase();
-                    }
+		                    //start and end of word
+		                    var xStart = axSN;
+		                    var xEnd = axSP;
+		                    var xBlankStart = axSNBlank;
+		                    var xBlankEnd = axSPBlank;
 
-                    //start and end of word
-                    var xStart = axSN;
-                    var xEnd = axSP;
-                    var xBlankStart = axSNBlank;
-                    var xBlankEnd = axSPBlank;
+		                    var aiRack = this.getAIRack();
+		                    var letters = aiRack.letters;
+		                    var opponent_rack = aiRack.opponent_rack;
 
-                    var aiRack = this.getAIRack();
-                    var letters = aiRack.letters;
-                    var opponent_rack = aiRack.opponent_rack;
+		                    //search dictionary for valid words
+		                    var regex = new RegExp("_(["+opponent_rack+"]{0,7})("+word+"{1})(["+opponent_rack+"]{0,7})_", "g");
+		                    while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
+		                      var wordMatch = match[0];
+		                      // consolew.log(wordMatch);
+		                      //remove underscore
+		                      wordMatch = wordMatch.replace(/_/g,"");
 
-                    //search dictionary for valid words
-                    var regex = new RegExp("_(["+opponent_rack+"]{0,7})("+word+"{1})(["+opponent_rack+"]{0,7})_", "g");
-                    while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
-                      var wordMatch = match[0];
-                      // consolew.log(wordMatch);
-                      //remove underscore
-                      wordMatch = wordMatch.replace(/_/g,"");
+		                      //check if letters can fill available board space
+		                      // //console.log(xStart,wordMatch.indexOf(word),(xStart - wordMatch.indexOf(word)),xBlankStart);
+		                      var xStartValid = (xStart - wordMatch.indexOf(word)) > xBlankStart;
+		                      // //console.log(xBlankEnd,xEnd,(xBlankEnd - xEnd),(wordMatch.length - ((word.length-1) + wordMatch.indexOf(word))));
+		                      var xEndValid = (xBlankEnd - xEnd) > (wordMatch.length - ((word.length-1) + wordMatch.indexOf(word)));
+		                      // //console.log("xStartValid",xStartValid);
+		                      // //console.log("xEndValid", xEndValid);
 
-                      //check if letters can fill available board space
-                      // //console.log(xStart,wordMatch.indexOf(word),(xStart - wordMatch.indexOf(word)),xBlankStart);
-                      var xStartValid = (xStart - wordMatch.indexOf(word)) > xBlankStart;
-                      // //console.log(xBlankEnd,xEnd,(xBlankEnd - xEnd),(wordMatch.length - ((word.length-1) + wordMatch.indexOf(word))));
-                      var xEndValid = (xBlankEnd - xEnd) > (wordMatch.length - ((word.length-1) + wordMatch.indexOf(word)));
-                      // //console.log("xStartValid",xStartValid);
-                      // //console.log("xEndValid", xEndValid);
+		                      //check if rack can provide letters needed
+		                      var tempRack = opponent_rack;
+		                      var rackValid = true;
+		                      var lettersNeeded = wordMatch.replace(word,"");
+		                      for(var iT=0;iT<lettersNeeded.length;iT++) {
+		                        for(var jT=0;jT<opponent_rack.length;jT++) {
+		                          if(lettersNeeded[iT] == tempRack[jT]) {
+		                            tempRack[jT] = ""; //set as blank so we know tile is allotted
+		                            break;
+		                          }
+		                          if((opponent_rack.length - 1) == jT) {
+		                            rackValid = false;
+		                          }
+		                        }
+		                      }
 
-                      //check if rack can provide letters needed
-                      var tempRack = opponent_rack;
-                      var rackValid = true;
-                      var lettersNeeded = wordMatch.replace(word,"");
-                      for(var iT=0;iT<lettersNeeded.length;iT++) {
-                        for(var jT=0;jT<opponent_rack.length;jT++) {
-                          if(lettersNeeded[iT] == tempRack[jT]) {
-                            tempRack[jT] = ""; //set as blank so we know tile is allotted
-                            break;
-                          }
-                          if((opponent_rack.length - 1) == jT) {
-                            rackValid = false;
-                          }
-                        }
-                      }
+		                      //check if the match is not equal the word and can be extended
+		                      if(wordMatch != word && rackValid && xStartValid && xEndValid) {
+		                        // //console.log("ENTER");
+		                        var wordStart = wordMatch.indexOf(word);
+		                        var wordEnd = wordStart + (word.length - 1);
 
-                      //check if the match is not equal the word and can be extended
-                      if(wordMatch != word && rackValid && xStartValid && xEndValid) {
-                        // //console.log("ENTER");
-                        var wordStart = wordMatch.indexOf(word);
-                        var wordEnd = wordStart + (word.length - 1);
+		                        var filteredWord = "";
+		                        for(var i = 0; i < wordMatch.length; i++) {
+		                          if(i < wordStart || i > wordEnd) {
+		                            filteredWord += wordMatch[i];
+		                          } else {
+		                            filteredWord += "_";
+		                          }
+		                        }
 
-                        var filteredWord = "";
-                        for(var i = 0; i < wordMatch.length; i++) {
-                          if(i < wordStart || i > wordEnd) {
-                            filteredWord += wordMatch[i];
-                          } else {
-                            filteredWord += "_";
-                          }
-                        }
-
-                        //SCORE
-                        var score = 0;
-                        for(var si = 0; si < wordMatch.length; si++) {
-                          score += window.letterValues[this.model.getPlayer().lang][this.model.gameMode][wordMatch[si]]["v"];
-                        }
-                        var more = Math.ceil(Math.random()*5);
-                        var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
-                        var trans = "";
-                        var transPackValid = false;
-                        try {
-                          var transPack = window.marbbleDic[this.model.getPlayer().lang][this.model.getNextPlayer().lang];
-                          transPackValid = true;
-                          trans = transPack[match[1]];
-                        } catch(e) {
-                          if(!transPackValid) {
-                            console.log("NO TRANS PACK - AI MOVE");
-                            trans = "BYPASS";
-                          } else {
-                              trans = "";
-                          }
-                        }
-                        if (score <= maxwpoints && (type != "common" || (trans != wordMatch && typeof trans != "undefined" && trans != ""))) {
-                            // wordMove = wordinfo;
-                            // //console.log("SET WORDMOVE");
-                            wordMove = { word: filteredWord,
-                                         ay: xStart - wordMatch.indexOf(word),
-                                         ax: ay,
-                                         xy: "y",
-                                         exclude: true};
-                        }
-                        //END SCORE
-                      }
-                    }
-                }
-              }
-            }
-            // //console.log(moves);
-            if(wordMove.word.length > 0) {
-              return wordMove;
-            } else {
-              return undefined;
-            }
-          }
+		                        //SCORE
+		                        var score = 0;
+		                        for(var si = 0; si < wordMatch.length; si++) {
+		                          score += window.letterValues[this.model.getPlayer().lang][this.model.gameMode][wordMatch[si]]["v"];
+		                        }
+		                        var more = Math.ceil(Math.random()*5);
+		                        var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
+		                        var trans = "";
+		                        var transPackValid = false;
+		                        try {
+		                          var transPack = window.marbbleDic[this.model.getPlayer().lang][this.model.getNextPlayer().lang];
+		                          transPackValid = true;
+		                          trans = transPack[match[1]];
+		                        } catch(e) {
+		                          if(!transPackValid) {
+		                            console.log("NO TRANS PACK - AI MOVE");
+		                            trans = "BYPASS";
+		                          } else {
+		                              trans = "";
+		                          }
+		                        }
+		                        if (score <= maxwpoints && (type != "common" || (trans != wordMatch && typeof trans != "undefined" && trans != ""))) {
+		                            // wordMove = wordinfo;
+		                            // //console.log("SET WORDMOVE");
+		                            wordMove = { word: filteredWord,
+		                                         ay: xStart - wordMatch.indexOf(word),
+		                                         ax: ay,
+		                                         xy: "y",
+		                                         exclude: true};
+		                        }
+		                        //END SCORE
+		                      }
+		                    }
+		                }
+		              }
+		            }
+		            // //console.log(moves);
+		            if(wordMove.word.length > 0) {
+		              return wordMove;
+		            } else {
+		              return undefined;
+		            }
+				} catch(e) {
+					return false;
+				}
+			}
         },{ key: "aiMoveWordExtendY",
         value: function aiMoveWordExtendY(type) {
           // checks if played words can still be extended
