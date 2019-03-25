@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta HTTP-EQUIV="Pragma" content="no-cache">
+    <meta HTTP-EQUIV="Expires" content="-1">
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * gap://ready file://* 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *; img-src * 'self' data:;">
+    <!-- Good default declaration:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of eval() and inline  scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+      * Enable eval(): add 'unsafe-eval' to default-src
+  * Create your own at http://cspisawesome.com
+  -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <meta name="robots" content="noindex">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="css/marbble.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="lib/dragula.css" media="screen" />
+    <title>Marbble</title>
+    <!-- app menu translations -->
+    <script type="text/javascript" src="js/applanguage.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <script>
+        var _windowOpened = 'mainMenuWindow';
+        var _languageSet = null;
+    </script>
+</head>
+
+<body style='user-select:none;' onselectstart='return false;'>
+    <script>
+        var __cordovaRunningOnBrowser__ = false;
+    </script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- This is used for debugging PhoneGap using weinre. Not to be deployed to production-->
+    <!--<script src="http://192.168.254.3:8080/target/target-script-min.js#anonymous"></script>-->
+    <div id="marbblescreen" class="marbblescreen">
+        <div id="manatySplashScreen" class="manatySplashScreen">
+        </div>
+        <div id="marbbleSplashScreen" class="marbbleSplashScreen">
+        </div>
+        <div id="mainMenu" class="newGameInterface">
+            <div class="mainMenuContainer">
+                <div id="mainMenuBtn" class="mainMenuBtn cursorClickable"></div>
+                <div id="newGameBtn" class="newGameBtn cursorClickable"></div>
+                <div id="settingsBtn" class="settingsBtn cursorClickable"></div>
+            </div>
+
+            <!-- NEW GAME INTERFACE -->
+            <div id="newGameInterfaceContainer">
+                <div class="newGameInterfaceButtonContainer">
+                    <div class="playWithFriendDivContainer">
+                        <div id="playWithFriend" class="playWithFriendBtn cursorClickable"></div>
+                    </div>
+
+                    <div class="findOpponentDivContainer">
+                        <div id="findOpponent" class="findOpponentBtn cursorClickable"></div>
+                    </div>
+
+                    <div class="soloGameDivContainer">
+                        <div id="soloGame" class="soloGameBtn cursorClickable"></div>
+                    </div>
+
+                    <div class="passNplayDivContainer">
+                        <div id="passAndPlayBtn" class="passNplayBtn cursorClickable"></div>
+                    </div>
+                </div>
+
+                <!--<div id="activatedLanguagesTitle" class="activated_languages_title"></div>-->
+                <div class="activated-languages-title">ACTIVATED LANGUAGES FOR ONLINE</div>
+                <div class="languagesContainer">
+                    <div class="flag_container">
+                        <div id="homeLanguagesFlagContainer" class="flag_languages_container">
+                            <!--<div id="homeFlagEn" class="language_en"></div>
+                            <div id="homeFlagFr" class="language_fr"></div>
+                            <div id="homeFlagEs"class="language_es"></div>
+                            <div id="homeFlagPh" class="language_ph"></div>-->
+                            <div class="language_en"></div>
+                            <div class="language_fr"></div>
+                            <div class="language_es"></div>
+                            <div class="language_ph"></div>
+                        </div>
+                        <div id="homeLanguageLoginText" style="display: none;">
+                            You need to login to play online
+                        </div>
+                    </div>
+                    <div class="language_settings_container">
+                        <div id="editLanguagesBtn" class="edit_languages cursorClickable"></div>
+                        <input id="homeLoginBtn" name="login" value="Login" class="login-button" type="submit" style="display: none;">
+
+                        <div class="clearFloat"></div>
+                    </div>
+                </div>
+
+                <div class="credits-container">
+                    <div id="credits" class="credits">Version 1.0.3 <span class="underline">Credits</span></div>
+                </div>
+            </div>
+            <!-- END NEW GAME INTERFACE -->
+
+            <!-- MAIN INTERFACE -->
+            <div id="mainInterface" class="main-interface">
+                <div class="new-game-interface-btn">
+                    <div id="newGameInterfaceBtn" class="new-game-button-interface-label no-select">NEW GAME</div>
+                </div>
+                <label for="importInput" class="new-game-interface-btn" style="display:block">
+                        <div id="importGameBtn" class="new-game-button-interface-label no-select">IMPORT GAME</div>
+                        <input id="importInput" type="file" style="display:none"/>
+                </label>
+                <!-- scroll begin -->
+                <div id="activeGamesContainer" class="active-games-container">
+
+
+                    <!-- CONNECT AND PLAY WITH FRIENDS -->
+                    <!--<div class="play-with-fb-friends-btn">
+                    <div class="fb-friends-button-interface-label no-select">CONNECT AND PLAY WITH FRIENDS</div>
+                </div>-->
+                    <!-- END CONNECT AND PLAY WITH FRIENDS -->
+                </div>
+
+                <!-- end scroll -->
+
+            </div>
+            <!-- END MAIN INTERFACE -->
+
+            <!-- SETTINGS SCREEN -->
+            <div id="settingsScreen" class="settings-screen">
+                <div class="spacer">&nbsp;</div>
+                <div class="settings-content">
+                    <div class="settings-header" style="margin-top: 0 !important;">
+                        Account
+                    </div>
+                    <div id="settingsLoggedOut">
+                        <div class="login-form-container">
+                            <div id="loginForm">
+                                <input type="text" id="settingsLoginEmail" name="settingsLoginEmail" placeholder="Email address"/>
+                                <input type="password" id="settingsLoginPassword" name="settingsLoginPassword" placeholder="Password"/>
+                                <div class="login-button-container">
+                                    <input id="settingsLoginSubmit" type="submit" name="login" value="Login" class="login-button"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="create-account-text">
+                            <span id="settingsRegister" class="text-underline-hover">No account yet? Create one</span>
+                        </div>
+                        <div class="settings-profile-container">
+                            <div class="profile-photo-container">
+                                <div id="settingsLoggedOutPhotoUploadBtn" style="width: 100%; height: 100%; position: relative; cursor: pointer;">
+                                    <img id="settingsLoggedOutProfilePhotoImg" src="img/opponent_info/user_icon.png" class="profile-photo" />
+                                    <div class="upload-profile-photo-btn edit-profile-icon"></div>
+                                    <input type="file" id="settingsLoggedOutPhotoUpload" style="display:none">
+                                </div>
+                            </div>
+                            <div class="profile-username-container">
+                                <input id="settingsLoggedOutPseudo" type="text" name="loginEmail" placeholder="Pseudo"/>
+                            </div>
+                            <div class="edit-profile-icon-container">
+                                <div id="submitTempProfileBtn" class="edit-profile edit-profile-icon"></div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+                    </div>
+                    <div id="settingsLoggedIn">
+                        <div class="player-info-container">
+                            <div class="player-info-row">
+                                <div class="player-info-col player-info-content">
+                                    <input type="text" id="profileEmail" name="profileEmail" width="95%" value="clowreed@gmail.com" readonly>
+                                </div>
+                                <div class="player-info-col player-info-change">Change email</div>
+                                <div class="clearFloat"></div>
+                            </div>
+                            <div class="player-info-row">
+                                <div class="player-info-col player-info-content"><input type="text" id="profilePassword" name="profilePassword" width="95%" value="********" readonly></div>
+                                <div class="player-info-col player-info-change">Change password</div>
+                                <div class="clearFloat"></div>
+                            </div>
+                        </div>
+                        <div class="update-preferences-button-container">
+                           <input id="logoutButton" type="submit" name="logoutButton" value="Logout" class="update-preferences-button"/>
+                        </div>
+                        <div class="settings-profile-container">
+                            <div class="profile-photo-container">
+                                <div id="settingsLoggedInPhotoUploadBtn" style="width: 100%; height: 100%; position: relative; cursor: pointer;">
+                                    <img id="settingsLoggedInProfilePhotoImg" src="img/opponent_info/user_icon.png" class="profile-photo" />
+                                    <div class="upload-profile-photo-btn edit-profile-icon"></div>
+                                    <input type="file" id="settingsLoggedInPhotoUpload" style="display:none">
+                                </div>
+                            </div>
+                            <div class="profile-username-container">
+                                <input type="text" id="settingsLoggedInPseudo" name="pseudo" placeholder="Pseudo"/>
+                            </div>
+                            <div class="edit-profile-icon-container">
+                                <div id="submitProfileBtn" class="edit-profile edit-profile-icon"></div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+                    </div>
+                    <div class="settings-header">
+                        Languages preferences for online
+                    </div>
+                    <div class="language-preferences-container">
+                        <div class="preferences-mask">
+                            <div class="preferences-text-container">
+                                <div class="preferences-mask-text">
+                                    Log in to manage your online languages preferences
+                                </div>
+                            </div>
+                        </div>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere lorem dictum posuere cursus. </p>
+                      <div class="language-preferences-flag-container">
+                          <div class="language-preference-row">
+                              <div class="language-preference-col">
+                                <div id="preferredLangEn" class="language-preference-content">
+                                  <div class="language-flag player-flag-en"></div>
+                                  <div class="language-preference-text">English</div>
+                                  <div class="clearFloat"></div>
+                                </div>
+                              </div>
+                              <div class="language-preference-col">
+                                <div id="preferredLangFr" class="language-preference-content">
+                                  <div class="language-flag player-flag-fr"></div>
+                                  <div class="language-preference-text">French</div>
+                                  <div class="clearFloat"></div>
+                                </div>
+                              </div>
+                              <div class="clearFloat"></div>
+                          </div>
+                          <div class="language-preference-row">
+                              <div class="language-preference-col">
+                                <div id="preferredLangEs" class="language-preference-content">
+                                  <div class="language-flag player-flag-es"></div>
+                                  <div class="language-preference-text">Spanish</div>
+                                  <div class="clearFloat"></div>
+                                </div>
+                              </div>
+                              <div class="language-preference-col">
+                                <div id="preferredLangPh" class="language-preference-content">
+                                  <div class="language-flag player-flag-ph"></div>
+                                  <div class="language-preference-text">Filipino</div>
+                                  <div class="clearFloat"></div>
+                                </div>
+                              </div>
+                              <div class="clearFloat"></div>
+                          </div>
+                      </div>
+                      <div class="update-preferences-button-container">
+                         <input id="updatePreferences" type="submit" name="updatePreferences" value="Update Preferences" class="update-preferences-button"/>
+                      </div>
+                    </div>
+                    <div class="settings-header">
+                        Help
+                    </div>
+                    <div class="help-content">
+                            <img src="img/information-icon.png" class="information-icon" /> <span> A question? Click to access our documentation</span>
+                    </div>
+                    <div class="settings-header">
+                        Settings
+                    </div>
+                    <div class="settings-toggle-content">
+                        <div class="settings-content-row">
+                            <div class="settings-content-text">Allow to receive game invites</div>
+                            <div class="settings-toggle-container">
+                                <div class="toggle-switch">
+                                    <label class="switch">
+                                    <input id="receiveInvitesToggle" type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+                        <div class="settings-content-row">
+                            <div class="settings-content-text">Receive notifications when challenged</div>
+                            <div class="settings-toggle-container">
+                                <div class="toggle-switch">
+                                    <label class="switch">
+                                    <input id="receiveChallengeToggle" type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+                        <div class="settings-content-row">
+                            <div class="settings-content-text">Receive notifications when it's my turn</div>
+                            <div class="settings-toggle-container">
+                                <div class="toggle-switch">
+                                    <label class="switch">
+                                    <input id="receiveNotificationToggle" type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+                        <div class="settings-content-row">
+                            <div class="settings-content-text">Application language</div>
+                            <div class="settings-toggle-container">
+                                <div class="language-select-container">
+                                    <select id="selectedAppLanguage" class="language-selection">
+                                        <option id="appLang-en" value="en">English</option>
+                                        <option id="appLang-fr" value="fr">French</option>
+                                        <option id="appLang-es" value="es">Spanish</option>
+                                        <option id="appLang-ph" value="ph">Filipino</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+                        <div class="settings-content-row">
+                            <div class="settings-content-text">Sound effects</div>
+                            <div class="settings-toggle-container">
+                                <div class="toggle-switch">
+                                    <label class="switch">
+                                    <input id="soundEffectsToggle" type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+                        <div class="update-preferences-button-container">
+                           <input id="saveSettings" type="submit" name="saveSettings" value="Save settings" class="update-preferences-button"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- END SETTINGS SCREEN -->
+
+            <div class="showModalDialog" id="deleteGameModalDialog" style="display: none;">
+                <div class="showModalContent" id="showModalContent" style="display: block;">
+                    <p class="showModalParagraph" id="showModalParagraph"></p>
+                    <div id="deleteGameText">
+                        Are you sure you want to remove the game?
+                    </div>
+                    <br />
+                    <div class="buttonContainer" id="buttonContainer" style="display: block;">
+                        <div class="backToMainDivContainer" id="backToMainDivContainer" style="display: block;">
+                            <button class="cancelButton floatLeft" id="deleteCancelButton">Cancel</button><button class="okButton floatRight" id="deleteOKButton">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="showModalDialog" id="exitAppModalDialog" style="display: none;">
+                <div class="showModalContent" id="showModalContent" style="display: block;">
+                    <div id="modalMessageText">
+                        <p><span id="exitAppTxt">Would you like to exit from the app?</span></p>
+                    </div>
+                    <div id="buttonContainer" class="buttonContainer" style="display: block;">
+                        <button id="exitCancelButton" class="cancelButton floatLeft">Cancel</button>
+                        <button id="exitOKButton" class="okButton floatRight">OK</button>
+                        <div class="clearFloat"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showModalDialog" id="loginDialog" style="display: none;">
+                <div class="showModalContent" id="showModalContent" style="display: block;">
+                    <div id="modalMessageText">
+                        <p style="text-align: center;"><span id="loginText">You must be logged in to play online!</span></p>
+                    </div>
+                    <div id="buttonContainer" class="buttonContainer" style="display: block;">
+                        <input id="loginOkButton" name="login" value="Ok, I want to login" class="login-button" type="submit">
+                        <input id="loginCancelButton" name="cancel" value="Cancel" class="login-cancel" type="submit">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="showModalDialog" id="showModalDialog" style="display: none;">
+            <div class="showModalContent" id="showModalContent" style="display: block;">
+                <span class="close" id="close" style="display: block;">x</span>
+                <div id="messageText">
+                    <span id="notAvailableTxt">Not yet available<span>, <a id="tipeeeLink" href="https://www.tipeee.com/manatygames" class="url" target="blank"><span id="helpImplementTxt">help us implement it</span></a>.
+                </div>
+            </div>
+        </div>
+
+        <div class="showModalDialog" id="genericShowModalDialog" style="display: none;">
+            <div class="showModalContent" id="genericShowModalContent" style="display: block;">
+                <span class="close" id="close" onclick="document.getElementById('genericShowModalDialog').style = 'display:none'" style="display: block;">x</span>
+                <div id="genericMessageText">
+                    <span id="notAvailableTxt">Not yet available<span>, <a id="tipeeeLink" href="https://www.tipeee.com/manatygames" class="url" target="blank"><span id="helpImplementTxt">help us implement it</span></a>.
+                </div>
+            </div>
+        </div>
+
+        <div id="gameModeScreen" class="game-mode-screen" style="display: none;">
+            <div id="gameConfigHeader" class="game-mode-header gameConfigTitle">Pass your device around to play</div>
+            <div id="selectGameMode">
+                Select a game mode
+            </div>
+            <div id="game-mode-button-container" class="game-mode-button-container">
+                <div id="marbbleClassicBtn" class="marbble-classic-btn active">
+                    <div class="marbble-button-label no-select double-line">Marbble <br /> <span style="font-weight: normal; font-size: 0.8em;">(<span id="multilingualText">multilingual</span>)</span></div>
+                </div>
+                <div id="classicBtn" class="classic-btn">
+                    <div class="marbble-button-label no-select double-line">Classic <br /> <span style="font-weight: normal; font-size: 0.8em;">(<span id="monolingualText">monolingual</span>)</span></div>
+                </div>
+                <div id="marbbleOpenBtn" class="marbble-special-btn">
+                    <div class="marbble-button-label no-select double-line"><span id="openCollabTxt" style="font-size: 0.9em;">Open & collaborative</span></div>
+                </div>
+                <input id="gameModeSelected" type="hidden" name="gameMode" value="MarbbleClassic">
+                <div class="clearFloat"></div>
+            </div>
+
+            <div id="gameModeContent">
+                <div class="game-mode-container">
+                    <div id="gameModeIcon" class="marbble-classic-icon"></div>
+                    <div id="gameModeText" class="marbble-game-mode-text">Use a bag of tiles adapted to your language to triumph!</div>
+                </div>
+
+                <div class="game-config-player-settings">
+                    <div id="onlineGame">
+                        <div id="activateLanguagesDiv">
+                            <div style="width: 90%; height: 100%; margin: auto;">
+                                <div class="activate-languages-icon-container">
+                                    <div class="activate-languages-icon"></div>
+                                </div>
+                                <div class="activate-languages-text-container">
+                                    <p>You have activated only one language, Marbble Classic and Marbble Special are multilingual game modes that need at least two languages active to be played</p>
+                                </div>
+                                <div class="clearFloat"></div>
+                            </div>
+                        </div>
+                        <div id="onlineMarbbleClassic">
+                            <div class="online-header">Your profile</div>
+                            <div class="player-row-separator"></div>
+                            <div class="player-row">
+                                <div class="left-col">Pseudo:</div>
+                                <div class="right-col"><input id="onlinePseudo" type="text" placeholder="Default username" name="onlinePseudo"></div>
+                                <div class="clearFloat"></div>
+                            </div>
+                            <div id="onlinePlayerLanguageRow" class="player-row">
+                                <div class="left-col">Language:</div>
+                                <div class="right-col">
+                                    <div class="language-config-flag-container">
+                                        <div id="onlinePlayerLanguageEn" class="language_en selected"></div>
+                                        <div id="onlinePlayerLanguageFr" class="language_fr"></div>
+                                        <div id="onlinePlayerLanguageEs" class="language_es"></div>
+                                        <div id="onlinePlayerLanguageTl" class="language_tl"></div>
+                                        <input id="onlinePlayerLanguage" type="hidden" name="onlinePlayerLanguage" value="en">
+                                        <div class="clearFloat"></div>
+                                    </div>
+                                </div>
+                                <div class="clearFloat"></div>
+                            </div>
+                            <div class="online-header">Opponent language</div>
+                            <div class="player-row-separator"></div>
+                            <div id="onlineOpponentLanguageRow" class="player-row">
+                                <div class="left-col">Language:</div>
+                                <div class="right-col">
+                                    <div class="language-config-flag-container">
+                                        <div id="onlineOpponentLanguageEn" class="language_en selected"></div>
+                                        <div id="onlineOpponentLanguageFr" class="language_fr"></div>
+                                        <div id="onlineOpponentLanguageEs" class="language_es"></div>
+                                        <div id="onlineOpponentLanguageTl" class="language_tl"></div>
+                                        <input id="onlineOpponentLanguage" type="hidden" name="onlineOpponentLanguage" value="en">
+                                        <div class="clearFloat"></div>
+                                    </div>
+                                </div>
+                                <div class="clearFloat"></div>
+                            </div>
+                            <div id="onlineClassicLanguageRow" class="player-row" style="display: none;">
+                                <div class="left-col"><span id="onlineClassicLanguageTxt">Language</span>:</div>
+                                <div class="right-col">
+                                    <div class="language-config-flag-container">
+                                        <div id="onlineClassicLanguageEn" class="language_en selected"></div>
+                                        <div id="onlineClassicLanguageFr" class="language_fr"></div>
+                                        <div id="onlineClassicLanguageEs" class="language_es"></div>
+                                        <div id="onlineClassicLanguageTl" class="language_tl"></div>
+                                        <input id="onlineClassicLanguage" type="hidden" name="classicLanguage" value="en">
+                                        <div class="clearFloat"></div>
+                                    </div>
+                                </div>
+                                <div class="clearFloat"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="offlineGame">
+                        <div class="player-header"><span id="player1Txt">Player 1</span></div>
+                        <div class="player-row">
+                            <input id="player1pseudo" type="text" placeholder="Enter pseudo" name="player1pseudo">
+                        </div>
+                        <div id="player1LanguageRow" class="player-row">
+                            <div class="">
+                                <div class="language-config-flag-container">
+                                    <div id="player1LanguageEn" class="language_en selected"></div>
+                                    <div id="player1LanguageFr" class="language_fr"></div>
+                                    <div id="player1LanguageEs" class="language_es"></div>
+                                    <div id="player1LanguageTl" class="language_tl"></div>
+                                    <input id="player1Language" type="hidden" name="player1Language" value="en">
+                                    <div class="clearFloat"></div>
+                                </div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+
+                        <!-- PLAYER 2 SECTION -->
+                        <div id="headerPlayer2" class="player-header">Player 2</div>
+                        <div id="player2NameInput" class="player-row">
+                            <input id="player2pseudo" type="text" placeholder="Enter pseudo" name="player2pseudo">
+                        </div>
+                        <div id="player2LanguageRow" class="player-row">
+                            <!-- <div class="left-col"><span id="player2LanguageTxt">Language</span>:</div> -->
+                            <div class="">
+                                <div class="language-config-flag-container">
+                                    <div id="player2LanguageEn" class="language_en"></div>
+                                    <div id="player2LanguageFr" class="language_fr selected"></div>
+                                    <div id="player2LanguageEs" class="language_es"></div>
+                                    <div id="player2LanguageTl" class="language_tl"></div>
+                                    <input id="player2Language" type="hidden" name="player2Language" value="en">
+                                    <div class="clearFloat"></div>
+                                </div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+                        <div id="classicLanguageHeader" class="player-header">Select the game language</div>
+                        <div id="classicLanguageRow" class="player-row" style="display: none;">
+                            <!-- <div class="left-col"><span id="classicLanguageTxt">Language</span>:</div> -->
+                            <div class="">
+                                <div class="language-config-flag-container">
+                                    <div id="classicLanguageEn" class="language_en selected"></div>
+                                    <div id="classicLanguageFr" class="language_fr"></div>
+                                    <div id="classicLanguageEs" class="language_es"></div>
+                                    <div id="classicLanguageTl" class="language_tl"></div>
+                                    <input id="classicLanguage" type="hidden" name="classicLanguage" value="en">
+                                    <div class="clearFloat"></div>
+                                </div>
+                            </div>
+                            <div class="clearFloat"></div>
+                        </div>
+
+                        <!-- DIFFICULTY -->
+
+                        <div id="difficultySelection" style="display: none;">
+                            <div class="player-header"><span id="difficultyTxt">Difficultyz</span></div>
+                            <div class="player-row">
+                                <div class="center-align">
+                                    <input type="radio" name="size" id="size_1" value="0" checked />
+                                    <label for="size_1">1</label>
+
+                                    <input type="radio" name="size" id="size_2" value="1" />
+                                    <label for="size_2">2</label>
+
+                                    <input type="radio" name="size" id="size_3" value="2" />
+                                    <label for="size_3">3</label>
+
+                                    <input type="radio" name="size" id="size_4" value="3" />
+                                    <label for="size_4">4</label>
+
+                                    <input type="radio" name="size" id="size_5" value="4" />
+                                    <label for="size_5">5</label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- END DIFFICULTY -->
+                    </div>
+                    <!-- SOUND SECTION -->
+                    <!--<div id="soundContainer" class="player-row">
+                        <div class="left-col"><span id="playSoundTxt">Play sound?</span></div>
+                        <div class="right-col">
+                            <div id="soundButton" class="player_config_soundON sound-button"></div>
+                            <input id="soundButtonValue" type="hidden" name="soundButtonValue" value="true"></div>
+                        <div class="clearFloat"></div>
+                    </div>-->
+
+                    <div id="gameStartBtnContainer" class="game-config-button-container">
+                        <div style="width: 50%; height: 100%; margin: auto;">
+                            <div id="gamePlayBtn" class="lets-play-btn"></div>
+                        </div>
+                        <div style="width: 50%; height: 100%; margin: auto;">
+                            <div id="cancelGameBtn" class="config-cancel-btn"></div>
+                        </div>
+                        <div class="clearFloat"></div>
+                    </div>
+
+                    <div id="activateLanguageBtnContainer" class="game-config-button-container">
+                        <input id="activateLanguagesBtn" name="login" value="Activate more languages" class="activate-language-button" type="submit">
+                        <input id="activateLanguagesCancelBtn" name="cancel" value="Cancel" class="activate-language-cancel" type="submit">
+                    </div>
+
+                </div>
+            </div>
+            <!-- end game-mode-div -->
+        </div>
+
+        <div id="importGameScreen" class="import-game-screen" style="display:none;">
+            <div id="importGameHeader" class="game-mode-header gameConfigTitle">Do you want to import this game?</div>
+            <div class="import-game-title-container">
+                <div class="import-game-icon-container">
+                    <div id="importGameIcon"></div>
+                </div>
+                <div class="import-game-title"><span id="importGameModeText" class="text-color-gold-yellow"></span><span id="importGameVsText"> against the computer </span></div>
+                <div class="clearFloat"></div>
+            </div>
+            <div class="import-game-player-details-container">
+                <div class="import-game-player-flag-row">
+                    <div class="import-flag-container">
+                        <div id="importPlayer1Flag"></div>
+                    </div>
+                    <div class="import-player-name-container"><span id="importPlayer1Name"></span> VS <span id="importPlayer2Name"></span> </div>
+                    <div class="import-flag-container">
+                        <div id="importPlayer2Flag"></div>
+                    </div>
+                </div>
+                <div class="import-game-player-score-row">
+                    <div id="importPlayer1Score" class="import-player-score-container">12 pts</div>
+                    <div style="width: 50%;float:left;">&nbsp;</div>
+                    <div id="importPlayer2Score" class="import-player-score-container">32 pts</div>
+                    <div class="clearFloat"></div>
+                </div>
+                <div id="importComputerDifficulty" class="computer-difficulty-row">Computer difficulty: 4</div>
+                <div class="import-time-info"><span id="gameStartedText">Game started</span><span id="gameStartedDate"> 06/18/2018</span> <span id="gameExportedText"> and exported</span> <span id="gameExportedDate">06/21/2018</span></div>
+            </div>
+            <div class="import-buttons-container">
+                <div class="import-and-play-btn-container">
+                    <div id="importAndPlayBtn" class="import-btn-label no-select">Import & Play!</div>
+                </div>
+                <div class="import-cancel-btn-container">
+                    <div id="importCancel" class="import-btn-label no-select">Cancel</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ARENA INTERFACE -->
+        <div id="onlineInterface" class="online-interface" style="display:none;">
+            <div class="online-interface-header-container">
+                <div id="arenaHowToBackBtn" class="arena-back-btn-container">
+                    <div class="arena-back-btn"></div>
+                </div>
+                <div class="online-header-text">Welcome to the arena!</div>
+                <div class="clearFloat"></div>
+            </div>
+            <div class="online-interface-container">
+                <div id="arena" class="arena-container">
+                    <div class="arena-header accordion">
+                        <div style="width: 58%; margin: auto;">
+                            <div class="arena-header-text">How does it work?</div>
+                            <div class="chevron"></div>
+                            <div class="clearFloat"></div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="arena-item">
+                            <div class="arena-title"><span class="work-number">1.</span> Choose a pseudo</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo auctor, tempus metus sed, semper lacus. Ut vitae massa ante. Cras at tincidunt dui. Nullam eu elit vitae magna convallis feugiat vel ut magna.</p>
+                        </div>
+                        <div class="arena-item">
+                            <div class="arena-title"><span class="work-number">2.</span> Configure your arena attendance</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo auctor, tempus metus sed, semper lacus. Ut vitae massa ante. Cras at tincidunt dui. Nullam eu elit vitae magna convallis feugiat vel ut magna.</p>
+                        </div>
+                        <div class="arena-item">
+                            <div class="arena-title"><span class="work-number">3.</span> Activate your gaming languages</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo auctor, tempus metus sed, semper lacus. Ut vitae massa ante. Cras at tincidunt dui. Nullam eu elit vitae magna convallis feugiat vel ut magna.</p>
+                        </div>
+                        <div class="arena-item">
+                            <div class="arena-title"><span class="work-number">4.</span> Enter in an arena</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo auctor, tempus metus sed, semper lacus. Ut vitae massa ante. Cras at tincidunt dui. Nullam eu elit vitae magna convallis feugiat vel ut magna.</p>
+                        </div>
+                        <div class="arena-item">
+                            <div class="arena-title"><span class="work-number">5.</span> Challenge a player</div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet justo auctor, tempus metus sed, semper lacus. Ut vitae massa ante. Cras at tincidunt dui. Nullam eu elit vitae magna convallis feugiat vel ut magna.</p>
+                        </div>
+                        <p class="center-text">
+                            Enjoy the game!
+                        </p>
+                    </div>
+                    <div class="arena-header accordion">
+                        <div style="width: 85%; margin: auto;">
+                            <div class="arena-header-text">Configure your arena profile</div>
+                            <div class="chevron"></div>
+                            <div class="clearFloat"></div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="arena-item">
+                            <div class="arena-title center-text">Configure your arena profile</div>
+                            <div class="arena-choose-pseudo-container">
+                                <div class="arena-pseudo-label">Choose a pseudo:</div>
+                                <div class="arena-pseudo-input-container">
+                                    <input id="arenaPseudo" type="text" placeholder="Enter pseudo" name="arenaPseudo">
+                                </div>
+                                <div class="clearFloat"></div>
+                            </div>
+                        </div>
+                        <!--
+
+                          <div id="playerListHead">
+                            <span style="font-weight:bold">Click on player pseudos to challenge theme</span>
+                            <button type="button" class="refreshList" name="button" onclick="fetchList">
+                              <span style="color: black; margin-left: -10px;">&#10226;</span> Refresh List
+                            </button>
+                            <div class="head-items">
+                              <div class="">
+                                Pseudo |
+                              </div>
+                              <div class="">
+                                Languages Activated
+                              </div>
+                              <div class="lastConnectionHead">
+                                Last Connection
+                              </div>
+                            </div>
+                          </div>
+                          <div id="playerList">
+
+                          </div>
+                         -->
+                        <div class="panel" >
+                            <div class="arena-item">
+                                <div class="arena-title center-text">Configure your arena profile</div>
+                                <div class="arena-choose-pseudo-container">
+                                    <div class="arena-pseudo-label">Choose a pseudo:</div>
+                                    <div class="arena-pseudo-input-container">
+                                        <input id="arenaPseudo" type="text" placeholder="Enter pseudo" name="arenaPseudo">
+                                    </div>
+                                    <div class="clearFloat"></div>
+                                </div>
+                                <div id="profileClassicSelect" class="profile-classic-arena-container">
+                                    <div class="classic-icon"></div>
+                                    <div class="arena-mode-text">Classic Arena</div>
+                                </div>
+                                <div class="clearFloat"></div>
+                            </div>
+                            <div class="activate-languages">
+                                <p>
+                                    <strong>Which languages do you want to activate?</strong><br />
+                                    <em>(This means you can be challenged in any of these languages)</em>
+                                </p>
+                            </div>
+                            <div class="arena-flags">
+                                <div class="arena-flag-container">
+                                    <div id="arenaFlagEn" class="arena-flag-en selected"></div>
+                                    <input type="hidden" name="arenaFlagEn" value="selected">
+                                </div>
+                                <div class="arena-flag-container">
+                                    <div id="arenaFlagFr" class="arena-flag-fr"></div>
+                                    <input type="hidden" name="arenaFlagFr" value="selected">
+                                </div>
+                                <div class="arena-flag-container">
+                                    <div id="arenaFlagEs" class="arena-flag-es"></div>
+                                    <input type="hidden" name="arenaFlagEs" value="selected">
+                                </div>
+                                <div class="arena-flag-container">
+                                    <div id="arenaFlagPh" class="arena-flag-ph"></div>
+                                    <input type="hidden" name="arenaFlagPh" value="selected">
+                                </div>
+                                <div class="clearFloat"></div>
+                            </div>
+                            <div class="update-arena-btn-container">
+                                <div class="update-arena-profile-btn">
+                                    <div class="update-arena-profile-btn-label">Update my arena profile</div>
+                                </div>
+                            </div>
+                            <div class="arena-divider"></div>
+                            <div class="make-some-words-container">
+
+                                <p class="center-text"><strong>Let's make some words</strong><br />
+                                    <span class="text-small">Click on an arena to challenge new players</span>
+                                </p>
+
+                                <div id="marbbleClassicArena" class="make-words-arena-container">
+                                    <div class="arena-header-title">
+                                        <strong>Marbble Classic Arena</strong>
+                                    </div>
+
+                                    <div class="arena-icon-text-container">
+                                        <div class="arena-icon-container">
+                                            <div class="marbble-classic-icon"></div>
+                                        </div>
+                                        <div class="arena-text-container">Multilingual games. Use a bag of tile adapated to your language to triumph!</div>
+                                        <div class="clearFloat"></div>
+                                    </div>
+
+                                    <div class="arena-player-count-container"><span class="text-color-lightblue">43</span> players currently in this area</div>
+                                </div>
+
+                                <div id="classicArena" class="make-words-arena-container">
+                                    <div class="arena-header-title">
+                                        <strong>Classic Arena</strong>
+                                    </div>
+
+                                    <div class="arena-icon-text-container">
+                                        <div class="arena-icon-container">
+                                            <div class="classic-icon"></div>
+                                        </div>
+                                        <div class="arena-text-container">Multilingual games. A classic word game, may the best wordmaker win!</div>
+                                        <div class="clearFloat"></div>
+                                    </div>
+
+                                    <div class="arena-player-count-container"><span class="text-color-lightblue">34</span> players currently in this area</div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END ARENA INTERFACE -->
+
+        <!-- MARBBLE CLASSIC ARENA -->
+        <div id="arenaInterface" class="online-interface" style="display:none;">
+            <div class="online-interface-header-container">
+                <div id="arenaBackBtn" class="arena-back-btn-container">
+                    <div class="arena-back-btn"></div>
+                </div>
+                <div id="arenaTitle" class="online-header-text">Marbble Classic Arena</div>
+                <div class="clearFloat"></div>
+            </div>
+            <div class="player-pseudo-challenge-header">
+                Click on player pseudos to challenge them
+            </div>
+            <div class="refresh-main-container">
+                <div class="refresh-icon-container">
+                    <div class="refresh-icon"></div>
+                </div>
+                <div class="refresh-list-text">Refresh list</div>
+                <div class="clearFloat"></div>
+            </div>
+            <div class="arena-players-list-container">
+                <div class="arena-players-list-label">
+                    <div class="pseudo-label">Pseudo | </div>
+                    <div class="languages-active-label"> Languages activated </div>
+                    <div class="last-connection-label">Last connection</div>
+                    <div class="clearFloat"></div>
+                </div>
+            </div>
+            <div id="arenaPlayersList" class="arena-players-list-scrollview">
+
+            </div>
+        </div>
+        <!-- END MARBBLE CLASSIC ARENA -->
+
+        <div id="creditsScreen" class="credits-screen" style="display: none;">
+            <div class="credits-nav-container">
+                <div id="creditBack" class="credits-back-button">
+                    <</div>
+                        <div class="credits-nav-header">CREDITS </div>
+                        <div class="clearFloat"></div>
+            </div>
+            <div class="credits-content">
+                    <h2>Version 1.0.3</h2>
+                    <p><strong><span id="financingTxt">Financing</span>:</strong> <br />Manaty</p>
+                    <p><strong><span id="conceptTxt">Concept</span>:</strong> <br />S. Michea</p>
+                    <p><strong><span id="projectLeadTxt">Project Lead</span>:</strong> <br />J. Pollet</p>
+                    <p><strong><span id="developmentTxt">Development</span>:</strong><br /> J. Manaloto<br /> C. Septimo<br /> S. Michea<br /></p>
+                    <p><strong><span id="designTxt">Design</span>:</strong> <br /> B. Bais<br /> M. Devera<br /></p>
+                    <p><strong><span id="infrasctureTxt">Infrastructure</span>:</strong> <br />A. Michea</p>
+            </div>
+        </div>
+
+        <!-- CHALLENGE NOTIFICATION SCREEN -->
+        <div id="challengeNotificationScreen" class="challenge-notification-screen" style="display:none;">
+            <input type="hidden" id="challengeNotificationScreenId" name="" value="">
+            <input type="hidden" id="challengeNotificationScreenData" name="" value="">
+            <div class="challenge-title"><span class="text-color-red">
+              <span id="challengeNotificationScreenUsername">USERNAME</span>
+              </span> challenged you to a new game!</div>
+            <div class="game-challenge-info">
+                <b>Game mode: </b> <span id="challengeNotificationScreenGameMode">Marbble Classic</span><br />
+                <b>Languages of the game: </b> <br /> For <span id="challengeNotificationScreenUsername2" class="text-color-red">MarbbleAddict</span>: <span id="challengeNotificationScreenLang">ENGLISH</span> <br /> For <span class="text-color-lightblue">You</span>: <span id="challengeNotificationScreenTargetLang"></span>
+            </div>
+            <div class="challenge-screen-buttons-container">
+                <div class="challenge-play-btn-container">
+                    <div id="challengePlayBtn" class="challenge-btn-label no-select" onclick="acceptInvite()">Let's Play!</div>
+                </div>
+                <div class="challenge-cancel-btn-container">
+                    <div id="challengeCancelBtn" class="challenge-btn-label no-select">Cancel</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- login screen -->
+        <div id="loginScreen" class="login-screen-container" style="display: none;">
+            <div class="login-header-container">
+                <div id="loginBackToMainBtn" class="login-back-btn-container">
+                        <div class="back-btn"></div>
+                </div>
+                <div class="login-header-text">Login</div>
+                <div class="clearFloat"></div>
+            </div>
+
+            <div class="login-form-container">
+                <div id="loginForm">
+                    <input type="text" id="loginEmail" name="loginEmail" placeholder="Email address"/>
+                    <input type="password" id="loginPassword" name="loginPassword" placeholder="Password"/>
+                    <input id="loginSubmit" type="submit" name="login" value="Login" class="login-button"/>
+                </div>
+            </div>
+            <div class="login-buttons-container">
+                <div class="login-break">
+                    <div class="login-line-break-container"><div class="login-line-break"></div></div>
+                    <div class="login-or-container">
+                        <div class="login-or-text">OR</div>
+                    </div>
+                    <div class="login-line-break-container"><div class="login-line-break"></div></div>
+                    <div class="clearFloat"></div>
+                </div>
+                <div class="login-buttons">
+                    <div id="loginWithFb" class="login-fb"></div>
+                    <div id="loginWithEmail" class="login-email"></div>
+                </div>
+            </div>
+            <div class="bottom-signup-text">
+                <span id="forgotPassword" class="text-underline-hover">Forgot password?</span><br />
+                <span id="loginRegister" class="text-underline-hover">No account yet? Create one</a>
+
+            </div>
+        </div>
+
+        <!-- end login screen -->
+
+        <!-- SETTINGS REGISTER SCREEN -->
+        <div id="settingsRegisterScreen" class="register-screen">
+            <div class="register-header-container">
+                <div id="registerBackToMainBtn" class="register-back-btn-container">
+                        <div class="back-btn"></div>
+                </div>
+                <div class="register-header-text">Register</div>
+                <div class="clearFloat"></div>
+            </div>
+            <div class="login-form-container">
+                <div id="loginForm">
+                    <input type="text" id="registerPseudo" name="registerPseudo" placeholder="Pseudo"/>
+                    <input type="text" id="registerEmail" name="registerEmail" placeholder="Email address"/>
+                    <input type="password" id="registerPassword" name="registerPassword" placeholder="Password"/>
+                    <input type="password" id="registerConfirmPassword" name="registerConfirmPassword" placeholder="Confirm password"/>
+                    <div class="login-button-container">
+                        <input id="registerSubmit" type="submit" name="createAccount" value="Create Account" class="login-button"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- END REGISTER SCREEN -->
+
+        <div id="loader" class="showModalDialog">
+        	<div id="loaderContent" class="showLoaderContent">
+        		<p id="loaderText" class="loaderText">Please wait...</p>
+        	</div>
+        	<div id="mainLoader" class="loader">
+            </div>
+        </div>
+        <div id="headbandNotification">
+          <span id="headbandNotificationUsername"></span>
+          accepted your invitation to a new game
+        </div>
+
+    </div>
+
+
+
+    <div id="overlay">
+        <span>
+        <img src="img/loading.gif" width="100px" alt="">
+        <!-- <div aria-busy='true' aria-label='Loading' role='progressbar'></div> -->
+        <span id="computerIsPlayingTxt">Computer is playing...</span>
+        </span>
+    </div>
+
+
+
+        <template id="playerListTemplate">
+
+        </template>
+
+
+        <script type="text/javascript" src="js/misc/misc.js"></script>
+        <script type="text/javascript" src="js/model/sound.js"></script>
+        <script type="text/javascript" src="js/controler/soundControler.js"></script>
+        <script type="text/javascript" src="js/misc/definitionMisc.js"></script>
+        <script type="text/javascript" src="js/misc/gameSaveMisc.js"></script>
+        <script type="text/javascript" src="js/utils/dateUtils.js"></script>
+        <script type="text/javascript" src="js/utils/saveUtils.js"></script>
+        <script type="text/javascript" src="js/marbble.js"></script>
+        <script type="text/javascript" src="lib/cryptico/jsbn.js"></script>
+        <script type="text/javascript" src="lib/cryptico/random.js"></script>
+        <script type="text/javascript" src="lib/cryptico/hash.js"></script>
+        <script type="text/javascript" src="lib/cryptico/rsa.js"></script>
+        <script type="text/javascript" src="lib/cryptico/aes.js"></script>
+        <script type="text/javascript" src="lib/cryptico/api.js"></script>
+
+
+        <script>
+            var dateUtils = new DateUtils();
+            var saveUtils = new SaveUtils();
+            (function() {
+                mainInterface = new MainInterface();
+            })();
+
+            document.addEventListener("deviceready", onDeviceReady, false);
+
+            function onDeviceReady() {
+                StatusBar.hide();
+                navigator.globalization.getLocaleName(mainInterface.getPreferredLanguageSuccessCallback, mainInterface.getPreferedLanguageErrorCallback);
+                screen.orientation.lock('portrait-primary');
+
+
+                document.addEventListener("backbutton", function(e) {
+                    e.preventDefault();
+                    if (_windowOpened == 'notImplementedWindow') {
+                        mainInterface.hideNotImplementedPopup();
+                    } else if (_windowOpened == 'gameConfigPopupWindow') {
+                        mainInterface.hideGameModeScreen();
+                    } else if (_windowOpened == 'gameScreenWindow') {
+                        gameControler.backToMain();
+                    } else if (_windowOpened == 'exchangeTileWindow') {
+                        gameControler.hideSwap();
+                    } else if (_windowOpened == 'wordsPlayedPopup') {
+                        gameControler.component.openWordsModal(false);
+                    } else if (_windowOpened == 'blankTilePopup') {
+                        gameControler.closeInvalidWordDialog();
+                    } else if (_windowOpened == 'gamePopupWindow') {
+                        gameControler.hideDialog();
+                    } else if (_windowOpened == 'nextTurnPopup') {
+                        gameControler.hideNextTurnDialog();
+                    } else if (_windowOpened == 'gameOverPopup') {
+                        gameControler.confirmBackToMain();
+                    } else {
+                        mainInterface.showExitAppDialog();
+                    }
+                }, false);
+            }
+        </script>
+
+        <!-- <script type="text/javascript" src="lib/long-press.min.js"></script> -->
+        <script type="text/javascript" src="js/model/tile.js"></script>
+        <script type="text/javascript" src="js/model/bag.js"></script>
+        <script type="text/javascript" src="js/model/player.js"></script>
+        <script type="text/javascript" src="js/model/game.js"></script>
+        <script type="text/javascript" src="js/model/sound.js"></script>
+        <script type="text/javascript" src="js/model/application.js"></script>
+        <script type="text/javascript" src="js/gui/tileComponent.js"></script>
+        <script type="text/javascript" src="js/gui/playerComponent.js"></script>
+        <script type="text/javascript" src="js/gui/gameComponent.js"></script>
+        <script type="text/javascript" src="js/controler/gameControler.js"></script>
+        <script type="text/javascript" src="js/controler/playerControler.js"></script>
+        <script type="text/javascript" src="js/controler/soundControler.js"></script>
+        <script type="text/javascript" src="js/controler/bagControler.js"></script>
+        <script type="text/javascript" src="lib/dragula.js"></script>
+        <script type="text/javascript" src="lib/hammer.js"></script>
+        <script type="text/javascript" src="lib/hammertime.js"></script>
+        <!-- <script type="text/javascript" src="js/misc/peerMisc.js"></script> -->
+
+        <script type="text/javascript" src="js/wordlist/fr_wordlist.js"></script>
+        <script type="text/javascript" src="js/wordlist/en_wordlist.js"></script>
+        <script type="text/javascript" src="js/wordlist/es_wordlist.js"></script>
+        <script type="text/javascript" src="js/wordlist/tl_wordlist.js"></script>
+        <script type="text/javascript" src="js/wordlist/de_wordlist.js"></script>
+        <script type="text/javascript" src="js/wordlist/it_wordlist.js"></script>
+        <script type="text/javascript" src="js/wordlist/pt_wordlist.js"></script>
+
+        <!-- create empty translation lists -->
+        <script type="text/javascript" src="js/dic/en_fr.js"></script>
+        <script type="text/javascript" src="js/dic/fr_en.js"></script>
+        <script type="text/javascript" src="js/dic/en_es.js"></script>
+        <script type="text/javascript" src="js/dic/fr_es.js"></script>
+        <script type="text/javascript" src="js/dic/es_fr.js"></script>
+        <script type="text/javascript" src="js/dic/es_en.js"></script>
+        <script type="text/javascript" src="js/dic/en_tl.js"></script>
+        <script type="text/javascript" src="js/dic/fr_tl.js"></script>
+        <script type="text/javascript" src="js/dic/es_tl.js"></script>
+        <script type="text/javascript" src="js/dic/tl_en.js"></script>
+        <script type="text/javascript" src="js/dic/tl_fr.js"></script>
+        <script type="text/javascript" src="js/dic/tl_es.js"></script>
+        <!-- end empty translation lists -->
+
+
+</body>
+
+</html>

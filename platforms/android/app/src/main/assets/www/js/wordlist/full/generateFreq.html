@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="output">
+
+    </div>
+    <script type="text/javascript" src="json.js"></script>
+    <script type="text/javascript" src="en_wordlist_array.js"></script>
+    <script type="text/javascript">
+    var output = document.getElementById('output');
+    var count = 1;
+      for(var i = 0; i < en.length; i++) {
+        console.log(en[i]);
+        var elem = document.createElement("span");
+          try {
+            if(typeof json[en[i]] != 'undefined') {
+              elem.innerHTML = '"'+en[i]+'": '+ json[en[i]] + ',';
+              output.appendChild(elem);
+            } else {
+              elem.innerHTML = '"'+en[i]+'": '+ 1;
+              output.appendChild(elem);
+            }
+          } catch(e) {
+            elem.innerHTML = '"'+en[i]+'": '+ 1;
+            output.appendChild(elem);
+          }
+          if(count == 5) {
+            var br = document.createElement("br");
+            output.appendChild(br);
+            count = 1;
+          }
+          count++;
+        }
+    </script>
+  </body>
+</html>

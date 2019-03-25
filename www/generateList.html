@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  </body>
+  <script type="text/javascript" src="js/wordlist/full/en_wordlist_array.js">
+
+  </script>
+  <script type="text/javascript" >
+
+  for(var word in en) {
+    console.log(en[word]);
+    document.body.insertAdjacentHTML( 'beforeend', "_"+en[word] );
+  }
+  </script>
+</html>

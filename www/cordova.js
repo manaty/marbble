@@ -1,0 +1,1 @@
+__cordovaRunningOnBrowser__ = true;

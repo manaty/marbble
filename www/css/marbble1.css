@@ -1,0 +1,4879 @@
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+
+@media only screen and (min-width: 320px) {
+    .tileSelectContainer {
+      width: 25% !important;
+      float: left;
+      text-align: center;
+    }
+    .blank-tile-select {
+      width: 40px !important;
+      height: 40px !important;
+      font-size: 28px;
+      /*margin-right: 5px !important;*/
+    }
+
+    .clear:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+
+
+    .user1PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .user2PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .userPhoto1 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 15px;
+        height: 15px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .userPhoto2 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 15px;
+        height: 15px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .prevButton {
+        background-image: url("../img/opponent_info/game_prev_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+        width: 45px;
+        height: 60px;
+    }
+    .chatButton {
+        background-image: url("../img/opponent_info/chat_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: right;
+        width: 45px;
+        height: 60px;
+    }
+    .opponentInfoMid {
+        overflow: hidden;
+        height: 60px;
+    }
+    .players {}
+    .playerContainerLeft {
+        float: left;
+        background-image: url("../img/opponent_info/opponent_bg_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 9px;
+        height: 60px;
+    }
+    .playerContainerRight {
+        float: right;
+        background-image: url("../img/opponent_info/opponent_bg_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 11px;
+        height: 60px;
+    }
+    .playerContainerMid {
+        overflow: hidden;
+        background-size: contain;
+        background-repeat: repeat-x;
+        position: relative;
+        background-image: url("../img/opponent_info/opponent_bg_mid.png");
+        height: 60px;
+    }
+    .menuButton {
+        border-radius: 5px;
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgb(241, 157, 23);
+        border-bottom: 5px solid rgb(236, 121, 12);
+        margin: 5px 2px 0px;
+    }
+    .shuffleButton {
+        background-image: url("../img/buttons/menu_shuffle.png");
+        width: 60px;
+        height: 44px;
+    }
+    .wordButton {
+        background-image: url("../img/buttons/menu_words.png");
+        width: 60px;
+        height: 44px;
+    }
+    .gatherButton {
+        background-image: url("../img/buttons/menu_gather.png");
+        width: 60px;
+        height: 44px;
+    }
+    .swapButton {
+        background-image: url("../img/buttons/menu_swap.png");
+        width: 60px;
+        height: 44px;
+    }
+    .swapButton.selected {
+        background-image: url("../img/buttons/menu_swap.png");
+        transform: translate(0px, 5px);
+        -webkit-transform: translate(0px, 5px);
+        border-bottom: 5px solid yellow;
+    }
+    .passButton {
+        background-image: url("../img/buttons/menu_pass.png");
+        width: 60px;
+        height: 44px;
+    }
+    .leaveButton {
+        background-image: url("../img/buttons/menu_leave.png");
+        width: 60px;
+        height: 44px;
+    }
+    .playButton {
+        background-image: url("../img/buttons/menu_play.png");
+        width: 60px;
+        height: 44px;
+    }
+    .boardTileBg {
+        background-size: 12px auto;
+        left: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .tileRow {
+        width: 100%;
+        min-height: 15px;
+    }
+    .tileElementContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .tileValueContainer {
+        width: 20%;
+        height: 20%;
+        font-family: Verdana;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: #433127;
+        font-weight: bold;
+    }
+    .tileTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-family: Verdana;
+        color: #433127;
+    }
+    .lastActionStrip {
+        margin: 0px 5px;
+    }
+    .playerRack {
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+    }
+    .lastActionLeft {
+        float: left;
+        background-image: url("../img/opponent_info/last_action_left.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 4px;
+        height: 100%;
+    }
+    .lastActionRight {
+        float: right;
+        background-image: url("../img/opponent_info/last_action_right.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 4px;
+        height: 100%;
+    }
+    .lastActionMid {
+        overflow: hidden;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: repeat-x;
+        background-image: url("../img/opponent_info/last_action_mid.png");
+    }
+    .lastActionText {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 36px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .boardContainer {
+        /*background-color: #cccccc;*/
+    }
+    #mbb_board {
+        /*margin: auto;
+        position: relative;
+        top: 50%;
+        transform: perspective(1px) translateY(-50%);*/
+    }
+    .board {}
+    .tile {
+        border-radius: 2px;
+        background-color: rgb(255, 240, 191);
+        border-bottom: 3px solid rgb(232, 202, 138);
+        margin: auto;
+        margin-top: 2px;
+        width: 90%;
+        height: 90%;
+    }
+    .gameOverModalContainer {
+        background-color: #fff0be;
+        margin: auto;
+        padding: 5px;
+        width: 90%;
+        height: 300px;
+        margin-top: 33%;
+        border-radius: 5px;
+        position: relative;
+        display: none;
+    }
+    .gameOverStatus {
+        color: #d83636;
+        font-size: 23px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        padding-top: 5px;
+        text-align: center;
+    }
+    .gameOverMessage {
+        color: #d83636;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding: 5px;
+    }
+    .gameOverTrophy {
+        background-image: url("../img/endgame/trophy.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 70px;
+        height: 70px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .rematchMessage {
+        color: #55392b;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding: 15px;
+        width: 60%;
+    }
+    .playAgainButton {
+        background-image: url("../img/endgame/play_again.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        bottom: 60px;
+        left: 15%;
+        right: 15%;
+    }
+    .leaveGameButton {
+        background-image: url("../img/endgame/leave_game.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        bottom: 0px;
+        left: 15%;
+        right: 15%;
+    }
+
+    button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 10px 10px;
+        width: 45%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .exchangeModalContainer {
+        background-color: #ffffff;
+        margin: auto;
+        width: 100%;
+        height: 75%;
+        margin-top: 18%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position: relative;
+        display: block;
+    }
+    .exchangeTileTitleContainer {
+        background-color: #ffffff;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 9%;
+        border-bottom: 2px solid #282322;
+    }
+    .exchangeTileTitle {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .exchangeTileCountContainer {
+        background-color: #ffffff;
+        color: #282322;
+        font-size: 10px;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 7%;
+    }
+    .ukFlag {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+    }
+    .frFlag {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+    }
+    .tileLanguageContainer {
+        float: left;
+        width: 30px;
+        height: 100%;
+    }
+    .tilesCount {
+        overflow: hidden;
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 22px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+    .tileHelpContainer {
+        float: right;
+        width: 30px;
+        height: 100%;
+    }
+    .tileHelp {
+        background-image: url("../img/question_mark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 15px;
+        height: 15px;
+    }
+    .availableTilesContainer {
+        width: 98%;
+        margin-left: 1px;
+        float: left;
+        clear: left;
+        height: 57%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+    }
+    .letterRackContainer {
+        margin: auto;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 14%;
+        margin-top: 3px;
+    }
+    .letterRackHolder {
+        margin: auto;
+        margin-top: 2px;
+        height: 100%;
+        width: 100%;
+    }
+    .exchangeButtonMainContainer {
+        color: #ffffff;
+        width: 100%;
+        height: 10%;
+        float: left;
+        clear: left;
+    }
+    .exchangeButtonHolder {
+        margin: auto;
+        margin-top: 7px;
+        width: 90%;
+        height: 70%;
+    }
+    #exchangeButtonHolder button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        width: 49%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 13px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #exchangeButtonHolder .cancelButton {
+        background-color: #cccccc;
+    }
+
+    .tileExchangeRow {
+        width: 100%;
+        height: 16%;
+    }
+
+    .tileBagTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-size: 25px;
+        font-family: Verdana;
+        color: #433127;
+    }
+
+    .tileExchangeContainer {
+        float: left;
+        width: 20%;
+        height: 100%;
+    }
+
+    .letterExchangeDiv {
+        width: 50%;
+        height: 100%;
+        font-size: 25px;
+        margin-left: 10%;
+        float: left;
+    }
+    .tileLetterSize {
+        width: 25px;
+        height: 25px;
+    }
+
+    .letterCountExchangeDiv {
+        width: 20%;
+        height: 100%;
+        margin-left: 10%;
+        float: left;
+    }
+
+    .letterCount {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 35px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+
+    .swapTileBg {
+        background-color: #cccccc;
+        width: 42px;
+        height: 42px;
+        border-radius: 3px;
+    }
+
+    .tileExchangeContainer {
+        float: left;
+        width: 20%;
+        height: 100%;
+    }
+
+    .letterExchangeDiv {
+        width: 50%;
+        height: 100%;
+        font-size: 30px;
+        margin-left: 10%;
+        float: left;
+    }
+    .tileLetterSize {
+        width: 30px;
+        height: 30px;
+    }
+
+    .letterCountExchangeDiv {
+        width: 20%;
+        height: 100%;
+        margin-left: 10%;
+        float: left;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 360px) {
+    .user1PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .user2PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .userPhoto1 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .userPhoto2 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .prevButton {
+        background-image: url("../img/opponent_info/game_prev_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+        width: 49px;
+        height: 65px;
+    }
+    .chatButton {
+        background-image: url("../img/opponent_info/chat_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: right;
+        width: 49px;
+        height: 65px;
+    }
+    .opponentInfoMid {
+        overflow: hidden;
+        height: 65px;
+    }
+    .players {}
+    .playerContainerLeft {
+        float: left;
+        background-image: url("../img/opponent_info/opponent_bg_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 10px;
+        height: 65px;
+    }
+    .playerContainerRight {
+        float: right;
+        background-image: url("../img/opponent_info/opponent_bg_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 9px;
+        height: 65px;
+    }
+    .playerContainerMid {
+        overflow: hidden;
+        background-size: contain;
+        background-repeat: repeat-x;
+        position: relative;
+        background-image: url("../img/opponent_info/opponent_bg_mid.png");
+        height: 65px;
+    }
+    .menuButton {
+        border-radius: 5px;
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgb(241, 157, 23);
+        border-bottom: 5px solid rgb(236, 121, 12);
+        margin: 7px 2px 3px;
+    }
+    .shuffleButton {
+        background-image: url("../img/buttons/menu_shuffle.png");
+        width: 68px;
+        height: 50px;
+    }
+    .wordButton {
+        background-image: url("../img/buttons/menu_words.png");
+        width: 68px;
+        height: 50px;
+    }
+    .gatherButton {
+        background-image: url("../img/buttons/menu_gather.png");
+        width: 68px;
+        height: 50px;
+    }
+    .swapButton {
+        background-image: url("../img/buttons/menu_swap.png");
+        width: 68px;
+        height: 50px;
+    }
+    .swapButton.selected {
+        background-image: url("../img/buttons/menu_swap.png");
+        transform: translate(0px, 5px);
+        -webkit-transform: translate(0px, 5px);
+        border-bottom: 5px solid yellow;
+    }
+    .passButton {
+        background-image: url("../img/buttons/menu_pass.png");
+        width: 68px;
+        height: 50px;
+    }
+    .leaveButton {
+        background-image: url("../img/buttons/menu_leave.png");
+        width: 68px;
+        height: 50px;
+    }
+    .playButton {
+        background-image: url("../img/buttons/menu_play.png");
+        width: 68px;
+        height: 50px;
+    }
+    .boardTileBg {
+        background-size: 12px auto;
+        left: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .tileRow {
+        width: 100%;
+        min-height: 15px;
+    }
+    .tileElementContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .tileValueContainer {
+        width: 20%;
+        height: 20%;
+        font-family: Verdana;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: #433127;
+        font-weight: bold;
+    }
+    .tileTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-family: Verdana;
+        color: #433127;
+    }
+    .lastActionStrip {
+        height: 100%;
+        margin: 0px 5px;
+    }
+    .playerRack {
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+    }
+    .lastActionLeft {
+        float: left;
+        background-image: url("../img/opponent_info/last_action_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 40px;
+    }
+    .lastActionRight {
+        float: right;
+        background-image: url("../img/opponent_info/last_action_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 40px;
+    }
+    .lastActionMid {
+        overflow: hidden;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: repeat-x;
+        background-image: url("../img/opponent_info/last_action_mid.png");
+    }
+    .lastActionText {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .boardContainer {
+        /*background-color: #cccccc;*/
+    }
+    #mbb_board {
+        /*position: relative;
+        top: 50%;
+        transform: perspective(1px) translateY(-50%);
+        margin: auto;
+        */
+    }
+    .board {}
+    .tile {
+        border-radius: 2px;
+        background-color: rgb(255, 240, 191);
+        border-bottom: 3px solid rgb(232, 202, 138);
+        margin: auto;
+        margin-top: 2px;
+        width: 90%;
+        height: 90%;
+    }
+    .gameOverModalContainer {
+        background-color: #fff0be;
+        margin: auto;
+        padding: 5px;
+        width: 80%;
+        height: 55%;
+        margin-top: 35%;
+        border-radius: 5px;
+        position: relative;
+        display: none;
+    }
+    .gameOverStatus {
+        color: #d83636;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+    .gameOverMessage {
+        color: #d83636;
+        font-size: 19px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .gameOverTrophy {
+        background-image: url("../img/endgame/trophy.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+    .rematchMessage {
+        color: #55392b;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding: 10px;
+        width: 60%;
+    }
+    .playAgainButton {
+        background-image: url("../img/endgame/play_again.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        position: absolute;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        left: 15%;
+        right: 15%;
+        bottom: 60px;
+    }
+    .leaveGameButton {
+        background-image: url("../img/endgame/leave_game.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        bottom: 0px;
+    }
+    button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        width: 45%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .exchangeModalContainer {
+        background-color: #ffffff;
+        margin: auto;
+        width: 100%;
+        height: 75%;
+        margin-top: 16%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position: relative;
+        display: block;
+    }
+    .exchangeTileTitleContainer {
+        background-color: #ffffff;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 9%;
+        border-bottom: 2px solid #282322;
+    }
+    .exchangeTileTitle {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background-color: '#cccccc';
+    }
+    .exchangeTileCountContainer {
+        background-color: #ffffff;
+        color: #282322;
+        font-size: 14px;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 7%;
+    }
+    .ukFlag {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .frFlag {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .tileLanguageContainer {
+        float: left;
+        width: 30px;
+        height: 100%;
+    }
+    .tilesCount {
+        overflow: hidden;
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+    .tileHelpContainer {
+        float: right;
+        width: 30px;
+        height: 100%;
+    }
+    .tileHelp {
+        background-image: url("../img/question_mark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .availableTilesContainer {
+        width: 98%;
+        float: left;
+        clear: left;
+        height: 57%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+    }
+    .letterRackContainer {
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 13%;
+    }
+    .letterRackHolder {
+        margin: auto;
+        width: 90%;
+        height: 80%;
+        margin-top: 5px;
+    }
+    .exchangeButtonMainContainer {
+        color: #ffffff;
+        width: 100%;
+        height: 12%;
+        float: left;
+        clear: left;
+    }
+    .exchangeButtonHolder {
+        margin: auto;
+        margin-top: 7px;
+        width: 90%;
+        height: 70%;
+    }
+    #exchangeButtonHolder button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        width: 49%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #exchangeButtonHolder .cancelButton {
+        background-color: #cccccc;
+    }
+
+    .tileExchangeRow {
+        width: 100%;
+        height: 16%;
+    }
+
+    .swapTileBg {
+        background-color: #cccccc;
+        width: 48px;
+        height: 48px;
+        border-radius: 3px;
+
+    }
+
+    .tileBagTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-size: 30px;
+        font-family: Verdana;
+        color: #433127;
+    }
+
+    .tileExchangeContainer {
+        float: left;
+        width: 20%;
+        height: 100%;
+    }
+
+    .letterExchangeDiv {
+        width: 50%;
+        height: 100%;
+        font-size: 30px;
+        margin-left: 10%;
+        float: left;
+    }
+    .tileLetterSize {
+        width: 35px;
+        height: 35px;
+    }
+
+    .letterCountExchangeDiv {
+        width: 20%;
+        height: 100%;
+        margin-left: 10%;
+        float: left;
+    }
+    .letterCount {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 35px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+
+    .newGameInterface {
+        background-color: #143E38;
+
+    }
+
+    .mainMenuBtn {
+        background-image: url("../img/buttons/main_menu_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 115px;
+        height: 63px;
+        margin-left: 4px;
+        float: left;
+    }
+
+    .newGameBtn {
+        background-image: url("../img/buttons/new_game_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 115px;
+        height: 63px;
+        margin-left: 3px;
+        float: left;
+    }
+
+    .settingsBtn {
+        background-image: url("../img/buttons/settings_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 115px;
+        height: 63px;
+        margin-left: 3px;
+        float: left;
+    }
+
+    .mainMenuContainer {
+        padding-top: 5px;
+        width: 100%;
+        height: 63px;
+    }
+
+    .newGameInterfaceButtonContainer {
+        margin-top: 30px;
+    }
+
+    .playWithFriendDivContainer {
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 350px;
+        height: 65px;
+    }
+
+    .playWithFriendBtn {
+        background-image: url("../img/buttons/play_with_friend_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 350px;
+        height: 65px;
+    }
+
+    .findOpponentDivContainer {
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 350px;
+        height: 65px;
+    }
+
+    .findOpponentBtn {
+        background-image: url("../img/buttons/find_opponent_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 350px;
+        height: 65px;
+    }
+
+    .soloGameDivContainer {
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 350px;
+        height: 65px;
+    }
+
+    .soloGameBtn {
+        background-image: url("../img/buttons/solo_game_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 350px;
+        height: 65px;
+    }
+
+    .passNplayDivContainer {
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 350px;
+        height: 65px;
+    }
+
+    .passNplayBtn {
+        background-image: url("../img/buttons/pass_and_play_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 350px;
+        height: 65px;
+    }
+
+
+    .languagesContainer {
+        border: 2px solid #ffffff;
+        height: 100px;
+        width: 350px;
+        border-radius: 2px;
+        margin: auto;
+        margin-top: 5px;
+
+    }
+
+    div.flag_container {
+        width: 50%;
+        float: left;
+        padding: 5% 0;
+    }
+
+    div.activated_languages_title {
+        background-image: url("../img/activated_languages.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 250px;
+        height: 20px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    div.flag_languages_container {
+        width: 100%;
+        height: 25px;
+        padding: 10% 0;
+    }
+
+
+    div.language_settings_container {
+        width: 50%;
+        float: right;
+        padding: 5% 0;
+    }
+
+    div.language_en {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 30px;
+        height: 25px;
+        float: left;
+        margin-left: 10px;
+    }
+
+    div.language_fr {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 30px;
+        height: 25px;
+        float: left;
+        margin-left: 10px;
+    }
+
+    div.language_de {
+        background-image: url("../img/opponent_info/de_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 30px;
+        height: 25px;
+        float: left;
+        margin-left: 10px;
+    }
+
+    div.edit_languages {
+        background-image: url("../img/buttons/edit_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 90px;
+        height: 65px;
+        float: right;
+        margin-right: 5px;
+        padding: 10% 0;
+    }
+
+    .played_languages_main {
+        background-color: #FFEDB6;
+    }
+
+    .choose_language_header {
+        background-image: url("../img/opponent_info/choose_language_whole.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 360px;
+        height: 60px;
+    }
+
+    .how_does_it_work_container {
+        font-weight: 500;
+        font-family: Helvetica, Arial, sans-serif;
+        line-height: 20px;
+        overflow: auto;
+        margin-top: 15px;
+    }
+
+    .chevron_grey {
+        float: left;
+        width: 27px;
+        height: 20px;
+        background-image: url("../img/opponent_info/chevron_grey.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 12px;
+    }
+
+    .how_does_it_work_title {
+        float: left;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #472E22;
+        margin-left: 10px;
+    }
+
+    .how_does_it_work_text {
+        padding: 5px 10px;
+        color: #472E22;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
+        text-align: justify;
+    }
+
+    .available_languages_container {
+        margin-top: 20px;
+    }
+
+    .available_languages_header_bg {
+        background-image: url("../img/opponent_info/languages_available_whole.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 360px;
+        height: 34px;
+    }
+
+    .languages_activated_header_bg {
+        background-image: url("../img/opponent_info/languages_activated_whole.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 360px;
+        height: 34px;
+    }
+
+    .activated_languages_container {
+        padding: 10px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        color: #472E22;
+    }
+
+    .available_languages_flag_container {
+        padding: 10px;
+        overflow: auto;
+    }
+
+    .availableFlagEn {
+        width: 35px;
+        height: 25px;
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 35px;
+        float: left;
+    }
+    .availableFlagEn.selected {
+        width: 35px;
+        height: 25px;
+        border: 2px solid #578319;
+        border-radius: 2px;
+    }
+
+    .availableFlagFr {
+        width: 35px;
+        height: 25px;
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 45px;
+        float: left;
+    }
+    .availableFlagFr.selected {
+        width: 35px;
+        height: 25px;
+        border: 2px solid #578319;
+        border-radius: 2px;
+    }
+
+    .availableFlagEs {
+        width: 35px;
+        height: 25px;
+        background-image: url("../img/opponent_info/es_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 45px;
+        float: left;
+    }
+
+    .availableFlagEs.selected {
+        width: 35px;
+        height: 25px;
+        border: 2px solid #578319;
+        border-radius: 2px;
+    }
+
+    .availableFlagDe {
+        width: 35px;
+        height: 25px;
+        background-image: url("../img/opponent_info/de_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 45px;
+        float: left;
+    }
+
+    .availableFlagDe.selected {
+        width: 35px;
+        height: 25px;
+        border: 2px solid #578319;
+        border-radius: 2px;
+    }
+
+
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 375px) {
+    .user1PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .user2PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .userPhoto1 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .userPhoto2 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .prevButton {
+        background-image: url("../img/opponent_info/game_prev_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+        width: 53px;
+        height: 70px;
+    }
+    .chatButton {
+        background-image: url("../img/opponent_info/chat_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: right;
+        width: 53px;
+        height: 70px;
+    }
+    .opponentInfoMid {
+        overflow: hidden;
+        height: 70px;
+    }
+    .players {}
+    .playerContainerLeft {
+        float: left;
+        background-image: url("../img/opponent_info/opponent_bg_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 10px;
+        height: 70px;
+    }
+    .playerContainerRight {
+        float: right;
+        background-image: url("../img/opponent_info/opponent_bg_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 10px;
+        height: 70px;
+    }
+    .playerContainerMid {
+        overflow: hidden;
+        background-size: contain;
+        background-repeat: repeat-x;
+        position: relative;
+        background-image: url("../img/opponent_info/opponent_bg_mid.png");
+        height: 70px;
+    }
+    .menuButton {
+        border-radius: 5px;
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgb(241, 157, 23);
+        border-bottom: 5px solid rgb(236, 121, 12);
+        margin: 10px 2px 0px;
+    }
+    .shuffleButton {
+        background-image: url("../img/buttons/menu_shuffle.png");
+        width: 71px;
+        height: 52px;
+    }
+    .wordButton {
+        background-image: url("../img/buttons/menu_words.png");
+        width: 71px;
+        height: 52px;
+    }
+    .gatherButton {
+        background-image: url("../img/buttons/menu_gather.png");
+        width: 71px;
+        height: 52px;
+    }
+    .swapButton {
+        background-image: url("../img/buttons/menu_swap.png");
+        width: 71px;
+        height: 52px;
+    }
+    .swapButton.selected {
+        background-image: url("../img/buttons/menu_swap.png");
+        transform: translate(0px, 5px);
+        -webkit-transform: translate(0px, 5px);
+        border-bottom: 5px solid yellow;
+    }
+    .passButton {
+        background-image: url("../img/buttons/menu_pass.png");
+        width: 71px;
+        height: 52px;
+    }
+    .leaveButton {
+        background-image: url("../img/buttons/menu_leave.png");
+        width: 71px;
+        height: 52px;
+    }
+    .playButton {
+        background-image: url("../img/buttons/menu_play.png");
+        width: 71px;
+        height: 52px;
+    }
+    .boardTileBg {
+        background-size: 12px auto;
+        left: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .tileRow {
+        width: 100%;
+        min-height: 15px;
+    }
+    .tileElementContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .tileValueContainer {
+        width: 20%;
+        height: 20%;
+        font-family: Verdana;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: #433127;
+        font-weight: bold;
+    }
+    .tileTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-family: Verdana;
+        color: #433127;
+    }
+    .lastActionStrip {
+        margin: 0px 5px;
+    }
+    .playerRack {
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+    }
+    .lastActionLeft {
+        float: left;
+        background-image: url("../img/opponent_info/last_action_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 100%;
+    }
+    .lastActionRight {
+        float: right;
+        background-image: url("../img/opponent_info/last_action_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 100%;
+    }
+    .lastActionMid {
+        overflow: hidden;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: repeat-x;
+        background-image: url("../img/opponent_info/last_action_mid.png");
+    }
+    .lastActionText {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .boardContainer {}
+    #mbb_board {
+        /*margin: auto;
+         position: relative;
+         top: 50%;
+         transform: perspective(1px) translateY(-50%);*/
+    }
+    .board {}
+    .tile {
+        border-radius: 2px;
+        background-color: rgb(255, 240, 191);
+        border-bottom: 3px solid rgb(232, 202, 138);
+        margin: auto;
+        margin-top: 2px;
+        width: 90%;
+        height: 90%;
+    }
+    .gameOverModalContainer {
+        background-color: #fff0be;
+        margin: auto;
+        padding: 5px;
+        width: 80%;
+        height: 55%;
+        margin-top: 35%;
+        border-radius: 5px;
+        position: relative;
+        display: none;
+    }
+    .gameOverStatus {
+        color: #d83636;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 5px;
+    }
+    .gameOverMessage {
+        color: #d83636;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+    .gameOverTrophy {
+        background-image: url("../img/endgame/trophy.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+    .rematchMessage {
+        color: #55392b;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding: 15px;
+        width: 60%;
+    }
+    .playAgainButton {
+        background-image: url("../img/endgame/play_again.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        position: absolute;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        left: 15%;
+        right: 15%;
+        bottom: 60px;
+    }
+    .leaveGameButton {
+        background-image: url("../img/endgame/leave_game.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        bottom: 0px;
+    }
+
+    button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        width: 45%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .exchangeModalContainer {
+        background-color: #ffffff;
+        margin: auto;
+        width: 100%;
+        height: 75%;
+        margin-top: 17%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position: relative;
+        display: block;
+    }
+    .exchangeTileTitleContainer {
+        background-color: #ffffff;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 9%;
+        border-bottom: 2px solid #282322;
+    }
+    .exchangeTileTitle {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background-color: '#cccccc';
+    }
+    .exchangeTileCountContainer {
+        background-color: #ffffff;
+        color: #282322;
+        font-size: 14px;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 7%;
+    }
+    .ukFlag {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .frFlag {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .tileLanguageContainer {
+        float: left;
+        width: 30px;
+        height: 100%;
+    }
+    .tilesCount {
+        overflow: hidden;
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+    .tileHelpContainer {
+        float: right;
+        width: 30px;
+        height: 100%;
+    }
+    .tileHelp {
+        background-image: url("../img/question_mark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .availableTilesContainer {
+        width: 98%;
+        float: left;
+        clear: left;
+        height: 57%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+    }
+    .letterRackContainer {
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 13%;
+    }
+    .letterRackHolder {
+        margin: auto;
+        width: 90%;
+        height: 80%;
+        margin-top: 5px;
+    }
+    .exchangeButtonMainContainer {
+        color: #ffffff;
+        width: 100%;
+        height: 12%;
+        float: left;
+        clear: left;
+    }
+    .exchangeButtonHolder {
+        margin: auto;
+        margin-top: 7px;
+        width: 90%;
+        height: 70%;
+    }
+    #exchangeButtonHolder button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        width: 49%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #exchangeButtonHolder .cancelButton {
+        background-color: #cccccc;
+    }
+    .tileExchangeRow {
+        width: 100%;
+        height: 16%;
+    }
+
+    .swapTileBg {
+        background-color: #cccccc;
+        width: 50px;
+        height: 50px;
+        border-radius: 3px;
+
+    }
+
+    .tileBagTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-size: 30px;
+        font-family: Verdana;
+        color: #433127;
+    }
+
+    .tileExchangeContainer {
+        float: left;
+        width: 20%;
+        height: 100%;
+    }
+
+    .letterExchangeDiv {
+        width: 50%;
+        height: 100%;
+        font-size: 30px;
+        margin-left: 10%;
+        float: left;
+    }
+    .tileLetterSize {
+        width: 35px;
+        height: 35px;
+    }
+
+    .letterCountExchangeDiv {
+        width: 20%;
+        height: 100%;
+        margin-left: 10%;
+        float: left;
+    }
+    .letterCount {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 35px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 384px) {
+    .user1PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .user2PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .userPhoto1 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .userPhoto2 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .prevButton {
+        background-image: url("../img/opponent_info/game_prev_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+        width: 53px;
+        height: 70px;
+    }
+    .chatButton {
+        background-image: url("../img/opponent_info/chat_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: right;
+        width: 53px;
+        height: 70px;
+    }
+    .opponentInfoMid {
+        overflow: hidden;
+        height: 70px;
+    }
+    .players {}
+    .playerContainerLeft {
+        float: left;
+        background-image: url("../img/opponent_info/opponent_bg_left.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 10px;
+        height: 70px;
+    }
+    .playerContainerRight {
+        float: right;
+        background-image: url("../img/opponent_info/opponent_bg_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 10px;
+        height: 70px;
+    }
+    .playerContainerMid {
+        overflow: hidden;
+        background-size: contain;
+        background-repeat: repeat-x;
+        position: relative;
+        background-image: url("../img/opponent_info/opponent_bg_mid.png");
+        height: 70px;
+    }
+    .menuButton {
+        border-radius: 5px;
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgb(241, 157, 23);
+        border-bottom: 5px solid rgb(236, 121, 12);
+        margin: 8px 1px 0px;
+    }
+    .shuffleButton {
+        background-image: url("../img/buttons/menu_shuffle.png");
+        width: 74px;
+        height: 54px;
+    }
+    .wordButton {
+        background-image: url("../img/buttons/menu_words.png");
+        width: 74px;
+        height: 54px;
+    }
+    .gatherButton {
+        background-image: url("../img/buttons/menu_gather.png");
+        width: 74px;
+        height: 54px;
+    }
+    .swapButton {
+        background-image: url("../img/buttons/menu_swap.png");
+        width: 74px;
+        height: 54px;
+    }
+    .swapButton.selected {
+        background-image: url("../img/buttons/menu_swap.png");
+        transform: translate(0px, 5px);
+        -webkit-transform: translate(0px, 5px);
+        border-bottom: 5px solid yellow;
+    }
+    .passButton {
+        background-image: url("../img/buttons/menu_pass.png");
+        width: 74px;
+        height: 54px;
+    }
+    .leaveButton {
+        background-image: url("../img/buttons/menu_leave.png");
+        width: 74px;
+        height: 54px;
+    }
+    .playButton {
+        background-image: url("../img/buttons/menu_play.png");
+        width: 74px;
+        height: 54px;
+    }
+    .boardTileBg {
+        background-size: 12px auto;
+        left: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .tileRow {
+        width: 100%;
+        min-height: 15px;
+    }
+    .tileElementContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .tileValueContainer {
+        width: 20%;
+        height: 20%;
+        font-family: Verdana;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: #433127;
+        font-weight: bold;
+    }
+    .tileTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-family: Verdana;
+        color: #433127;
+    }
+    .lastActionStrip {
+        height: 100%;
+        margin: 0px 5px;
+    }
+    .playerRack {
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+    }
+    .lastActionLeft {
+        float: left;
+        background-image: url("../img/opponent_info/last_action_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 40px;
+    }
+    .lastActionRight {
+        float: right;
+        background-image: url("../img/opponent_info/last_action_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 40px;
+    }
+    .lastActionMid {
+        overflow: hidden;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: repeat-x;
+        background-image: url("../img/opponent_info/last_action_mid.png");
+    }
+    .lastActionText {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .boardContainer {
+        /*background-color: #cccccc;*/
+    }
+    #mbb_board {
+        /*margin: auto;
+        position: relative;
+        top: 50%;
+        transform: perspective(1px) translateY(-50%);*/
+    }
+    .board {}
+    .tile {
+        border-radius: 2px;
+        background-color: rgb(255, 240, 191);
+        border-bottom: 3px solid rgb(232, 202, 138);
+        margin: auto;
+        margin-top: 2px;
+        width: 90%;
+        height: 90%;
+    }
+    .gameOverModalContainer {
+        background-color: #fff0be;
+        margin: auto;
+        padding: 5px;
+        width: 80%;
+        height: 55%;
+        margin-top: 35%;
+        border-radius: 5px;
+        position: relative;
+        display: none;
+    }
+    .gameOverStatus {
+        color: #d83636;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 5px;
+    }
+    .gameOverMessage {
+        color: #d83636;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+    .gameOverTrophy {
+        background-image: url("../img/endgame/trophy.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+    .rematchMessage {
+        color: #55392b;
+        font-size: 15px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding: 15px;
+        width: 60%;
+    }
+    .playAgainButton {
+        background-image: url("../img/endgame/play_again.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 80%;
+        height: 45px;
+        cursor: pointer;
+        position: absolute;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        left: 15%;
+        right: 15%;
+        bottom: 65px;
+    }
+    .leaveGameButton {
+        background-image: url("../img/endgame/leave_game.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 80%;
+        height: 45px;
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        bottom: 0px;
+    }
+
+    button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        width: 45%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .exchangeModalContainer {
+        background-color: #ffffff;
+        margin: auto;
+        width: 100%;
+        height: 75%;
+        margin-top: 16%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position: relative;
+        display: block;
+    }
+    .exchangeTileTitleContainer {
+        background-color: #ffffff;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 9%;
+        border-bottom: 2px solid #282322;
+    }
+    .exchangeTileTitle {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background-color: '#cccccc';
+    }
+    .exchangeTileCountContainer {
+        background-color: #ffffff;
+        color: #282322;
+        font-size: 14px;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 7%;
+    }
+    .ukFlag {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .frFlag {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .tileLanguageContainer {
+        float: left;
+        width: 30px;
+        height: 100%;
+    }
+    .tilesCount {
+        overflow: hidden;
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+    .tileHelpContainer {
+        float: right;
+        width: 30px;
+        height: 100%;
+    }
+    .tileHelp {
+        background-image: url("../img/question_mark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .availableTilesContainer {
+        width: 98%;
+        float: left;
+        clear: left;
+        height: 57%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+    }
+    .letterRackContainer {
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 14%;
+    }
+    .letterRackHolder {
+        margin: auto;
+        width: 90%;
+        height: 80%;
+        margin-top: 5px;
+    }
+    .exchangeButtonMainContainer {
+        color: #ffffff;
+        width: 100%;
+        height: 11%;
+        float: left;
+        clear: left;
+    }
+    .exchangeButtonHolder {
+        margin: auto;
+        margin-top: 7px;
+        width: 90%;
+        height: 70%;
+    }
+    #exchangeButtonHolder button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        width: 49%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #exchangeButtonHolder .cancelButton {
+        background-color: #cccccc;
+    }
+
+    .tileExchangeRow {
+        width: 100%;
+        height: 16%;
+    }
+
+    .swapTileBg {
+        background-color: #cccccc;
+        width: 53px;
+        height: 53px;
+        border-radius: 3px;
+    }
+
+    .tileBagTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-size: 30px;
+        font-family: Verdana;
+        color: #433127;
+    }
+
+    .tileExchangeContainer {
+        float: left;
+        width: 20%;
+        height: 100%;
+    }
+
+    .letterExchangeDiv {
+        width: 50%;
+        height: 100%;
+        font-size: 30px;
+        margin-left: 10%;
+        float: left;
+    }
+    .tileLetterSize {
+        width: 35px;
+        height: 35px;
+    }
+
+    .letterCountExchangeDiv {
+        width: 20%;
+        height: 100%;
+        margin-left: 10%;
+        float: left;
+    }
+    .letterCount {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 414px) {
+    .user1PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .user2PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .userPhoto1 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .userPhoto2 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .prevButton {
+        background-image: url("../img/opponent_info/game_prev_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+        width: 60px;
+        height: 80px;
+    }
+    .chatButton {
+        background-image: url("../img/opponent_info/chat_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: right;
+        width: 60px;
+        height: 80px;
+    }
+    .opponentInfoMid {
+        overflow: hidden;
+        height: 80px;
+    }
+    .players {}
+    .playerContainerLeft {
+        float: left;
+        background-image: url("../img/opponent_info/opponent_bg_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 12px;
+        height: 80px;
+    }
+    .playerContainerRight {
+        float: right;
+        background-image: url("../img/opponent_info/opponent_bg_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 12px;
+        height: 80px;
+    }
+    .playerContainerMid {
+        overflow: hidden;
+        background-size: contain;
+        background-repeat: repeat-x;
+        position: relative;
+        background-image: url("../img/opponent_info/opponent_bg_mid.png");
+        height: 80px;
+    }
+    .menuButton {
+        border-radius: 5px;
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgb(241, 157, 23);
+        border-bottom: 5px solid rgb(236, 121, 12);
+        margin: 8px 2px;
+    }
+    .shuffleButton {
+        background-image: url("../img/buttons/menu_shuffle.png");
+        width: 78px;
+        height: 57px;
+    }
+    .wordButton {
+        background-image: url("../img/buttons/menu_words.png");
+        width: 78px;
+        height: 57px;
+    }
+    .gatherButton {
+        background-image: url("../img/buttons/menu_gather.png");
+        width: 78px;
+        height: 57px;
+    }
+    .swapButton {
+        background-image: url("../img/buttons/menu_swap.png");
+        width: 78px;
+        height: 57px;
+    }
+    .swapButton.selected {
+        background-image: url("../img/buttons/menu_swap.png");
+        transform: translate(0px, 5px);
+        -webkit-transform: translate(0px, 5px);
+        border-bottom: 5px solid yellow;
+    }
+    .passButton {
+        background-image: url("../img/buttons/menu_pass.png");
+        width: 78px;
+        height: 57px;
+    }
+    .leaveButton {
+        background-image: url("../img/buttons/menu_leave.png");
+        width: 78px;
+        height: 57px;
+    }
+    .playButton {
+        background-image: url("../img/buttons/menu_play.png");
+        width: 78px;
+        height: 57px;
+    }
+    .boardTileBg {
+        background-size: 12px auto;
+        left: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .tileRow {
+        width: 100%;
+        min-height: 15px;
+    }
+    .tileElementContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .tileValueContainer {
+        width: 20%;
+        height: 20%;
+        font-family: Verdana;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: #433127;
+        font-weight: bold;
+    }
+    .tileTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-family: Verdana;
+        color: #433127;
+    }
+    .lastActionStrip {
+        height: 100%;
+        margin: 0px 5px;
+    }
+    .playerRack {
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+    }
+    .lastActionLeft {
+        float: left;
+        background-image: url("../img/opponent_info/last_action_left.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 45px;
+    }
+    .lastActionRight {
+        float: right;
+        background-image: url("../img/opponent_info/last_action_right.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 45px;
+    }
+    .lastActionMid {
+        overflow: hidden;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: repeat-x;
+        background-image: url("../img/opponent_info/last_action_mid.png");
+    }
+    .lastActionText {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 45px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .boardContainer {}
+    #mbb_board {
+        /*margin: auto;
+         position: relative;
+         top: 50%;
+         transform: perspective(1px) translateY(-50%);*/
+    }
+    .board {}
+    .tile {
+        border-radius: 2px;
+        background-color: rgb(255, 240, 191);
+        border-bottom: 3px solid rgb(232, 202, 138);
+        margin: auto;
+        margin-top: 2px;
+        width: 90%;
+        height: 90%;
+    }
+    .gameOverModalContainer {
+        background-color: #fff0be;
+        margin: auto;
+        padding: 5px;
+        width: 80%;
+        height: 55%;
+        margin-top: 35%;
+        border-radius: 5px;
+        position: relative;
+        display: none;
+    }
+    .gameOverStatus {
+        color: #d83636;
+        font-size: 26px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 5px;
+    }
+    .gameOverMessage {
+        color: #d83636;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+    .gameOverTrophy {
+        background-image: url("../img/endgame/trophy.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 120px;
+        height: 120px;
+        margin: auto;
+    }
+    .rematchMessage {
+        color: #55392b;
+        font-size: 17px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding: 15px;
+        width: 60%;
+    }
+    .playAgainButton {
+        background-image: url("../img/endgame/play_again.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 80%;
+        height: 45px;
+        cursor: pointer;
+        position: absolute;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        left: 15%;
+        right: 15%;
+        bottom: 65px;
+    }
+    .leaveGameButton {
+        background-image: url("../img/endgame/leave_game.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 80%;
+        height: 45px;
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        bottom: 0px;
+    }
+
+    button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        width: 45%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .exchangeModalContainer {
+        background-color: #ffffff;
+        margin: auto;
+        width: 100%;
+        height: 75%;
+        margin-top: 15%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position: relative;
+        display: block;
+    }
+    .exchangeTileTitleContainer {
+        background-color: #ffffff;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 9%;
+        border-bottom: 2px solid #282322;
+    }
+    .exchangeTileTitle {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background-color: '#cccccc';
+    }
+    .exchangeTileCountContainer {
+        background-color: #ffffff;
+        color: #282322;
+        font-size: 14px;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 7%;
+    }
+    .ukFlag {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .frFlag {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .tileLanguageContainer {
+        float: left;
+        width: 30px;
+        height: 100%;
+    }
+    .tilesCount {
+        overflow: hidden;
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+    .tileHelpContainer {
+        float: right;
+        width: 30px;
+        height: 100%;
+    }
+    .tileHelp {
+        background-image: url("../img/question_mark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .availableTilesContainer {
+        width: 98%;
+        float: left;
+        clear: left;
+        height: 57%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+    }
+    .letterRackContainer {
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 13%;
+    }
+    .letterRackHolder {
+        margin: auto;
+        width: 90%;
+        height: 80%;
+        margin-top: 5px;
+    }
+    .exchangeButtonMainContainer {
+        color: #ffffff;
+        width: 100%;
+        height: 12%;
+        float: left;
+        clear: left;
+    }
+    .exchangeButtonHolder {
+        margin: auto;
+        margin-top: 7px;
+        width: 90%;
+        height: 70%;
+    }
+    #exchangeButtonHolder button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        width: 49%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #exchangeButtonHolder .cancelButton {
+        background-color: #cccccc;
+    }
+
+    .tileExchangeRow {
+        width: 100%;
+        height: 16%;
+    }
+
+    .swapTileBg {
+        background-color: #cccccc;
+        width: 56px;
+        height: 56px;
+        border-radius: 3px;
+
+    }
+
+    .tileBagTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-size: 30px;
+        font-family: Verdana;
+        color: #433127;
+    }
+
+    .tileExchangeContainer {
+        float: left;
+        width: 20%;
+        height: 100%;
+    }
+
+    .letterExchangeDiv {
+        width: 50%;
+        height: 100%;
+        font-size: 30px;
+        margin-left: 10%;
+        float: left;
+    }
+    .tileLetterSize {
+        width: 35px;
+        height: 35px;
+    }
+
+    .letterCountExchangeDiv {
+        width: 20%;
+        height: 100%;
+        margin-left: 10%;
+        float: left;
+    }
+    .letterCount {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 45px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 768px) {
+    .userPhoto1 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 35px;
+        height: 35px;
+        margin: auto;
+        margin-top: 10%;
+    }
+    .userPhoto2 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 35px;
+        height: 35px;
+        margin: auto;
+        margin-top: 10%;
+    }
+    .prevButton {
+        background-image: url("../img/opponent_info/game_prev_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+        width: 45px;
+        height: 60px;
+    }
+    .chatButton {
+        background-image: url("../img/opponent_info/chat_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: right;
+        width: 45px;
+        height: 60px;
+    }
+    .opponentInfoMid {
+        overflow: hidden;
+        height: 60px;
+    }
+    .playerContainerLeft {
+        float: left;
+        background-image: url("../img/opponent_info/opponent_bg_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 9px;
+        height: 60px;
+    }
+    .playerContainerRight {
+        float: right;
+        background-image: url("../img/opponent_info/opponent_bg_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 11px;
+        height: 60px;
+    }
+    .playerContainerMid {
+        overflow: hidden;
+        background-size: contain;
+        background-repeat: repeat-x;
+        position: relative;
+        background-image: url("../img/opponent_info/opponent_bg_mid.png");
+        height: 60px;
+    }
+    .menuButton {
+        /*margin: auto;  */
+        border-radius: 5px;
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        margin: 5px 2px 2px;
+    }
+    .shuffleButton {
+        background-image: url("../img/buttons/menu_shuffle.png");
+        width: 68px;
+        height: 55px
+    }
+    .wordButton {
+        background-image: url("../img/buttons/menu_words.png");
+        width: 68px;
+        height: 55px
+    }
+    .gatherButton {
+        background-image: url("../img/buttons/menu_gather.png");
+        width: 68px;
+        height: 55px
+    }
+    .swapButton {
+        background-image: url("../img/buttons/menu_swap.png");
+        width: 68px;
+        height: 55px
+    }
+    .swapButton.selected {
+        background-image: url("../img/buttons/menu_swap.png");
+        transform: translate(0px, 5px);
+        -webkit-transform: translate(0px, 5px);
+        border-bottom: 5px solid yellow;
+    }
+    .passButton {
+        background-image: url("../img/buttons/menu_pass.png");
+        width: 68px;
+        height: 55px
+    }
+    .leaveButton {
+        background-image: url("../img/buttons/menu_leave.png");
+        width: 68px;
+        height: 55px
+    }
+    .playButton {
+        background-image: url("../img/buttons/menu_play.png");
+        width: 68px;
+        height: 55px
+    }
+    .boardTileBg {
+        width: 42px;
+        height: 42px;
+        background-size: 12px auto;
+        left: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .tileRow {
+        width: 100%;
+        min-height: 15px;
+    }
+    .tileElementContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .tileValueContainer {
+        width: 20%;
+        height: 20%;
+        font-family: Verdana;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: #433127;
+        font-weight: bold;
+    }
+    .tileTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-family: Verdana;
+        color: #433127;
+    }
+    .lastActionStrip {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .playerRack {
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+        margin-bottom: 5px;
+    }
+    .lastActionLeft {
+        float: left;
+        background-image: url("../img/opponent_info/last_action_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 40px;
+    }
+    .lastActionRight {
+        float: right;
+        background-image: url("../img/opponent_info/last_action_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 40px;
+    }
+    .lastActionMid {
+        overflow: hidden;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: repeat-x;
+        background-image: url("../img/opponent_info/last_action_mid.png");
+    }
+    .gameOverModalContainer {
+        background-color: #fff0be;
+        margin: auto;
+        padding: 5px;
+        width: 80%;
+        height: 350px;
+        margin-top: 35%;
+        border-radius: 5px;
+        position: relative;
+        display: none;
+    }
+    .gameOverStatus {
+        color: #d83636;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+    .gameOverMessage {
+        color: #d83636;
+        font-size: 19px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .gameOverTrophy {
+        background-image: url("../img/endgame/trophy.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+    .rematchMessage {
+        color: #55392b;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding: 10px;
+        width: 60%;
+    }
+    .playAgainButton {
+        background-image: url("../img/endgame/play_again.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        position: absolute;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        left: 15%;
+        right: 15%;
+        bottom: 65px;
+    }
+    .leaveGameButton {
+        background-image: url("../img/endgame/leave_game.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        bottom: 0px;
+    }
+
+    button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        width: 45%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .exchangeModalContainer {
+        background-color: #ffffff;
+        margin: auto;
+        width: 100%;
+        height: 75%;
+        margin-top: 16%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position: relative;
+        display: block;
+    }
+    .exchangeTileTitleContainer {
+        background-color: #ffffff;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 9%;
+        border-bottom: 2px solid #282322;
+    }
+    .exchangeTileTitle {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background-color: '#cccccc';
+    }
+    .exchangeTileCountContainer {
+        background-color: #ffffff;
+        color: #282322;
+        font-size: 14px;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 7%;
+    }
+    .ukFlag {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .frFlag {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .tileLanguageContainer {
+        float: left;
+        width: 30px;
+        height: 100%;
+    }
+    .tilesCount {
+        overflow: hidden;
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+    .tileHelpContainer {
+        float: right;
+        width: 30px;
+        height: 100%;
+    }
+    .tileHelp {
+        background-image: url("../img/question_mark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .availableTilesContainer {
+        width: 98%;
+        float: left;
+        clear: left;
+        height: 57%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+    }
+    .letterRackContainer {
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 13%;
+    }
+    .letterRackHolder {
+        margin: auto;
+        width: 90%;
+        height: 80%;
+        margin-top: 5px;
+    }
+    .exchangeButtonMainContainer {
+        color: #ffffff;
+        width: 100%;
+        height: 12%;
+        float: left;
+        clear: left;
+    }
+    .exchangeButtonHolder {
+        margin: auto;
+        margin-top: 7px;
+        width: 90%;
+        height: 70%;
+    }
+    #exchangeButtonHolder button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        width: 49%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #exchangeButtonHolder .cancelButton {
+        background-color: #cccccc;
+    }
+
+    .tileExchangeRow {
+        width: 100%;
+        height: 16%;
+    }
+
+    .swapTileBg {
+        background-color: #cccccc;
+        width: 48px;
+        height: 48px;
+        border-radius: 3px;
+
+    }
+
+    .tileBagTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-size: 30px;
+        font-family: Verdana;
+        color: #433127;
+    }
+
+    .tileExchangeContainer {
+        float: left;
+        width: 20%;
+        height: 100%;
+    }
+
+    .letterExchangeDiv {
+        width: 50%;
+        height: 100%;
+        font-size: 30px;
+        margin-left: 10%;
+        float: left;
+    }
+    .tileLetterSize {
+        width: 35px;
+        height: 35px;
+    }
+
+    .letterCountExchangeDiv {
+        width: 20%;
+        height: 100%;
+        margin-left: 10%;
+        float: left;
+    }
+    .letterCount {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+}
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 1280px) {
+    .user1PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .user2PhotoContainer {
+        width: 30%;
+        height: 100%;
+    }
+    .userPhoto1 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .userPhoto2 {
+        background-image: url("../img/opponent_info/userProfile.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        margin: auto;
+        margin-top: 5px;
+    }
+    .prevButton {
+        background-image: url("../img/opponent_info/game_prev_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: left;
+        width: 49px;
+        height: 65px;
+    }
+    .chatButton {
+        background-image: url("../img/opponent_info/chat_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        float: right;
+        width: 49px;
+        height: 65px;
+    }
+    .opponentInfoMid {
+        overflow: hidden;
+        height: 65px;
+    }
+    .players {}
+    .playerContainerLeft {
+        float: left;
+        background-image: url("../img/opponent_info/opponent_bg_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 10px;
+        height: 65px;
+    }
+    .playerContainerRight {
+        float: right;
+        background-image: url("../img/opponent_info/opponent_bg_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 9px;
+        height: 65px;
+    }
+    .playerContainerMid {
+        overflow: hidden;
+        background-size: contain;
+        background-repeat: repeat-x;
+        position: relative;
+        background-image: url("../img/opponent_info/opponent_bg_mid.png");
+        height: 65px;
+    }
+    .menuButton {
+        border-radius: 5px;
+        display: inline-block;
+        color: #FFF;
+        text-decoration: none;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-color: rgb(241, 157, 23);
+        border-bottom: 5px solid rgb(236, 121, 12);
+        margin: 2px 2px;
+    }
+    .shuffleButton {
+        background-image: url("../img/buttons/menu_shuffle.png");
+        width: 68px;
+        height: 50px;
+    }
+    .wordButton {
+        background-image: url("../img/buttons/menu_words.png");
+        width: 68px;
+        height: 50px;
+    }
+    .gatherButton {
+        background-image: url("../img/buttons/menu_gather.png");
+        width: 68px;
+        height: 50px;
+    }
+    .swapButton {
+        background-image: url("../img/buttons/menu_swap.png");
+        width: 68px;
+        height: 50px;
+    }
+    .swapButton.selected {
+        background-image: url("../img/buttons/menu_swap.png");
+        transform: translate(0px, 5px);
+        -webkit-transform: translate(0px, 5px);
+        border-bottom: 5px solid yellow;
+    }
+    .passButton {
+        background-image: url("../img/buttons/menu_pass.png");
+        width: 68px;
+        height: 50px;
+    }
+    .leaveButton {
+        background-image: url("../img/buttons/menu_leave.png");
+        width: 68px;
+        height: 50px;
+    }
+    .playButton {
+        background-image: url("../img/buttons/menu_play.png");
+        width: 68px;
+        height: 50px;
+    }
+    .boardTileBg {
+        background-size: 12px auto;
+        left: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+    .tileRow {
+        width: 100%;
+        min-height: 15px;
+    }
+    .tileElementContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .tileValueContainer {
+        width: 20%;
+        height: 20%;
+        font-family: Verdana;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: #433127;
+        font-weight: bold;
+    }
+    .tileTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-family: Verdana;
+        color: #433127;
+    }
+    .lastActionStrip {
+        height: 100%;
+        margin: 0px 5px;
+    }
+    .playerRack {
+        border: 1px solid #ffffff;
+        border-radius: 2px;
+    }
+    .lastActionLeft {
+        float: left;
+        background-image: url("../img/opponent_info/last_action_left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 40px;
+    }
+    .lastActionRight {
+        float: right;
+        background-image: url("../img/opponent_info/last_action_right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 5px;
+        height: 40px;
+    }
+    .lastActionMid {
+        overflow: hidden;
+        height: 100%;
+        background-size: 100% 100%;
+        background-repeat: repeat-x;
+        background-image: url("../img/opponent_info/last_action_mid.png");
+    }
+    .lastActionText {
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    .boardContainer {
+        /*background-color: #cccccc;*/
+    }
+    #mbb_board {
+        /*margin: auto;
+         position: relative;
+         top: 50%;
+         transform: perspective(1px) translateY(-50%);*/
+    }
+    .board {}
+    .tile {
+        border-radius: 2px;
+        background-color: rgb(255, 240, 191);
+        border-bottom: 3px solid rgb(232, 202, 138);
+        margin: auto;
+        margin-top: 2px;
+        width: 90%;
+        height: 90%;
+    }
+    .gameOverModalContainer {
+        background-color: #fff0be;
+        margin: auto;
+        padding: 5px;
+        width: 80%;
+        height: 350px;
+        margin-top: 35%;
+        border-radius: 5px;
+        position: relative;
+        display: none;
+    }
+    .gameOverStatus {
+        color: #d83636;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+    .gameOverMessage {
+        color: #d83636;
+        font-size: 19px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .gameOverTrophy {
+        background-image: url("../img/endgame/trophy.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+    }
+    .rematchMessage {
+        color: #55392b;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        margin: auto;
+        text-align: center;
+        padding: 10px;
+        width: 60%;
+    }
+    .playAgainButton {
+        background-image: url("../img/endgame/play_again.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        position: absolute;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        left: 15%;
+        right: 15%;
+        bottom: 65px;
+    }
+    .leaveGameButton {
+        background-image: url("../img/endgame/leave_game.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 203px;
+        height: 45px;
+        cursor: pointer;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        position: absolute;
+        left: 15%;
+        right: 15%;
+        bottom: 0px;
+    }
+
+    button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 15px 15px;
+        width: 45%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .exchangeModalContainer {
+        background-color: #ffffff;
+        margin: auto;
+        width: 100%;
+        height: 75%;
+        margin-top: 18%;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        position: relative;
+        display: block;
+    }
+    .exchangeTileTitleContainer {
+        background-color: #ffffff;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 9%;
+        border-bottom: 2px solid #282322;
+    }
+    .exchangeTileTitle {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        background-color: '#cccccc';
+    }
+    .exchangeTileCountContainer {
+        background-color: #ffffff;
+        color: #282322;
+        font-size: 14px;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 7%;
+    }
+    .ukFlag {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .frFlag {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .tileLanguageContainer {
+        float: left;
+        width: 30px;
+        height: 100%;
+    }
+    .tilesCount {
+        overflow: hidden;
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 30px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+    .tileHelpContainer {
+        float: right;
+        width: 30px;
+        height: 100%;
+    }
+    .tileHelp {
+        background-image: url("../img/question_mark.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 20px;
+        height: 20px;
+    }
+    .availableTilesContainer {
+        width: 98%;
+        float: left;
+        clear: left;
+        height: 57%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+    }
+    .letterRackContainer {
+        width: 100%;
+        float: left;
+        clear: left;
+        height: 14%;
+    }
+    .letterRackHolder {
+        margin: auto;
+        width: 95%;
+        height: 80%;
+        margin-top: 5px;
+    }
+    .exchangeButtonMainContainer {
+        color: #ffffff;
+        width: 100%;
+        height: 11%;
+        float: left;
+        clear: left;
+    }
+    .exchangeButtonHolder {
+        margin: auto;
+        margin-top: 7px;
+        width: 90%;
+        height: 70%;
+    }
+    #exchangeButtonHolder button {
+        background-color: #F29D17;
+        /* yellow */
+        border: none;
+        color: white;
+        padding: 5px 5px;
+        width: 49%;
+        height: 100%;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #exchangeButtonHolder .cancelButton {
+        background-color: #cccccc;
+    }
+
+    .tileExchangeRow {
+        width: 100%;
+        height: 16%;
+    }
+
+    .swapTileBg {
+        background-color: #cccccc;
+        width: 48px;
+        height: 48px;
+        border-radius: 3px;
+
+    }
+
+    .tileBagTextContainer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100%;
+        padding-top: 0px;
+        font-size: 30px;
+        font-family: Verdana;
+        color: #433127;
+    }
+
+    .tileExchangeContainer {
+        float: left;
+        width: 20%;
+        height: 100%;
+    }
+
+    .letterExchangeDiv {
+        width: 50%;
+        height: 100%;
+        font-size: 30px;
+        margin-left: 10%;
+        float: left;
+    }
+    .tileLetterSize {
+        width: 35px;
+        height: 35px;
+    }
+
+    .letterCountExchangeDiv {
+        width: 20%;
+        height: 100%;
+        margin-left: 10%;
+        float: left;
+    }
+    .letterCount {
+        color: #282322;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 100%;
+    }
+
+    .newGameInterface {
+        background-color: #143E38;
+
+    }
+
+    .mainMenuBtn {
+        background-image: url("../img/buttons/main_menu_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 115px;
+        height: 63px;
+        margin-left: 4px;
+        float: left;
+    }
+
+    .newGameBtn {
+        background-image: url("../img/buttons/new_game_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 115px;
+        height: 63px;
+        margin-left: 3px;
+        float: left;
+    }
+
+    .settingsBtn {
+        background-image: url("../img/buttons/settings_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 115px;
+        height: 63px;
+        margin-left: 3px;
+        float: left;
+    }
+
+    .mainMenuContainer {
+        padding-top: 5px;
+        width: 100%;
+        height: 63px;
+    }
+
+    .newGameInterfaceButtonContainer {
+        margin-top: 30px;
+    }
+
+    .playWithFriendDivContainer {
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 350px;
+        height: 65px;
+    }
+
+    .playWithFriendBtn {
+        background-image: url("../img/buttons/play_with_friend_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 350px;
+        height: 65px;
+    }
+
+    .findOpponentDivContainer {
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 350px;
+        height: 65px;
+    }
+
+    .findOpponentBtn {
+        background-image: url("../img/buttons/find_opponent_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 350px;
+        height: 65px;
+    }
+
+    .soloGameDivContainer {
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 350px;
+        height: 65px;
+    }
+
+    .soloGameBtn {
+        background-image: url("../img/buttons/solo_game_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 350px;
+        height: 65px;
+    }
+
+    .passNplayDivContainer {
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 350px;
+        height: 65px;
+    }
+
+    .passNplayBtn {
+        background-image: url("../img/buttons/pass_and_play_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 350px;
+        height: 65px;
+    }
+
+
+    .languagesContainer {
+        border: 2px solid #ffffff;
+        height: 100px;
+        width: 350px;
+        border-radius: 2px;
+        margin: auto;
+        margin-top: 5px;
+
+    }
+
+    div.flag_container {
+        width: 50%;
+        float: left;
+        padding: 5% 0;
+    }
+
+    div.activated_languages_title {
+        background-image: url("../img/activated_languages.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 250px;
+        height: 20px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    div.flag_languages_container {
+        width: 100%;
+        height: 25px;
+        padding: 10% 0;
+    }
+
+
+    div.language_settings_container {
+        width: 50%;
+        float: right;
+        padding: 5% 0;
+    }
+
+    div.language_en {
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 30px;
+        height: 25px;
+        float: left;
+        margin-left: 10px;
+    }
+
+    div.language_fr {
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 30px;
+        height: 25px;
+        float: left;
+        margin-left: 10px;
+    }
+
+    div.language_de {
+        background-image: url("../img/opponent_info/de_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 30px;
+        height: 25px;
+        float: left;
+        margin-left: 10px;
+    }
+
+    div.edit_languages {
+        background-image: url("../img/buttons/edit_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 90px;
+        height: 65px;
+        float: right;
+        margin-right: 5px;
+        padding: 10% 0;
+    }
+
+    .played_languages_main {
+        background-color: #FFEDB6;
+    }
+
+    .choose_language_header {
+        background-image: url("../img/opponent_info/choose_language_whole.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 360px;
+        height: 60px;
+    }
+
+    .how_does_it_work_container {
+        font-weight: 500;
+        font-family: Helvetica, Arial, sans-serif;
+        line-height: 20px;
+        overflow: auto;
+        margin-top: 15px;
+    }
+
+    .chevron_grey {
+        float: left;
+        width: 27px;
+        height: 20px;
+        background-image: url("../img/opponent_info/chevron_grey.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 12px;
+    }
+
+    .how_does_it_work_title {
+        float: left;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #472E22;
+        margin-left: 10px;
+    }
+
+    .how_does_it_work_text {
+        padding: 5px 10px;
+        color: #472E22;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
+        text-align: justify;
+    }
+
+    .available_languages_container {
+        margin-top: 20px;
+    }
+
+    .available_languages_header_bg {
+        background-image: url("../img/opponent_info/languages_available_whole.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 360px;
+        height: 34px;
+    }
+
+    .languages_activated_header_bg {
+        background-image: url("../img/opponent_info/languages_activated_whole.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 360px;
+        height: 34px;
+    }
+
+    .activated_languages_container {
+        padding: 10px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        color: #472E22;
+    }
+
+    .available_languages_flag_container {
+        padding: 10px;
+        overflow: auto;
+    }
+
+    .availableFlagEn {
+        width: 35px;
+        height: 25px;
+        background-image: url("../img/opponent_info/uk_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 35px;
+        float: left;
+    }
+    .availableFlagEn.selected {
+        width: 35px;
+        height: 25px;
+        border: 2px solid #578319;
+        border-radius: 2px;
+    }
+
+    .availableFlagFr {
+        width: 35px;
+        height: 25px;
+        background-image: url("../img/opponent_info/fr_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 45px;
+        float: left;
+    }
+    .availableFlagFr.selected {
+        width: 35px;
+        height: 25px;
+        border: 2px solid #578319;
+        border-radius: 2px;
+    }
+
+    .availableFlagEs {
+        width: 35px;
+        height: 25px;
+        background-image: url("../img/opponent_info/es_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 45px;
+        float: left;
+    }
+
+    .availableFlagEs.selected {
+        width: 35px;
+        height: 25px;
+        border: 2px solid #578319;
+        border-radius: 2px;
+    }
+
+    .availableFlagDe {
+        width: 35px;
+        height: 25px;
+        background-image: url("../img/opponent_info/de_flag.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: 45px;
+        float: left;
+    }
+
+    .availableFlagDe.selected {
+        width: 35px;
+        height: 25px;
+        border: 2px solid #578319;
+        border-radius: 2px;
+    }
+
+    .chevron_white {
+        float: left;
+        width: 14%;
+        height: 100%;
+    }
+
+    .marbble_icon {
+        background-image: url("../img/opponent_info/marbble_icon.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 45px;
+        height: 45px;
+        margin-left: 20px;
+        float:left;
+        margin-top: 15px;
+    }
+
+
+    .marbble_game_mode_text {
+        float: right;
+        width: 70%;
+        font-size: 11px;
+        padding: 5px;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .game_config_language {
+        color: #442B20;
+        font-weight: bold;
+        font-family: Helvetica, Arial, sans-serif;
+        width: 95%;
+        margin: auto;
+    }
+
+    .language_config_flag_container {
+        padding: 5px;
+    }
+
+    .language_config_header {
+        border-bottom: 1px solid #000000;
+        padding: 5px;
+        font-size: 12px;
+        width: 60%;
+    }
+
+    .game_config_player_settings {
+        width: 95%;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 12px;
+        margin: auto;
+    }
+
+    .game_config_player_settings input[type=text] {
+        width: 70%;
+        padding: 5px 5px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        font-weight: bold;
+    }
+
+    .game_config_button_container {
+        width: 100%;
+        margin: auto;
+    }
+
+    .lets_play_btn {
+        background-image: url("../img/buttons/lets_play_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 269px;
+        height: 50px;
+        margin: auto;
+        margin-left: 15%;
+        cursor: pointer;
+    }
+
+    .config_cancel_btn {
+        background-image: url("../img/buttons/big_cancel_btn.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 269px;
+        height: 50px;
+        margin: auto;
+        margin-left: 15%;
+        cursor: pointer;
+    }
+
+    .gameConfigContent {
+        background-color: #FFEDB6;
+        margin: auto;
+        width: 100%;
+        height: 86%;
+        border-radius: 3px;
+        margin-top: 5%;
+    }
+
+    .gameConfigButtonContainer {
+        width: 100%;
+        overflow: auto;
+    }
+
+    .gameConfigContainer {
+        margin: auto;
+        width: 90%;
+        height: 85%;
+        border-radius: 10px;
+        margin-top: 20%;
+        position: relative;
+        display: none;
+    }
+
+    .player_username_config {
+        padding-left: 25px;
+        color: #442B20;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .player_language_config {
+        padding-left: 20px;
+    }
+
+    .gameConfigHeader  {
+        background-color: #0C2C26;
+        border: 2px solid #ffffff;
+        width: 321px;
+        height: 56px;
+        margin: auto;
+        border-radius: 5px;
+    }
+
+    .gameConfigTitle {
+        font-size: 15px;
+        color: #ffffff;
+        font-weight: 600;
+        text-align: center;
+        line-height: 50px;
+        font-family: Verdana, Arial, sans-serif;
+    }
+
+    .pass_and_play_btn {
+        background-image: url("../img/opponent_info/pass_and_play_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 158px;
+        height: 51px;
+        float: left;
+        margin-left: 2px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+
+    .play_against_computer_btn {
+        background-image: url("../img/opponent_info/play_against_computer_btn.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 158px;
+        height: 51px;
+        float: right;
+        margin-right: 2px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+}
+
+html, body {
+    height: 100vh;
+    margin: 0px;
+    background-color: rgb(19, 70, 63);
+}
+
+.addBottomMargin {
+    margin-bottom: 5px;
+}
+
+.addLeftRightMargin {
+    margin: 0px 5px;
+}
+
+.addTopMargin {
+    margin-top: 5px;
+}
+
+.marbblescreen {
+    margin: auto;
+    width: 100%;
+    /*border: 3px solid #ffffff;*/
+    border-radius: 5px;
+}
+
+.playerTileBg {
+    float: left;
+    border-radius: 2px;
+    border: 1px solid rgb(19, 70, 63);
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.playerTile {
+    border: 0px none;
+    border-radius: 0px;
+    top: 0px;
+}
+
+.tileBg {
+    border-radius: 2px;
+    border: 1px solid rgb(19, 70, 63);
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.tileBg0 {
+    background-color: rgb(14, 57, 50);
+}
+
+.tileBg1 {
+    background-image: url("../img/DL.jpg");
+    background-color: rgb(121, 154, 47);
+}
+
+.tileBg2 {
+    background-image: url("../img/TL.jpg");
+    background-color: rgb(43, 124, 171);
+}
+
+.tileBg3 {
+    background-image: url("../img/DW.jpg");
+    background-color: rgb(200, 62, 60);
+}
+
+.tileBg4 {
+    background-image: url("../img/TW.jpg");
+    background-color: rgb(210, 145, 41)
+}
+
+.tileBg5 {
+    background-color: rgb(14, 57, 50);
+    background-image: url("../img/ST.png");
+}
+
+.menu {
+    border-radius: 2px;
+    text-align: center;
+}
+
+.menuButton:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    /*border-bottom: 1px solid rgb(236, 121, 12);*/
+}
+
+.translation {
+    display: none;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background-color: white;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid black;
+}
+
+.translationStyle {
+    width: 394px;
+    height: 100px;
+    top: 544px;
+}
+
+.tempScore {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    font-family: Arial, Helvetica, sans-serif;
+    color: yellow;
+    background-color: blue;
+    font-size: 200%;
+    margin: 5px;
+    padding: 5px;
+    bottom: 22%;
+    background-size: cover;
+    border-radius: 30px;
+}
+
+.showBorder {
+    border: 1px solid #000000;
+}
+
+#mbb_players {}
+
+.playerMask {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 100, 100, 0.5);
+    z-index: 1;
+}
+
+.player {
+    /*position: absolute;
+    background-color: grey;
+    z-index: 0;*/
+}
+
+.player.selected {
+    background-color: blue;
+    z-index: 2;
+    height: 88%;
+    top: 0px;
+}
+
+.playerScore {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: medium;
+    letter-spacing: 2px;
+    padding: 0px 5px;
+}
+
+#mbb_menu {
+    /*  height: 85px;*/
+    width: 100%;
+}
+
+#playerInfo {
+    /*position: absolute;*/
+}
+
+.player1 {
+    width: 48.5%;
+    height: 100%;
+    float: left;
+}
+
+.playerDivider {
+    width: 1px;
+    height: 75%;
+    margin-top: 2px;
+    background-color: #ffffff;
+    border-radius: 1px;
+    float: left;
+}
+
+.player2 {
+    width: 48%;
+    height: 100%;
+    float: left;
+}
+
+.user1PhotoContainer {
+    width: 30%;
+    height: 100%;
+}
+
+.user2PhotoContainer {
+    width: 30%;
+    height: 100%;
+}
+
+.userDetailContainer {
+    width: 67%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+.alignLeft {
+    float: left;
+    text-align: left;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
+.alignRight {
+    float: right;
+    text-align: right;
+}
+
+.userProfile {
+    width: 100%;
+    margin-top: 3px;
+}
+
+.user1Flag {
+    background-image: url("../img/opponent_info/uk_flag.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 12px;
+    float: left;
+    margin-left: 5px;
+}
+
+.user2Flag {
+    background-image: url("../img/opponent_info/fr_flag.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 12px;
+    float: left;
+    margin-left: 5px;
+}
+
+.playerName {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    color: #ffffff;
+    padding: 0px 5px;
+}
+
+.greyBackground {
+    background-color: #cccccc;
+}
+
+.yellowBackground {
+    background-color: yellow;
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+.tileScore {
+    border-radius: 50%;
+    z-index: 1;
+    position: absolute;
+    color: #ffffff;
+    text-align: center;
+    font-family: Verdana;
+    vertical-align: middle;
+}
+
+.redCircle {
+    background: #f00;
+}
+
+.blueCircle {
+    background: #00f;
+}
+
+.gameConfigModal {
+    margin: auto;
+    /* Hidden by default */
+    display: none;
+    position: fixed;
+    top: 0;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    /* Location of the box */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.marbble_game_mode_info {
+    width: 95%;
+    margin: auto;
+    margin-top: 5px;
+    overflow: auto;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.showModalDialog {
+    margin: auto;
+    /* Hidden by default */
+    display: none;
+    position: fixed;
+    top: 0;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    /* Location of the box */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.showModalContent {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    margin-top: 50%;
+    border-radius: 10px;
+    position: relative;
+    display: none;
+}
+
+.showModalParagraph {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.exchangeClose {
+    color: #282322;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.exchangeClose:hover, .exchangeClose:focus {
+    color: #cccccc;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.passModalDivContainer {
+    overflow: auto;
+    display: none;
+}
+
+.leaveModalDivContainer {
+    overflow: auto;
+    display: none;
+}
+
+.successModalDivContainer {
+    display: none;
+    text-align: center;
+    margin: auto;
+}
+
+button {
+    background-color: #F29D17;
+    /* yellow */
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    width: 45%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.okButton {}
+
+.cancelButton {
+    background-color: #cccccc;
+}
+
+.cursorClickable {
+    cursor: pointer;
+}
+
+.clearFloat {
+    clear: both;
+}
+
+/*
+*prevents text selection from activating in mobile
+*/
+
+*:not(input, textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}

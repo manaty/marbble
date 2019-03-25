@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta HTTP-EQUIV="Pragma" content="no-cache">
+  <meta HTTP-EQUIV="Expires" content="-1">
+  <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+  <!-- Good default declaration:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of eval() and inline  scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+      * Enable eval(): add 'unsafe-eval' to default-src
+  * Create your own at http://cspisawesome.com
+  -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" type="text/css" href="../css/marbble.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="../lib/dragula.css" media="screen" />
+   <title>Marbble</title>
+</head>
+<body style='user-select:none;' onLoad="initMarbble('marbblescreen')" onselectstart='return false;'>
+  <script type="text/javascript" src="cordova.js"></script>
+  <div id="marbblescreen" class="marbblescreen">
+    <div id="wordModal" class="wordModal">
+      <div id="wordModalContainer">
+        <div id="wordModalTabs">
+          <div class="buttonContainer"><button class="menuButton">Played</button></div>
+          <div class="buttonContainer"><button class="menuButton">Definition</button></div>
+          <div class="buttonContainer">
+            <!-- <div id="wordModalSearchContainer" class="menuButton">
+              <input placeholder="Search...">
+              <div style="-webkit-transform: rotate(45deg);
+               -moz-transform: rotate(45deg);
+                 -o-transform: rotate(45deg);
+                    transform: rotate(45deg);">
+                  &#9906;
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div id="wordModalTabContentContainer">
+            <div id="wordsDefinition" class="wordModalTabContent">
+              <table>
+                <tr class="translation">
+                  <td><span class="definition-origin">RAIN</span></td>
+                  <td><h3>=</h3></td>
+                  <td><span class="definition-target">LLOVER</span></td>
+                </tr>
+                <tr class="wordsDefinitionFlags">
+                  <td><div class="flag-origin"><img src="../img/flags/en.png">English</div></td>
+                  <td></td>
+                  <td><div class="flag-target"><img src="../img/flags/en.png">Spanish</div></td>
+                </tr>
+              </table>
+              <h3>
+                <span class="definition-origin">RAIN</span>
+                <span>=</span>
+                <span class="definition-target">LLOVER</span>
+              </h3>
+              <div class="wordsDefinitionFlags">
+                <div class="flag-origin"><img src="../img/flags/en.png">English</div>
+                <div class="flag-target"><img src="../img/flags/en.png">Spanish</div>
+              </div>
+              <div class="definitions" >
+                <div class="partOfSpeech">noun:</div>
+                <div class="definition">1. water that is condensed from the aqueous vapor in the atmospher and falls to earth in drops more than 1/50 (0.5mm) in diameter. Compare drizzle (def 6).</div>
+                <div class="definition">2. a rainfall, rainstorm, or shower: We had a light rain this afternoon.</div>
+                <div class="definition">3. rains, rainy season, seasonal rainfall, as in India.</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="../js/wordlist/fr_wordlist.js"></script>
+  <script type="text/javascript" src="../js/wordlist/en_wordlist.js"></script>
+  <script type="text/javascript" src="../js/dic/en_fr.js"></script>
+  <script type="text/javascript" src="../js/dic/fr_en.js"></script>
+  <script type="text/javascript" src="../js/model/tile.js"></script>
+  <script type="text/javascript" src="../js/model/player.js"></script>
+  <script type="text/javascript" src="../js/model/game.js"></script>
+  <script type="text/javascript" src="../js/model/application.js"></script>
+  <script type="text/javascript" src="../js/gui/tileComponent.js"></script>
+  <script type="text/javascript" src="../js/gui/playerComponent.js"></script>
+  <script type="text/javascript" src="../js/gui/gameComponent.js"></script>
+  <script type="text/javascript" src="../js/controler/gameControler.js"></script>
+  <script type="text/javascript" src="../js/controler/playerControler.js"></script>
+  <script type="text/javascript" src="../js/marbble.js"></script>
+  <script type="text/javascript" src="../lib/dragula.js"></script>
+  <script type="text/javascript" src="../lib/hammer.js"></script>
+  <script type="text/javascript" src="../lib/hammertime.js"></script>
+</body>
+</html>

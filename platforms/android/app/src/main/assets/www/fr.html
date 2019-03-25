@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Marbble, un jeu de lettres multilingue</title>
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Marbble est un jeu de lettres multilingue unique en son genre. Améliorez votre vocabulaire en jouant dans différentes langues, notre système d’affichage des définitions et des traductions est là pour vous aider dans votre apprentissage.">
+    <meta name="author" content="">
+
+
+    <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+    <!-- JS
+    ________________________________________________ -->
+    <script type="text/javascript" src="js/home.js"></script>
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="favicon.ico">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <div class="header screen-only">
+        <div class="hero">
+            <div class="multiBlockContainer">
+                <div class="multilingualTextContainer">
+                    <span class="multilingualHeaderText">UN JEU DE LETTRES MULTILINGUE</span>
+                    <p class="justify">Marbble est un jeu de lettres multilingue unique en son genre. Améliorez votre vocabulaire en jouant dans différentes langues, notre système d’affichage des définitions et des traductions est là pour vous aider dans votre apprentissage. C’est toujours plus facile d’apprendre en s’amusant :)<br /> Vous pouvez essayer Marbble sur cette page ou en téléchargeant notre app pour plus de fonctionnalités!</p>
+                    <div class="tipeee">Soutenez-nous via Tipeee: <a target="blank" href="https://www.tipeee.com/manatygames"><img src="img/website/tipeee_button.png" alt="Tipeee"></a></div>
+                </div>
+                <div class="stores">
+                    <div class="googleplaybutton"><a target="blank" href="https://play.google.com/store/apps/details?id=org.manaty.marbble"><img src="img/website/googleplay_button2.png" alt="Play Store"></a></div>
+                    <div id="appStoreButton" class="appstorebutton"><a target="blank" href="https://itunes.apple.com/us/app/marbble/id1364352556?l=fr&ls=1&mt=8"><img src="img/website/appstore_button.png" alt="App Store"></a></div>
+                    <div class="clearFloat">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- game area -->
+
+    <div id="playNow" class="playNow mobile-only">
+        <a href="game.html"><img src="img/website/testerMarbble.png" alt="Jouer"></a>
+    </div>
+
+    <div id="game" class="gameArea screen-only">
+        <div class="gameScreen">
+            <iframe id="gameBoard" align="middle" src="game.html" height="640" scrolling="no" width="100%" padding="0" margin="0"></iframe>
+        </div>
+    </div>
+
+    <!-- end game area -->
+
+
+    <!-- app store beta popup -->
+
+    <div class="showModalDialog" id="appStorePopup" style="display: none;">
+        <div class="showModalContent" id="showModalContent" style="display: block;">
+            <span class="popupclose" id="close" style="display: block;">x</span>
+            <div id="messageText">
+                Marbble est en Open Beta. Pour le tester gratuitement sur votre appareil Apple, envoyez-nous votre Email et Nom à l'adresse <span class="url">games@manaty.net</span> avec pour objet du mail : <strong>[Beta testing application]</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- end app store beta popup -->
+
+    <!-- main content -->
+    <div id="mainContent" class="mainContent">
+        <div id="getMobileApp" class="mobile-only">
+            <h1>Téléchargez notre application</h1>
+            <p>Marbble est 100% gratuit, vous pouvez le tester en cliquant sur le bouton ci-dessus. Vous pouvez aussi télécharger notre application pour plus de fonctionnalités ;)</p>
+            <div class="googleplaybutton"><a target="blank" href="https://play.google.com/store/apps/details?id=org.manaty.marbble"><img src="img/website/googleplay_button2.png" alt="Play Store"></a></div>
+            <div id="appStoreButtonMobile" class="appstorebutton"><a target="blank" href="https://itunes.apple.com/us/app/marbble/id1364352556?l=fr&ls=1&mt=8"><img src="img/website/appstore_button.png" alt="App Store"></a></div>
+            <div class="clearFloat"></div>
+        </div>
+        <div id="concept">
+            <h1>Concept</h1>
+            <p>Marbble est un jeu de lettres multilingue unique en son genre. Oui, vous avez bien lu : multilingue. Cela signifie qu’un joueur anglais peut jouer en anglais, contre un joueur français qui joue en français!
+Pour jouer, utilisez les lettres de votre chevalet pour créer des mots sur le plateau. Vous pouvez optimiser votre score en utilisant les cases spéciales (« Mot compte double », « Lettre compte triple »…) et en vous appuyant sur les lettres chères pour former vos propres mots… ou réutiliser ceux de votre adversaire.</p>
+
+            <p>Nous voulons que Marbble soit un jeu fun mais avec une dimension d’apprentissage. C’est pourquoi vous aurez également accès en jeu aux traductions et définitions des mots joués. Nous espérons que cela vous aidera à enrichir votre vocabulaire à et à apprendre de nouvelles langues.</p>
+
+            <p>Parler la même langue rapproche les hommes. C’est pourquoi nous avons développé Marbble. Nous voulons rassembler les gens, unir les peuples, nous voulons la Paix Universelle!</p>
+
+            <p>Bon ok on en fait peut-être un peu trop là, mais vous avez compris l’idée.</p>
+
+        </div>
+        <div id="features">
+
+            <h1>Fonctionnalités</h1>
+            <p>La version actuelle est <strong>1.0.0</strong></p>
+            <p>Voici les fonctionnalités disponibles actuellement et celles que l’on aimerait implémenter dans le futur:</p>
+
+            <ul class="mainFeatures">
+                <li>
+                    <h3>Modes de jeu</h3>
+                    <ul class="custom-style">
+                        <li class="check"><strong>Marbble Classic:</strong> Les joueurs n’utilisent pas le même langage et peuvent jouer uniquement dans le langage qu’ils ont choisi. Ils ne partagent pas le même sac de lettres.</li>
+                        <li class="check"><strong>Classic:</strong> Les deux joueurs partagent le même langage et le même sac de lettres.</li>
+                        <li class="not-implemented"><strong>Marbble Special:</strong> Les joueurs peuvent joueur dans les deux langages du jeu, ils partagent également le même sac de lettres pour plus de challenge.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Gameplay</h3>
+                    <ul class="custom-style">
+                        <li class="check"><strong>Pass & Play mode:</strong> Les joueurs jouent sur le même appareil au tour par tour</li>
+                        <li class="check"><strong>Solo game:</strong> Jouez contre l’ordinateur avec différents niveaux de difficulté</li>
+                        <li class="not-implemented"><strong>Play with a Facebook friend:</strong> Jouez avec vos amis sur Facebook</li>
+                        <li class="not-implemented"><strong>Find me an opponent:</strong> Jouez contre un adversaire aléatoire grâce à un système de recherche intelligent</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Langues: </h3>
+                    <ul class="custom-style">
+                        <li class="check">Anglais</li>
+                        <li class="check">Français</li>
+                        <li class="check">Espagnol</li>
+                        <li class="check">Philippin</li>
+                        <li class="not-implemented">Allemand</li>
+                        <li class="not-implemented">Italien</li>
+                        <li class="not-implemented">Portuguais</li>
+                    </ul>
+                    <li>
+                        <h3>Traductions et définitions</h3>
+                        <ul class="custom-style">
+                            <li class="check">Traductions dans le jeu</li>
+                            <li class="not-implemented">Définitions dans le jeu</li>
+                        </ul>
+                    </li>
+                    <li><h3>Autres fonctionnalités</h3>
+                        <ul class="custom-style">
+                            <li class="check">Possibilité de jouer plusieurs parties en même temps</li>
+                            <li class="not-implemented">Documentation dans le jeu</li>
+                            <li class="not-implemented">Statistiques, personnalisation des profils des joueurs, défis …</li>
+                            <li class="not-implemented">Amélioration du design et des animations</li>
+                        </ul>
+                    </li>
+            </ul>
+        </div>
+
+        <!-- Fullscreen modal -->
+        <div id="myModal" class="modal">
+          <span class="close"></span>
+          <img class="modal-content" id="fullsize">
+          <div id="caption"></div>
+        </div>
+        <!---->
+
+
+        <div id="screenshots">
+            <h1>Images</h1>
+            <p>Cliquez pour agrandir les images</p>
+            <div class="row">
+                <div class="column">
+                    <img id="screenshot1" class="screenshots" src="img/website/scrMenu.png" class="hover-shadow cursor" alt="Menu">
+                </div>
+                <div class="column">
+                    <img id="screenshot2" class="screenshots" src="img/website/scrGameSelection.png" class="hover-shadow cursor" alt="Play against computer">
+                </div>
+                <div class="column">
+                    <img id="screenshot3" class="screenshots" src="img/website/scrPassAndPlay.png" class="hover-shadow cursor" alt="Pass and play">
+                </div>
+                <div class="column">
+                    <img id="screenshot4" class="screenshots" src="img/website/scrGame.png" class="hover-shadow cursor" alt="Game">
+                </div>
+                <div class="column">
+                    <img id="screenshot5" class="screenshots" src="img/website/scrGameZoom.png" class="hover-shadow cursor" alt="Game zoom">
+                </div>
+                <div class="column">
+                    <img id="screenshot6" class="screenshots" src="img/website/scrComputerPlaying.png" class="hover-shadow cursor" alt="Computer playing">
+                </div>
+                <div class="column">
+                    <img id="screenshot7" class="screenshots" src="img/website/scrTranslations.png" class="hover-shadow cursor" alt="Translations">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column">
+                    <img id="screenshot8" class="screenshots" src="img/website/scrDefinitions2.png" class="hover-shadow cursor" alt="Definitions">
+                </div>
+                <div class="column">
+                    <img id="screenshot9" class="screenshots" src="img/website/scrDefinitions3.png" class="hover-shadow cursor" alt="Definitions">
+                </div>
+                <div class="column">
+                    <img id="screenshot10" class="screenshots" src="img/website/scrExchangeTiles.png" class="hover-shadow cursor" alt="Exchange tiles">
+                </div>
+                <div class="column">
+                    <img id="screenshot11" class="screenshots" src="img/website/scrBlankTile.png" class="hover-shadow cursor" alt="Blank tile">
+                </div>
+                <div class="column">
+                    <img id="screenshot12" class="screenshots" src="img/website/scrVictory.png" class="hover-shadow cursor" alt="Victory">
+                </div>
+            </div>
+
+            <div id="lightBoxModal" class="modal2">
+                <span class="close2 cursor">&times;</span>
+                <div class="modal-content2">
+
+                    <div class="mySlides">
+                        <div class="numbertext">1 / 12</div>
+                        <img src="img/website/scrMenu.png" id="fullsize" alt="Menu">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">2 / 12</div>
+                        <img src="img/website/scrGameSelection.png" id="fullsize" alt="Play against computer">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">3 / 12</div>
+                        <img src="img/website/scrPassAndPlay.png" id="fullsize" alt="Pass and play">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">4 / 12</div>
+                        <img src="img/website/scrGame.png" id="fullsize" alt="Game">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">5 / 13</div>
+                        <img src="img/website/scrGameZoom.png" id="fullsize" alt="Game zoom">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">6 / 12</div>
+                        <img src="img/website/scrComputerPlaying.png" id="fullsize" alt="Computer playing">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">7 / 12</div>
+                        <img src="img/website/scrTranslations.png" id="fullsize" alt="Translations">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">8 / 12</div>
+                        <img src="img/website/scrDefinitions2.png" id="fullsize" alt="Definitions">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">9 / 12</div>
+                        <img src="img/website/scrDefinitions3.png" id="fullsize" alt="Definitions">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">10 / 12</div>
+                        <img src="img/website/scrExchangeTiles.png" id="fullsize" alt="Exchange tiles">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">11 / 12</div>
+                        <img src="img/website/scrBlankTile.png" id="fullsize" alt="Blank tile">
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext">12 / 12</div>
+                        <img src="img/website/scrVictory.png" id="fullsize" alt="Victory">
+                    </div>
+
+
+                    <a class="prev">&#10094;</a>
+                    <a class="next">&#10095;</a>
+
+                    <div id="caption">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="support">
+            <h1>Nous soutenir</h1>
+            <p>Marbble est complètement gratuit et ne contient aucune publicité. Nous souhaitons que les choses restent comme ça, pour toujours.</p>
+            <p>Pour autant, développer une application et la maintenir en ligne est coûteux.</p>
+            <p>
+            <div class="tipeee-support">C’est pourquoi vous pouvez nous soutenir via notre page Tipeee: <a target="blank" href="https://www.tipeee.com/manatygames"><img src="img/website/tipeee_button.png" alt="Support us on Tipeee"></a></div>
+            </p>
+            <p>
+                <div class="facebook-support">Vous pouvez également nous suivre sur Facebook pour être tenu(e) informé(e) des développements:  <a target="blank" class="url" href="https://www.facebook.com/Marbble-1144004575703315/"><img src="img/website/Facebook.png" alt="Find us on Facebook"></a></div>
+            </p>
+        </div>
+        <div id="contact">
+            <h1>Contact</h1>
+            <p>Une question? Une suggestion? Vous pouvez nous contacter par email: <span class="url">games@manaty.net</span></p>
+            <p>Nous sommes preneurs de tout retour sur l’expérience de jeu et nous prendrons en compte tous les conseils que vous pourriez nous apporter. De la même manière, vous pouvez contribuer au développement en nous signalant des bugs… ou en nous envoyant des messages d’amour et de soutien :)</p>
+            <p>Si vous avez des compétences en design, en développement ou une connaissance particulière des langues que vous souhaiteriez mettre à profit pour nous aider, ou si vous avez pour une proposition de partenariat, vous pouvez nous contacter à l’adresse <span class="url">contact@manaty.net</span></p>
+        </div>
+    </div>
+
+    <!-- end main content -->
+
+    <!-- Footer -->
+    <div id="footer">
+        <div class="manatySection">
+            <div class="manatyLogoContainer">
+                <div class="manatyLogo"></div>
+            </div>
+            <div class="footerContent">
+                <div class="manatySectionHeader">
+                    <h2>Marbble est un jeu développé par <span class="colorBlue">MANATY<span></h2></div>
+                <div class="manatySectionTextContainer">
+                    <div class="manatySectionText">
+                        <p>
+                            Manaty rassemble des experts dédiés à la conception et à la réalisation d’applications sur-mesure et performantes. N’hésitez pas à nous contacter via <span class="url">contact@manaty.net</span>
+                        </p>
+                        <p class="paragraph-spacer">
+                            Manaty Games est une branche de Manaty dédiée à la réalisation de jeux complètements gratuits et ne contenant aucune publicité. De la même manière, nous ne demandons ni n’utilisons aucunes informations personnelles de nos utilisateurs.
+                        </p>
+                    </div>
+                    <div class="manatyButtonContainer screen-only">
+                        <a target="blank" href="http://manaty.net">
+                            <div class="manatyButton">manaty.net</div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="manatyButtonContainer mobile-only">
+                <a target="blank" href="http://manaty.net">
+                    <div class="manatyButton">manaty.net</div>
+                </a>
+            </div>
+            <div class="clearFloat"></div>
+        </div>
+        <div class="bottomFooter mobile-only">
+            <div class="footer-text">
+                <span class="copyrightText">Copyright Manaty</span> <br />
+                <span class="footer-links"><a target="blank" href="https://www.facebook.com/MarbbleGame">Facebook</a> | <a target="blank" href="https://www.tipeee.com/manatygames">Nous soutenir</a> | <a href="docs/marbble_FR_kit_presse.zip">Dossier de presse</a></span>
+            </div>
+            <div class="flagsContainer">
+                <a href="es.html">
+                    <div id="esFlag" class="esFlag"></div>
+                </a>
+                <a href="fr.html">
+                    <div id="frFlag" class="frFlag"></div>
+                </a>
+                <a href="en.html">
+                    <div id="enFlag" class="enFlag selected"></div>
+                </a>
+            </div>
+            <div class="clearFloat"></div>
+        </div>
+        <div class="bottomFooter screen-only">
+            <div class="copyrightText">Copyright Manaty</div>
+            <div class="footer-links"><a target="blank" href="https://www.facebook.com/MarbbleGame">Facebook</a> | <a target="blank" href="https://www.tipeee.com/manatygames">Nous soutenir</a> | <a href="docs/marbble_FR_kit_presse.zip">Dossier de presse</a></div>
+            <div class="flagsContainer">
+                <a href="es.html"><div id="esFlag" class="esFlag"></div></a>
+                <a href="fr.html"><div id="frFlag" class="frFlag selected"></div></a>
+                <a href="en.html"> <div id="enFlag" class="enFlag"></div></a>
+            </div>
+            <div class="clearFloat"></div>
+        </div>
+    </div>
+
+
+
+
+    <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <script>
+        (function() {
+            homeInterface = new HomeInterface();
+        })();
+    </script>
+
+</body>
+
+</html>

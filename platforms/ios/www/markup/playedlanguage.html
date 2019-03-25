@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta HTTP-EQUIV="Pragma" content="no-cache">
+    <meta HTTP-EQUIV="Expires" content="-1">
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of eval() and inline  scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+      * Enable eval(): add 'unsafe-eval' to default-src
+  * Create your own at http://cspisawesome.com
+  -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="../css/marbble.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../lib/dragula.css" media="screen" />
+    <title>Marbble</title>
+</head>
+
+<body>
+    <div id="marbblescreen" class=" marbblescreen played_languages_main" style="width: 360px; height: 640px; border: 3px solid rgb(255, 255, 255); border-radius: 3px;">
+        <div class="choose_language_header">
+        </div>
+        <div class="how_does_it_work_container">
+            <div id="how_does_it_work_header">
+                <div class="chevron_grey"></div>
+                <div class="how_does_it_work_title">How does it work?</div>
+            </div>
+            <div class="clearFloat"></div>
+            <div class="how_does_it_work_text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed laoreet turpis velit, in finibus est volutpat vel. Phasellus ac sem sit amet libero auctor rhoncus. Aenean aliquet massa semper maximus pellentesque. Ut volutpat ligula quam, iaculis pharetra tortor posuere quis. Phasellus sed urna porttitor, pellentesque augue at, commodo diam. Cras ut eleifend nunc, et venenatis nibh.
+            </div>
+        </div>
+
+        <div class="available_languages_container">
+            <div class="available_languages_header_bg"></div>
+            <div class="available_languages_flag_container">
+                <div class="availableFlagEn selected"></div>
+                <div class="availableFlagFr selected"></div>
+                <div class="availableFlagEs"></div>
+                <div class="availableFlagDe"></div>
+            </div>
+        </div>
+
+        <div class="available_languages_container">
+            <div class="languages_activated_header_bg"></div>
+            <div class="activated_languages_container">
+                English<br />
+                French
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

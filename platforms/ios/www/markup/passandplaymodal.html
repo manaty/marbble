@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta HTTP-EQUIV="Pragma" content="no-cache">
+    <meta HTTP-EQUIV="Expires" content="-1">
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of eval() and inline  scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+      * Enable eval(): add 'unsafe-eval' to default-src
+  * Create your own at http://cspisawesome.com
+  -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" type="text/css" href="../css/marbble.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../lib/dragula.css" media="screen" />
+    <title>Marbble</title>
+</head>
+
+<body class="newGameInterface">
+    <div id="marbblescreen" class="marbblescreen" style="width: 360px; height: 640px; border: 3px solid rgb(255, 255, 255);">
+        <div class="mainMenuContainer">
+            <div class="mainMenuBtn cursorClickable"></div>
+            <div class="newGameBtn cursorClickable"></div>
+            <div class="settingsBtn cursorClickable"></div>
+        </div>
+
+        <div class="newGameInterfaceButtonContainer">
+            <div class="playWithFriendDivContainer">
+                <div class="playWithFriendBtn cursorClickable"></div>
+            </div>
+
+            <div class="findOpponentDivContainer">
+                <div class="findOpponentBtn cursorClickable"></div>
+            </div>
+
+            <div class="soloGameDivContainer">
+                <div class="soloGameBtn cursorClickable"></div>
+            </div>
+
+            <div class="passNplayDivContainer">
+                <div class="passNplayBtn cursorClickable"></div>
+            </div>
+        </div>
+
+        <div class="activated_languages_title">
+
+        </div>
+        <div class="languagesContainer">
+            <div class="flag_container">
+                <div class="flag_languages_container">
+                    <div class="language_en"></div>
+                    <div class="language_fr"></div>
+                    <div class="language_de"></div>
+                </div>
+
+            </div>
+            <div class="language_settings_container">
+                <div class="edit_languages cursorClickable"></div>
+            </div>
+        </div>
+
+        <div class="gameConfigModal" id="gameConfigModal" style="width: 360px; height: 640px; display: block; margin: auto;">
+
+            <div class="gameConfigContainer" id="gameConfigContainer" style="display: block;">
+                <div class="gameConfigHeader gameConfigTitle">Pass Your device around to Play</div>
+                <div class="gameConfigContent">
+                    <div class="gameConfigButtonContainer">
+                        <div class="pass_and_play_btn"></div>
+                        <div class="play_against_computer_btn"></div>
+                    </div>
+                    <div class="marbble_game_mode_info">
+                        <div class="marbble_icon"></div>
+                        <div class="marbble_game_mode_text">Choose your playing language and the one for your opponent. You can only play in the language you choose, same for your opponent. You won't share the same bag of tiles. May the best win!</div>
+                    </div>
+                    <div class="game_config_player_settings">
+                        <form>
+                            <div class="player_username_config">
+                                Player 1: <input type="text" name="enter pseudo">
+                            </div>
+                            <div class="player_username_config">
+                                Player 2: <input type="text" name="enter pseudo">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="game_config_language">
+                        <div class="player_language_config">
+                            <div class="language_config_header">Player 1 Dictionary</div>
+                            <div class="language_config_flag_container">
+                                <div class="language_en"></div>
+                                <div class="language_fr"></div>
+                                <div class="clearFloat"></div>
+                            </div>
+                        </div>
+                        <div class="player_language_config">
+                            <div class="language_config_header">Player 2 Dictionary</div>
+                            <div class="language_config_flag_container">
+                                <div class="language_en"></div>
+                                <div class="language_fr"></div>
+                                <div class="clearFloat"></div>
+                            </div>
+                        </div>
+                        <div class="game_config_button_container">
+                            <div class="lets_play_btn"></div>
+                        </div>
+                        <div class="game_config_button_container">
+                            <div class="config_cancel_btn"></div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

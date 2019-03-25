@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+  <meta HTTP-EQUIV="Pragma" content="no-cache">
+  <meta HTTP-EQUIV="Expires" content="-1">
+  <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+  <!-- Good default declaration:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of eval() and inline  scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+      * Enable eval(): add 'unsafe-eval' to default-src
+  * Create your own at http://cspisawesome.com
+  -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" type="text/css" href="css/marbble.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="lib/dragula.css" media="screen" />
+   <title>Marbble</title>
+</head>
+<body style='user-select:none;' onLoad="initMarbble('marbblescreen')" onselectstart='return false;'>
+  <script type="text/javascript" src="cordova.js"></script>
+    <div class="marbblescreen" id="marbblescreen" style="width: 360px; height: 640px; border: 3px solid rgb(255, 255, 255);">
+      <div class="players" id="mbb_players" style="height: 65px;">
+        <div class="prevButton" id="prevButton"></div>
+        <div class="chatButton" id="chatButton"></div>
+        <div class="opponentInfoMid">
+          <div class="playerContainerLeft" id="playerContainerLeft"></div>
+          <div class="playerContainerRight" id="playerContainerRight"></div>
+          <div class="playerContainerMid" id="playerContainerMid">
+              <!-- player 1 -->
+              <div class="player player1" id="mbb_player_0">
+                  <div class="user1PhotoContainer alignLeft">
+                      <div class="userPhoto1">
+                      </div>
+                  </div>
+
+                  <div class="userDetailContainer alignLeft">
+                      <div class="userProfile alignLeft">
+                          <div class="playerName alignLeft">
+                              carina
+                          </div>
+
+
+                          <div class="user1Flag">
+                          </div>
+                      </div>
+
+
+                      <div class="playerScore alignLeft" id="playerScore_0">
+                          0
+                      </div>
+                  </div>
+              </div>
+              <!-- end player  1 -->
+              <div class="playerDivider"></div>
+
+              <!-- player  2 -->
+              <div class="player player2" id="mbb_player_1">
+                  <div class="user2PhotoContainer alignRight">
+                      <div class="userPhoto2">
+                      </div>
+                  </div>
+
+
+                  <div class="userDetailContainer alignRight">
+                      <div class="userProfile alignRight">
+                          <div class="playerName alignRight">
+                              seb
+                          </div>
+
+
+                          <div class="user2Flag alignLeft">
+                          </div>
+                      </div>
+
+
+                      <div class="playerScore alignRight" id="playerScore_1">
+                          0
+                      </div>
+                  </div>
+              </div>
+
+              <!-- end player  2 -->
+          </div>
+        </div>
+      </div>
+      <div class="lastActionStrip" style="height: 40px;">
+          <div class="lastActionLeft">
+          </div>
+          <div class="lastActionRight">
+          </div>
+          <div class="lastActionMid">
+              <div class="lastActionText">
+                  legolas2000 exchanged <font color="red">3</font> letters
+              </div>
+          </div>
+      </div>
+
+      <div class="boardContainer" id="boardContainer" style="height: 405px;">
+          <div class="board" id="mbb_board" style="width: 350px; height: 350px;">
+              <div class="tileRow" id="row1">
+                  <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_0_0">
+                    </div>
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_1">
+                    </div>
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg4 boardTileBg floatLeft" id="board_tileBg_0_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_0_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg4 boardTileBg floatLeft" id="board_tileBg_0_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_0_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_0_14">
+                    </div>
+              </div>
+
+              <div class="tileRow" id="row2">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_1_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_1_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_1_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_1_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_1_14">
+                    </div>
+                </div>
+
+                <div class="tileRow" id="row3">
+                    <div class="tileBg tileBg4 boardTileBg floatLeft" id="board_tileBg_2_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_2_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_2_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_2_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_2_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_2_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg4 boardTileBg floatLeft" id="board_tileBg_2_14">
+                    </div>
+                </div>
+
+                <div class="tileRow" id="row4">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_3_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_3_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_3_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_3_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row5">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_4_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_4_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_4_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row6">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_5_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_5_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_5_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_5_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_5_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row7">
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_6_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_6_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_6_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_6_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_6_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row8">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_7_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_7_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg5 boardTileBg floatLeft" id="board_tileBg_7_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_7_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_7_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_7_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row9">
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_8_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_8_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_8_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_8_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_8_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row10">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_9_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_9_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_9_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_9_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_9_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row11">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_10_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_10_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_10_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row12">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_11_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_11_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_11_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_11_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row13">
+                    <div class="tileBg tileBg4 boardTileBg floatLeft" id="board_tileBg_12_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_12_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_12_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_12_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_12_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_12_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg4 boardTileBg floatLeft" id="board_tileBg_12_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row14">
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_13_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_13_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg3 boardTileBg floatLeft" id="board_tileBg_13_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg1 boardTileBg floatLeft" id="board_tileBg_13_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_13_14">
+                    </div>
+                </div>
+
+
+                <div class="tileRow" id="row15">
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_14_0">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_1">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_2">
+                    </div>
+
+
+                    <div class="tileBg tileBg4 boardTileBg floatLeft" id="board_tileBg_14_3">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_4">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_5">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_6">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_14_7">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_8">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_9">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_10">
+                    </div>
+
+
+                    <div class="tileBg tileBg4 boardTileBg floatLeft" id="board_tileBg_14_11">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_12">
+                    </div>
+
+
+                    <div class="tileBg tileBg0 boardTileBg floatLeft" id="board_tileBg_14_13">
+                    </div>
+
+
+                    <div class="tileBg tileBg2 boardTileBg floatLeft" id="board_tileBg_14_14">
+                    </div>
+                </div>
+          </div>
+      </div>
+
+      <div class="playerRack" id="playerRack" style="height: 55px;">
+          <div id="playerRack_0" style="display: block;">
+              <!-- tile 1 -->
+              <div class="playerTileBg tileBg0" id="player_tileBg_0_0" style="width: 49px; height: 49px; left: 0px; top: 0px;">
+                  <div class="tile" draggable="true" id="0_63">
+                      <div class="tileElementContainer" id="textGroupContainer">
+                            <div class="tileValueContainer" id="tileValueContainer" style="font-size: 9.85286px;">
+                                8
+                            </div>
+
+
+                            <div class="tileTextContainer" id="tileTextContainer" style="font-size: 31.1143px;">
+                                X
+                            </div>
+                        </div>
+                  </div>
+              </div>
+
+              <!-- tile 2 -->
+              <div class="playerTileBg tileBg0" id="player_tileBg_0_1" style="width: 49px; height: 49px; left: 49px; top: 0px;">
+                  <div class="tileElementContainer" id="textGroupContainer">
+                      <div class="tile" draggable="true" id="0_64">
+                      <div class="tileElementContainer" id="textGroupContainer">
+                          <div class="tileValueContainer" id="tileValueContainer" style="font-size: 9.85286px;">
+                              1
+                          </div>
+
+                          <div class="tileTextContainer" id="tileTextContainer" style="font-size: 31.1143px;">
+                              O
+                          </div>
+                      </div>
+                  </div>
+                    </div>
+              </div>
+
+              <!-- tile 3 -->
+              <div class="playerTileBg tileBg0" id="player_tileBg_0_2" style="width: 49px; height: 49px; left: 98px; top: 0px;">
+                  <div class="tile" draggable="true" id="0_101">
+                        <div class="tileElementContainer" id="textGroupContainer">
+                            <div class="tileValueContainer" id="tileValueContainer" style="font-size: 9.85286px;">
+                                10
+                            </div>
+
+                            <div class="tileTextContainer" id="tileTextContainer" style="font-size: 31.1143px;">
+                                Z
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+              <!-- tile 4 -->
+              <div class="playerTileBg tileBg0" id="player_tileBg_0_3" style="width: 49px; height: 49px; left: 147px; top: 0px;">
+                  <div class="tile" draggable="true" id="0_56">
+                        <div class="tileElementContainer" id="textGroupContainer">
+                            <div class="tileValueContainer" id="tileValueContainer" style="font-size: 9.85286px;">
+                                1
+                            </div>
+
+
+                            <div class="tileTextContainer" id="tileTextContainer" style="font-size: 31.1143px;">
+                                N
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+              <!-- tile 5 -->
+              <div class="playerTileBg tileBg0" id="player_tileBg_0_4" style="width: 49px; height: 49px; left: 196px; top: 0px;">
+                  <div class="tile" draggable="true" id="0_63">
+                        <div class="tileElementContainer" id="textGroupContainer">
+                            <div class="tileValueContainer" id="tileValueContainer" style="font-size: 9.85286px;">
+                                1
+                            </div>
+
+
+                            <div class="tileTextContainer" id="tileTextContainer" style="font-size: 31.1143px;">
+                                O
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+              <!-- tile 6 -->
+              <div class="playerTileBg tileBg0" id="player_tileBg_0_5" style="width: 49px; height: 49px; left: 245px; top: 0px;">
+                  <div class="tile" draggable="true" id="0_9">
+                        <div class="tileElementContainer" id="textGroupContainer">
+                            <div class="tileValueContainer" id="tileValueContainer" style="font-size: 9.85286px;">
+                                1
+                            </div>
+
+
+                            <div class="tileTextContainer" id="tileTextContainer" style="font-size: 31.1143px;">
+                                A
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+              <div class="playerTileBg tileBg0" id="player_tileBg_0_6" style="width: 49px; height: 49px; left: 294px; top: 0px;">
+                  <div class="tile" draggable="true" id="0_15">
+                        <div class="tileElementContainer" id="textGroupContainer">
+                            <div class="tileValueContainer" id="tileValueContainer" style="font-size: 9.85286px;">
+                                2
+                            </div>
+
+
+                            <div class="tileTextContainer" id="tileTextContainer" style="font-size: 31.1143px;">
+                                D
+                            </div>
+                        </div>
+                    </div>
+              </div>
+
+              <div id="playerRack_1" style="display: none;">
+                <div class="playerTileBg tileBg0" id="player_tileBg_1_0">
+                </div>
+
+
+                <div class="playerTileBg tileBg0" id="player_tileBg_1_1">
+                </div>
+
+
+                <div class="playerTileBg tileBg0" id="player_tileBg_1_2">
+                </div>
+
+
+                <div class="playerTileBg tileBg0" id="player_tileBg_1_3">
+                </div>
+
+
+                <div class="playerTileBg tileBg0" id="player_tileBg_1_4">
+                </div>
+
+
+                <div class="playerTileBg tileBg0" id="player_tileBg_1_5">
+                </div>
+
+
+                <div class="playerTileBg tileBg0" id="player_tileBg_1_6">
+                </div>
+            </div>
+
+
+          </div>
+      </div>
+      <div class="menu" id="mbb_menu" style="height: 55px;">
+          <div class="menuButton swapButton" id="swapButton">
+          </div>
+          <div class="menuButton shuffleButton" id="shuffleButton">
+            </div>
+
+
+            <div class="menuButton gatherButton" id="gatherButton">
+            </div>
+
+
+            <div class="menuButton passButton" id="passButton">
+            </div>
+
+
+            <div class="menuButton playButton" id="menuButton">
+            </div>
+      </div>
+    </div>
+    </body>
+</html>
