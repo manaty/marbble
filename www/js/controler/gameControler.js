@@ -583,7 +583,8 @@ var GameControler = function() {
             key: "aiPass",
             value: function aiPass() {
               if(this.model.playerToPlay == 1 && this.model.isSoloPlay) {
-                if(this.model.ai_pass < 5) {
+                  console.log(this.model.getPlayer().bag.length);
+                if(this.model.ai_pass < 5 && this.model.getPlayer().bag.length > 3) {
                   //console.log("SWAP", this.model.ai_pass);
                   var playerControler = this.playerControlers[this.model.playerToPlay];
                   if (playerControler.swapAIRackTiles() == true) {
@@ -626,12 +627,12 @@ var GameControler = function() {
             value: function aiPerformAction() {
               try {
                 var bestWord = this.aiGetBestWord();
-                if( /[^a-zA-Z_]/.test( bestWord.word ) ) {
+                if( bestWord != null && bestWord != undefined && bestWord.word != null && /[^a-zA-Z_]/.test( bestWord.word ) ) {
                   //not valid, we should skip
                   this.aiPass();
                 } else {
                   var rack = this.model.players[this.model.playerToPlay].rack;
-                  var usedBoard = [];
+                  console.log(bestWord);
                   var ax = bestWord.ax;
                   var ay = bestWord.ay;
                   this.buildAIBoard();
@@ -725,8 +726,6 @@ var GameControler = function() {
 
 			var bestWord;
 			var model = this.model;
-            var more = Math.ceil(Math.random()*5);
-            var maxwpoints = model.g_maxwpoints[model.g_playlevel] + more; //max points AI can do
             //if first move do not scan board
             if(model.round === 1) {
               bestWord = this.aiBuildAltPossibleMove(this.getAIRack().opponent_rack);
@@ -735,20 +734,25 @@ var GameControler = function() {
               	var moveType = model.getNextPlayer().lang == model.getPlayer().lang ? "" : "common";
               	var tempBestWord = this.aiAltPossibleMoveY(moveType);
 			  	bestWord = tempBestWord && tempBestWord.word.length > 2 ? tempBestWord : this.aiAltPossibleMove(moveType);
+                console.log(tempBestWord, bestWord);
 	          	if(!bestWord || model.g_playlevel > 1) {
 	              	tempBestWord = this.aiAltPossibleMoveY("");
+	              	console.log(tempBestWord, bestWord);
 				  	bestWord = !bestWord || (!!tempBestWord && tempBestWord.score > bestWord.score) ? tempBestWord : bestWord;
 			  	}
 	          	if(!bestWord || model.g_playlevel > 2) {
 	              	tempBestWord = this.aiAltPossibleMove("");
+                    console.log(tempBestWord, bestWord);
 				  	bestWord = !bestWord || (!!tempBestWord && tempBestWord.score > bestWord.score) ? tempBestWord : bestWord;
 	          	}
 	          	if(!bestWord || model.g_playlevel > 1) {
 					tempBestWord = this.aiMoveWordExtendX();
+                    console.log(tempBestWord, bestWord);
 	              	bestWord = !bestWord || (!!tempBestWord && tempBestWord.score > bestWord.score) ? tempBestWord : bestWord
 	          	}
 	          	if(!bestWord && model.g_playlevel > 2) {
 					tempBestWord = this.aiComplexMove("");
+                    console.log(tempBestWord, bestWord);
 	              	bestWord = !bestWord || (!!tempBestWord && tempBestWord.score > bestWord.score) ? tempBestWord : bestWord;
 	          	}
             }
@@ -759,9 +763,6 @@ var GameControler = function() {
           value: function buildAIBoard() {
             this.model.g_board = [];
             var model = this.model;
-            var board_best_score = 0;
-            var board_best_word;
-            var bestWord = "";
             //get best word
 
             for(var by = 0; by < 15; by++) {
@@ -782,12 +783,12 @@ var GameControler = function() {
         }, {
             key: "aiComplexMove",
             value: function aiComplexMove(type) {
+                console.log("COMPLEX MOVE");
               var letters = "";
               var opponent_rack = [];
               var model = this.model;
               var board_best_score = 0;
               var board_best_word;
-              var bestWord = "";
               this.buildAIBoard();
               for(var i=0; i<model.players[model.playerToPlay].rack.length; i++) {
                 letters += model.players[model.playerToPlay].rack[i].letter;
@@ -820,8 +821,6 @@ var GameControler = function() {
             value: function findBestWord( rack, letters, ax, ay )
             {
                 //var t1 = +new Date();
-                var model = this.model;
-                var numlets = letters.length;
                 var bestscore = -1;
                 var bestword = {score:-1};
                 var dirs = ["x","y"];
@@ -853,20 +852,14 @@ var GameControler = function() {
           key: "aiAltPossibleMove",
           value: function aiAltPossibleMove(type) {
             try {
-				var rack = this.getAIRack();
 	            var model = this.model;
-	            var moves = [];
-	            var letters = "";
-	            var opponent_rack = [];
 	            var wordinfo;
-	            var wordMove ={word: ""};
-	            var match; //remove
+	            var wordMove ={word: "", score: 0};
+	            var match;
 	            var ay = 0;
 	            var ax = 0;
-	            var bestscore = 0;
 
 	            var aiRack = this.getAIRack();
-	            var letters = aiRack.letters;
 	            var opponent_rack = aiRack.opponent_rack;
 
 	            for(ay = 0; ay < 15; ay++) {
@@ -919,8 +912,7 @@ var GameControler = function() {
 	                    // var regex1 = new RegExp("_"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
 	                    // var regex2 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"(["+opponent_rack+"]{0,7})_", "g");
 	                    // var regex3 = new RegExp("_(["+opponent_rack+"]{0,7})"+model.g_board[ay][ax]+"_", "g");
-	                    while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
-	                      // //console.log(match[1]);
+                          while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
 	                      var isValid = match[1].indexOf(moveLetter) > -1;
 	                       var matchCheck = match[1].split("");
 	                      //  //console.log(match[1].indexOf(moveLetter),"<",move.yN);
@@ -959,7 +951,7 @@ var GameControler = function() {
 	                        // //console.log(wordinfo);
 	                        var more = Math.ceil(Math.random()*5);
 	                        var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
-	                        //console.log(match[1],"SCORE:",score,"<",maxwpoints);
+	                        // console.log(match[1],"SCORE:",score,"<",maxwpoints);
 	                        var trans = "";
 	                        var transPackValid = false;
 	                        try {
@@ -974,9 +966,12 @@ var GameControler = function() {
 	                              trans = "";
 	                          }
 	                        }
-	                        if (score < maxwpoints && (type != "common" || (trans != match[1] && typeof trans != "undefined" && trans != ""))) {
+	                        if (wordinfo.score < maxwpoints && wordinfo.score > wordMove.score && (type != "common" || (trans != match[1] && typeof trans != "undefined" && trans != ""))) {
+	                            console.log("VALID:", wordinfo.score, wordinfo);
 	                            wordMove = wordinfo;
-	                        }
+	                        } else {
+                                console.log(wordinfo.score, wordinfo);
+                            }
 	                      }
 	                    }
 	                  }
@@ -984,9 +979,10 @@ var GameControler = function() {
 	            }
 	            // //console.log(moves);
 	            if(wordMove.word.length > 0) {
+	                console.log("MOVE: ", wordMove);
 	              return wordMove;
 	            } else {
-	              return undefined;
+	              return null;
 	            }
 			} catch(e) {
 				return false;
@@ -1002,7 +998,7 @@ var GameControler = function() {
 				  var letters = "";
 				  var opponent_rack = [];
 				  var wordinfo;
-				  var wordMove ={word: ""};
+				  var wordMove ={word: "", score: 0};
 				  var match; //remove
 				  var ay = 0;
 				  var ax = 0;
@@ -1112,7 +1108,7 @@ var GameControler = function() {
 							  // //console.log(wordinfo);
 							  var more = Math.ceil(Math.random()*5);
 							  var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
-							  //console.log(match[1],"SCORE:",score,"<",maxwpoints);
+							  // console.log(match[1],"SCORE:",score,"<",maxwpoints);
 							  var trans = "";
 							  var transPackValid = false;
 							  try {
@@ -1127,9 +1123,12 @@ var GameControler = function() {
 									trans = "";
 								}
 							  }
-							  if (score < maxwpoints  && (type != "common" || (trans != match[1] && typeof trans != "undefined"))) {
+							  if (score < maxwpoints  && wordinfo.score > wordMove.score && (type != "common" || (trans != match[1] && typeof trans != "undefined"))) {
+							      console.log("VALID:", wordinfo.score, wordinfo);
 								  wordMove = wordinfo;
-							  }
+							  } else {
+                                  console.log(wordinfo.score, wordinfo);
+                              }
 							}
 						  }
 						}
@@ -1138,9 +1137,10 @@ var GameControler = function() {
 				  }
 				  // //console.log(moves);
 				  if(wordMove.word.length > 0) {
+				      console.log("MOVE:", wordMove);
 					return wordMove;
 				  } else {
-					return undefined;
+					return null;
 				  }
 			  } catch(e) {
 				  return false;
@@ -1210,7 +1210,7 @@ var GameControler = function() {
                 // //console.log(wordinfo);
                 var more = Math.ceil(Math.random()*5);
                 var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
-                //console.log(match[1],"SCORE:",score,"<",maxwpoints);
+                // console.log(match[1],"SCORE:",score,"<",maxwpoints);
                 var trans = "";
                 var transPackValid = false;
                 try {
@@ -1226,12 +1226,14 @@ var GameControler = function() {
                   }
                 }
                 if (score < maxwpoints  && wordinfo.word.length > 1 && ((trans != match[1] && typeof trans != "undefined")) || (this.model.getPlayer().lang ==  this.model.getNextPlayer().lang)) {
+                    console.log("VALID:", wordinfo.score, wordinfo);
                     wordMove = wordinfo;
                 }
               }
             }
             // //console.log(moves);
             if(wordMove.word.length > 0) {
+                console.log("MOVE:", wordMove);
               return wordMove;
             } else {
               return undefined;
@@ -1326,7 +1328,7 @@ var GameControler = function() {
 		                    var regex = new RegExp("_(["+opponent_rack+"]{0,7})("+word+"{1})(["+opponent_rack+"]{0,7})_", "g");
 		                    while(match=regex.exec(g_wstr[model.players[model.playerToPlay].lang])) {
 		                      var wordMatch = match[0];
-		                      // consolew.log(wordMatch);
+		                      // console.log(wordMatch);
 		                      //remove underscore
 		                      wordMatch = wordMatch.replace(/_/g,"");
 
@@ -1376,12 +1378,13 @@ var GameControler = function() {
 		                        }
 		                        var more = Math.ceil(Math.random()*5);
 		                        var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
+		                        console.log(wordMatch,"SCORE:",score,"<",maxwpoints);
 		                        var trans = "";
 		                        var transPackValid = false;
 		                        try {
 		                          var transPack = window.marbbleDic[this.model.getPlayer().lang][this.model.getNextPlayer().lang];
 		                          transPackValid = true;
-		                          trans = transPack[match[1]];
+		                          trans = transPack[wordMatch];
 		                        } catch(e) {
 		                          if(!transPackValid) {
 		                            console.log("NO TRANS PACK - AI MOVE");
@@ -1390,10 +1393,12 @@ var GameControler = function() {
 		                              trans = "";
 		                          }
 		                        }
-		                        if (score <= maxwpoints && (type != "common" || (trans != wordMatch && typeof trans != "undefined" && trans != ""))) {
+		                        if (score <= maxwpoints && score > wordMove.score && (type != "common" || (trans != wordMatch && typeof trans != "undefined" && trans != ""))) {
 		                            // wordMove = wordinfo;
 		                            // //console.log("SET WORDMOVE");
+                                    console.log("VALID:", score, filteredWord);
 		                            wordMove = { word: filteredWord,
+                                                 score: score,
 		                                         ay: xStart - wordMatch.indexOf(word),
 		                                         ax: ay,
 		                                         xy: "y",
@@ -1407,6 +1412,7 @@ var GameControler = function() {
 		            }
 		            // //console.log(moves);
 		            if(wordMove.word.length > 0) {
+		                console.log("MOVE:", wordMove);
 		              return wordMove;
 		            } else {
 		              return undefined;
@@ -1558,6 +1564,7 @@ var GameControler = function() {
                       var maxwpoints = this.model.g_maxwpoints[this.model.g_playlevel] + more;
                       var trans = "";
                       var transPackValid = false;
+                        console.log(wordMatch,"SCORE:",score,"<",maxwpoints);
                       try {
                         var transPack = window.marbbleDic[this.model.getPlayer().lang][this.model.getNextPlayer().lang];
                         transPackValid = true;
@@ -1570,10 +1577,11 @@ var GameControler = function() {
                             trans = "";
                         }
                       }
-                      if (score <= maxwpoints && (type != "common" || (trans != wordMatch && typeof trans != "undefined" && trans != ""))) {
+                      if (score <= maxwpoints && wordMove.score > score && (type != "common" || (trans != wordMatch && typeof trans != "undefined" && trans != ""))) {
                           // wordMove = wordinfo;
                           // //console.log("SET WORDMOVE");
                           wordMove = { word: filteredWord,
+                                       score: score,
                                        ax: yStart - wordMatch.indexOf(word),
                                        ay: ax,
                                        xy: "x",
@@ -1589,7 +1597,7 @@ var GameControler = function() {
           if(wordMove.word.length > 0) {
             return wordMove;
           } else {
-            return undefined;
+            return null;
           }
         }
       }, {
