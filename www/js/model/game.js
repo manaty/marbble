@@ -99,7 +99,7 @@ var Game = function() {
 
         this.g_allLettersBonus = 50;
         this.g_playlevel = activeGame ? activeGame.g_playlevel : localStorage.getItem("aiDifficulty"); // computer play level
-        this.g_maxwpoints = [1, 5, 15, 25, 80]; // maximum word score for each level
+        this.g_maxwpoints = [5, 10, 20, 25, 80]; // maximum word score for each level
 
         this.timeElapsed = dateUtils.getCurrentDateUTC();
         this.isSoloPlay = activeGame ? activeGame.isSoloPlay : isSoloPlay();
