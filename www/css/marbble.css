@@ -81,6 +81,7 @@
         background-repeat: no-repeat;
         width: 9px;
         height: 60px;
+        margin-right: 1px;
     }
     .playerContainerMid {
         overflow: hidden;
@@ -634,36 +635,36 @@
         background-image: url("../img/buttons/main_menu_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 102px;
-        height: 56px;
-        margin-left: 4px;
+        width: 150px;
+        height: 83px;
+        margin-left: 7px;
         float: left;
     }
     .mainMenuBtn-fr {
         background-image: url("../img/buttons/main_menu_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 102px;
-        height: 56px;
-        margin-left: 4px;
+        width: 150px;
+        height: 83px;
+        margin-left: 7px;
         float: left;
     }
     .newGameBtn {
         background-image: url("../img/buttons/new_game_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 102px;
-        height: 56px;
-        margin-left: 3px;
+        width: 150px;
+        height: 83px;
+        margin-left: 7px;
         float: left;
     }
     .newGameBtn-fr {
         background-image: url("../img/buttons/new_game_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 102px;
-        height: 56px;
-        margin-left: 3px;
+        width: 150px;
+        height: 83px;
+        margin-left: 7px;
         float: left;
     }
     .settingsBtn {
@@ -690,7 +691,7 @@
         height: 56px;
     }
     .newGameInterfaceButtonContainer {
-        margin-top: 10px;
+        margin-top: 30px;
     }
     .playWithFriendDivContainer {
         margin-left: 5px;
@@ -1938,6 +1939,7 @@
     .main-interface {
         display: none;
         position: relative;
+        margin-top: 30px;
     }
     .new-game-interface-btn {
         width: 310px;
@@ -3963,6 +3965,7 @@
         background-repeat: no-repeat;
         width: 9px;
         height: 60px;
+        margin-right: 1px;
     }
     .playerContainerMid {
         overflow: hidden;
@@ -4517,36 +4520,36 @@
         background-image: url("../img/buttons/main_menu_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 102px;
-        height: 56px;
-        margin-left: 4px;
+        width: 150px;
+        height: 83px;
+        margin-left: 7px;
         float: left;
     }
     .mainMenuBtn-fr {
         background-image: url("../img/buttons/main_menu_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 102px;
-        height: 56px;
-        margin-left: 4px;
+        width: 150px;
+        height: 83px;
+        margin-left: 7px;
         float: left;
     }
     .newGameBtn {
         background-image: url("../img/buttons/new_game_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 102px;
-        height: 56px;
-        margin-left: 3px;
+        width: 150px;
+        height: 83px;
+        margin-left: 7px;
         float: left;
     }
     .newGameBtn-fr {
         background-image: url("../img/buttons/new_game_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 102px;
-        height: 56px;
-        margin-left: 3px;
+        width: 150px;
+        height: 83px;
+        margin-left: 7px;
         float: left;
     }
     .settingsBtn {
@@ -4573,7 +4576,7 @@
         height: 56px;
     }
     .newGameInterfaceButtonContainer {
-        margin-top: 10px;
+        margin-top: 50px;
     }
     .playWithFriendDivContainer {
         margin-left: 5px;
@@ -5818,6 +5821,7 @@
     .main-interface {
         display: none;
         position: relative;
+        margin-top: 50px;
     }
     .new-game-interface-btn {
         width: 310px;
@@ -7833,6 +7837,7 @@
         background-repeat: no-repeat;
         width: 9px;
         height: 65px;
+        margin-right: 1px;
     }
     .playerContainerMid {
         overflow: hidden;
@@ -8343,8 +8348,8 @@
         background-image: url("../img/buttons/main_menu_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 115px;
-        height: 63px;
+        width: 174px;
+        height: 96px;
         margin-left: 4px;
         float: left;
     }
@@ -8352,8 +8357,8 @@
         background-image: url("../img/buttons/main_menu_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 115px;
-        height: 63px;
+        width: 174px;
+        height: 96px;
         margin-left: 4px;
         float: left;
     }
@@ -8361,8 +8366,8 @@
         background-image: url("../img/buttons/new_game_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 115px;
-        height: 63px;
+        width: 174px;
+        height: 96px;
         margin-left: 3px;
         float: left;
     }
@@ -8370,8 +8375,8 @@
         background-image: url("../img/buttons/new_game_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 115px;
-        height: 63px;
+        width: 174px;
+        height: 96px;
         margin-left: 3px;
         float: left;
     }
@@ -9614,6 +9619,10 @@
     .main-interface {
         display: none;
         position: relative;
+        margin-top: 80px;
+    }
+    #newGameInterfaceContainer {
+      margin-top: 60px;
     }
     .new-game-interface-btn {
         width: 350px;
@@ -11608,6 +11617,7 @@
         background-repeat: no-repeat;
         width: 10px;
         height: 70px;
+        margin-right: 1px;
     }
     .playerContainerMid {
         overflow: hidden;
@@ -12117,26 +12127,26 @@
         background-image: url("../img/buttons/main_menu_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 120px;
-        height: 66px;
-        margin-left: 4px;
+        width: 180px;
+        height: 99px;
+        margin-left: 5px;
         float: left;
     }
     .mainMenuBtn-fr {
         background-image: url("../img/buttons/main_menu_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 120px;
-        height: 66px;
-        margin-left: 4px;
+        width: 180px;
+        height: 99px;
+        margin-left: 5px;
         float: left;
     }
     .newGameBtn {
         background-image: url("../img/buttons/new_game_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 120px;
-        height: 66px;
+        width: 180px;
+        height: 99px;
         margin-left: 3px;
         float: left;
     }
@@ -12144,8 +12154,8 @@
         background-image: url("../img/buttons/new_game_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 120px;
-        height: 66px;
+        width: 180px;
+        height: 99px;
         margin-left: 3px;
         float: left;
     }
@@ -15184,6 +15194,7 @@
         background-repeat: no-repeat;
         width: 12px;
         height: 80px;
+        margin-right: 1px;
     }
     .playerContainerMid {
         overflow: hidden;
@@ -15693,8 +15704,8 @@
         background-image: url("../img/buttons/main_menu_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 133px;
-        height: 73px;
+        width: 200px;
+        height: 110px;
         margin-left: 4px;
         float: left;
     }
@@ -15702,8 +15713,8 @@
         background-image: url("../img/buttons/main_menu_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 133px;
-        height: 73px;
+        width: 200px;
+        height: 110px;
         margin-left: 4px;
         float: left;
     }
@@ -15711,8 +15722,8 @@
         background-image: url("../img/buttons/new_game_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 133px;
-        height: 73px;
+        width: 200px;
+        height: 110px;
         margin-left: 3px;
         float: left;
     }
@@ -15720,8 +15731,8 @@
         background-image: url("../img/buttons/new_game_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 133px;
-        height: 73px;
+        width: 200px;
+        height: 110px;
         margin-left: 3px;
         float: left;
     }
@@ -16807,6 +16818,12 @@
         padding: 10px;
         font-weight: bold;
     }
+    .main-interface {
+      margin-top: 80px;
+    }
+    #newGameInterfaceContainer {
+      margin-top: 80px;
+    }
     /** saved-games **/
     .new-game-interface-btn {
         width: 404px;
@@ -17811,8 +17828,8 @@
         background-image: url("../img/buttons/main_menu_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 153px;
-        height: 84px;
+        width: 230px;
+        height: 127px;
         margin-left: 6px;
         float: left;
     }
@@ -17820,8 +17837,8 @@
         background-image: url("../img/buttons/main_menu_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 153px;
-        height: 84px;
+        width: 230px;
+        height: 127px;
         margin-left: 6px;
         float: left;
     }
@@ -17829,8 +17846,8 @@
         background-image: url("../img/buttons/new_game_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 153px;
-        height: 84px;
+        width: 230px;
+        height: 127px;
         margin-left: 6px;
         float: left;
     }
@@ -17838,8 +17855,8 @@
         background-image: url("../img/buttons/new_game_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 153px;
-        height: 84px;
+        width: 230px;
+        height: 127px;
         margin-left: 6px;
         float: left;
     }
@@ -25104,12 +25121,18 @@
         background-color: #143E38;
         display: none;
     }
+    .main-interface {
+       margin-top: 110px;
+    }
+    #newGameInterfaceContainer {
+    	margin-top: 110px;
+    }
     .mainMenuBtn {
         background-image: url("../img/buttons/main_menu_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 259px;
-        height: 149px;
+        width: 390px;
+        height: 215px;
         margin-left: 8px;
         float: left;
     }
@@ -25117,8 +25140,8 @@
         background-image: url("../img/buttons/main_menu_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 259px;
-        height: 149px;
+        width: 390px;
+        height: 215px;
         margin-left: 8px;
         float: left;
     }
@@ -25126,8 +25149,8 @@
         background-image: url("../img/buttons/new_game_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 259px;
-        height: 149px;
+        width: 390px;
+        height: 215px;
         margin-left: 5px;
         float: left;
     }
@@ -25135,8 +25158,8 @@
         background-image: url("../img/buttons/new_game_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 259px;
-        height: 149px;
+        width: 390px;
+        height: 215px;
         margin-left: 5px;
         float: left;
     }
@@ -26751,8 +26774,8 @@
         background-image: url("../img/buttons/main_menu_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 115px;
-        height: 63px;
+        width: 174px;
+        height: 96px;
         margin-left: 4px;
         float: left;
     }
@@ -26760,8 +26783,8 @@
         background-image: url("../img/buttons/main_menu_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 115px;
-        height: 63px;
+        width: 174px;
+        height: 96px;
         margin-left: 4px;
         float: left;
     }
@@ -26769,8 +26792,8 @@
         background-image: url("../img/buttons/new_game_btn.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 115px;
-        height: 63px;
+        width: 174px;
+        height: 96px;
         margin-left: 3px;
         float: left;
     }
@@ -26778,8 +26801,8 @@
         background-image: url("../img/buttons/new_game_btn-fr.png");
         background-repeat: no-repeat;
         background-size: contain;
-        width: 115px;
-        height: 63px;
+        width: 174px;
+        height: 96px;
         margin-left: 3px;
         float: left;
     }
@@ -28055,6 +28078,10 @@
     .main-interface {
         display: none;
         position: relative;
+        margin-top: 60px;
+    }
+    #newGameInterfaceContainer {
+      margin-top: 60px;
     }
     .new-game-interface-btn {
         width: 340px;
