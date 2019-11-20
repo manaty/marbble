@@ -60,7 +60,7 @@ var GameComponent = function() {
         var notYetAvailableText = this.controler.appLanguage.notyetavailable;
         var helpImplementText = this.controler.appLanguage.helpusimplement;
         this.chatButton.addEventListener("click", this.showMessage.bind(this, notYetAvailableText + ", <a id='tipeeeLink' href='https://www.tipeee.com/manatygames' target='blank'>" + helpImplementText +"</a>"));
-        this.playersDiv.appendChild(this.chatButton);
+        // this.playersDiv.appendChild(this.chatButton);
 
 
         //middle
